@@ -22,7 +22,9 @@ namespace FoRent.Models
         public int Phone { get; set; }                     
 
         [Display(Name = "כתובת מייל")]
-        public string Mail { get; set; }                    
+        public string Mail { get; set; }
+
+        public ICollection<Apartment> Apartments { get; set; }
 
         [Display(Name = "הערות מיוחדות לגבי הדירה")]
         public string Comment { get; set; }                 
