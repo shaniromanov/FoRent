@@ -10,7 +10,7 @@ namespace FoRent.Models
     public class Hirer
     {
 
-        [Display(Name = "תעודת זהות")]
+        [Display(Name = "מספר זהות")]
            public int Id { get; set; }
         [Display(Name = "שם פרטי")]
         public string FirstName { get; set; } 
