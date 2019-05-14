@@ -23,5 +23,9 @@ namespace FoRent.Models
         public DbSet<FoRent.Models.Renter> Renter { get; set; }
 
         public DbSet<FoRent.Models.ApartmentAmenities> ApartmentAmenities { get; set; }
+
+        public DbSet<FoRent.Models.Hirer> Hirer { get; set; }
+
+        public DbSet<FoRent.Models.Policy> Policy { get; set; }
     }
 }

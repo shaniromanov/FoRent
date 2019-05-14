@@ -1,0 +1,48 @@
+﻿@model FoRent.Models.Policy
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Policy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Checkin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Checkin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Checkout)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Checkout)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancellations)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cancellations)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Extrabeds)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Extrabeds)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Creditcardsaccepted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Creditcardsaccepted)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
