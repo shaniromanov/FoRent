@@ -7,8 +7,8 @@ namespace FoRent.Models
 {
     public class Policy
     {
-        public int Id { get; set; }
-        public string Checkin { get; set; } //צק'אין
+            public int Id { get; set; }
+            public string Checkin { get; set; } //צק'אין
             public string Checkout { get; set; } //צק'אאוט
             public string Cancellations { get; set; } //ביטולים
             public string Extrabeds { get; set; } //מיטות נוספות
