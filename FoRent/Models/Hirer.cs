@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace FoRent.Models
 {
     public class Hirer
     {
 
-            public int Id { get; set; } //מספר זהות השוכר
-            public string FirstName { get; set; } //שם פרטי של השוכר
-            public string LastName { get; set; } //שם משפחה של השוכר
-            public int Phone { get; set; } //מספר טלפון של השוכר
-            public string Mail { get; set; } //כתובת מייל של השוכר
-            public string Username { get; set; } //שם משתמש
-            public string Password { get; set; } //סיסמא
+        [Display(Name = "תעודת זהות")]
+           public int Id { get; set; }
+        [Display(Name = "שם פרטי")]
+        public string FirstName { get; set; } 
+        [Display(Name = "שם משפחה")]
+        public string LastName { get; set; }
+        [Display(Name = "מספר טלפון")]
+        public int Phone { get; set; } 
+        [Display(Name = "כתובת מייל")]
+        public string Mail { get; set; } 
+        [Display(Name = " שם משתמש ")]
+        public string Username { get; set; } 
+        [Display(Name = "סיסמא")]
+        public string Password { get; set; } 
 
 
     }
