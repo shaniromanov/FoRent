@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace yiddisherent.Models
+namespace FoRent.Models
 {
     public class Apartment
     {
-        [Key]
+        
         [Display(Name = "סיסמה")]
         public int Id { get; set; }
 
-        [Display(Name = "שם הדירה")]
+        [Display(Name = "כתובת")]
         public string Name { get; set; }
 
         [Display(Name = "מחיר למבוגר ללילה")]

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace yiddisherent.Models
+namespace FoRet.Models
 {
     public class Order
     {
+        [Display(Name = "מספר הזמנה")]
         public int Id { get; set; }
+
 
         public int ApartmentId { get; set; }
 
