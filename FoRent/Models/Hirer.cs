@@ -15,6 +15,7 @@ namespace FoRent.Models
             public string Mail { get; set; } //כתובת מייל של השוכר
             public string Username { get; set; } //שם משתמש
             public string Password { get; set; } //סיסמא
+            public ICollection<Order> Orders { get; set; }
 
 
     }

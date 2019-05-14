@@ -10,7 +10,7 @@ namespace FoRent.Models
     public class Apartment
     {
         
-        [Display(Name = "קוד דירה")]
+        [Display(Name = "מספר סידורי")]
         public int Id { get; set; }
 
         [Display(Name = "כתובת")]
@@ -21,6 +21,12 @@ namespace FoRent.Models
 
         [Display(Name = "מחיר לילד ללילה")]
         public decimal PriceChild { get; set; }
-        
+
+        public Location Location { get; set; }
+
+        public Renter Renter { get; set; }
+
+
+
     }
 }
