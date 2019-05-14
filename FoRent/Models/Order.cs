@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-
-namespace FoRet.Models
+namespace FoRent.Models
 {
     public class Order
     {
@@ -25,6 +24,5 @@ namespace FoRet.Models
 
         [Display(Name = "צ'אק אאוט")]
         public DateTime CheckOut { get; set; }
-
     }
 }

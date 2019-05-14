@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
 
-
 namespace FoRent.Controllers
 {
     public class OrdersController : Controller

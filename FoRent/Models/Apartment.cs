@@ -10,7 +10,7 @@ namespace FoRent.Models
     public class Apartment
     {
         
-        [Display(Name = "סיסמה")]
+        [Display(Name = "קוד דירה")]
         public int Id { get; set; }
 
         [Display(Name = "כתובת")]
