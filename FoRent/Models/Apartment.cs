@@ -20,6 +20,6 @@ namespace yiddisherent.Models
 
         [Display(Name = "מחיר לילד ללילה")]
         public decimal PriceChild { get; set; }
-
+        חחח
     }
 }
