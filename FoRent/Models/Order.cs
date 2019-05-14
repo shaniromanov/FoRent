@@ -12,7 +12,6 @@ namespace FoRet.Models
         [Display(Name = "מספר הזמנה")]
         public int Id { get; set; }
 
-
         public int ApartmentId { get; set; }
 
         [Display(Name = "מספר מבוגרים")]
