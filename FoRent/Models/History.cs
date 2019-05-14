@@ -7,6 +7,6 @@ namespace FoRent.Models
 {
     public class History
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
     }
 }

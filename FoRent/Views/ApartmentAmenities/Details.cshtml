@@ -1,0 +1,72 @@
+﻿@model FoRent.Models.ApartmentAmenities
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ApartmentAmenities</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfRooms)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumOfRooms)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfPersons)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumOfPersons)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Parking)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Parking)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Wifi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Wifi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Accessibility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Accessibility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AirConditioning)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AirConditioning)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Balcony)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Balcony)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -9,6 +9,8 @@ namespace FoRent.Models
 {
     public class ApartmentAmenities
     {
+        public int Id { get; set; }
+
         [Display(Name = "מספר חדרים בדירה")]
         public double NumOfRooms { get; set; }
 
