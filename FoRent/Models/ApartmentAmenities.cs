@@ -20,6 +20,12 @@ namespace FoRent.Models
         [Display(Name = "תיאור הדירה")]
         public string Description { get; set; }
 
+        [Display(Name = "פלטה")]
+        public bool Plata { get; set; }
+
+        [Display(Name = "מיחם")]
+        public bool HotWater { get; set; }
+
         [Display(Name = "חניה")]
         public bool Parking { get; set; }
 
