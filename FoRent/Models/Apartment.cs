@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Mime;
+
+
+
 
 
 namespace FoRent.Models
@@ -25,6 +29,11 @@ namespace FoRent.Models
         public Location Location { get; set; }
 
         public Renter Renter { get; set; }
+
+        public Policy Policy { get; set; }
+
+        public ApartmentAmenities Amenities { get; set; }
+
 
 
 

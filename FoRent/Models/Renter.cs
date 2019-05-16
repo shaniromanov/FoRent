@@ -29,6 +29,10 @@ namespace FoRent.Models
 
         public ICollection<Apartment> Apartments { get; set; }
 
-        
+      
+
+
+
+
     }
 }

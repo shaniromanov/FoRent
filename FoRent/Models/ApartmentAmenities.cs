@@ -42,7 +42,9 @@ namespace FoRent.Models
         public bool Balcony { get; set; }
 
         [Display(Name = "הערות נוספות")]
-        public string Comment { get; set; }             
+        public string Comment { get; set; }
+
+        public ICollection<Apartment> Apartments { get; set; }
 
     }
 }
