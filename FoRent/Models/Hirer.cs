@@ -9,9 +9,9 @@ namespace FoRent.Models
 {
     public class Hirer
     {
-        [Key]
+        
         [Display(Name = "סיסמא")]
-        public string Password { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "שם פרטי")]
         public string FirstName { get; set; } 
@@ -26,7 +26,7 @@ namespace FoRent.Models
         public string Mail { get; set; } 
 
         [Display(Name = " שם משתמש ")]
-        public string UserName { get; set; } 
+        public string Username { get; set; } 
       
 
 

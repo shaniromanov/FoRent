@@ -18,6 +18,7 @@ namespace FoRent.Models
         [Display(Name = "שם משפחה")]
         public string LastName { get; set; }               
 
+        [Required]
         [Display(Name = "מספר טלפון")]
         public int Phone { get; set; }                     
 
