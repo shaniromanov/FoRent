@@ -18,15 +18,22 @@ namespace FoRent.Models
         [Display(Name = "שם משפחה")]
         public string LastName { get; set; }               
 
+        [Required]
         [Display(Name = "מספר טלפון")]
         public int Phone { get; set; }                     
 
         [Display(Name = "כתובת מייל")]
         public string Mail { get; set; }
 
+        [Display(Name = "הערות מיוחדות לגבי הדירה")]
+        public string Comment { get; set; }
+
         public ICollection<Apartment> Apartments { get; set; }
 
-        [Display(Name = "הערות מיוחדות לגבי הדירה")]
-        public string Comment { get; set; }                 
+      
+
+
+
+
     }
 }
