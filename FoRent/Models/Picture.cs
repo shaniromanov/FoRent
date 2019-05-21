@@ -9,7 +9,7 @@ namespace FoRent.Models
     public class Picture
     {
         public int Id { get; set; }
-        //public TYPE Type { get; set; }
+        public byte[] Image { get; set; }
 
     }
 }
