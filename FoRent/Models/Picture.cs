@@ -11,5 +11,7 @@ namespace FoRent.Models
         public int Id { get; set; }
         public byte[] Image { get; set; }
 
+        public Apartment Apartment { get; set; }
+
     }
 }

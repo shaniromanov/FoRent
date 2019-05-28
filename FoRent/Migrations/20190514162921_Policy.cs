@@ -39,7 +39,6 @@ namespace FoRent.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     Mail = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
                     Phone = table.Column<int>(nullable: false),
                     Username = table.Column<string>(nullable: true)
                 },
