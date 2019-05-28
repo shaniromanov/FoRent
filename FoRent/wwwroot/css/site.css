@@ -2,6 +2,14 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+input {
+    border-radius: 10px;
+}
+
+span{
+    font-weight: bold;
+   shape-margin:100px;
+}
 
 #spacial-body {
     padding-top: 0px;
@@ -14,9 +22,11 @@
     position: absolute;
     z-index: 10;
     top: 20px;
-    left: 900px;
+    right: 20px;
 }
+#browsers{
 
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -51,6 +61,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 10px;
 }
 
 #infoi {
