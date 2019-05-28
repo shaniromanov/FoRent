@@ -88,7 +88,6 @@ namespace FoRent.Migrations
 
                     b.Property<string>("Mail");
 
-                    b.Property<string>("Password");
 
                     b.Property<int>("Phone");
 

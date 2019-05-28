@@ -34,6 +34,8 @@ namespace FoRent.Models
 
         public ApartmentAmenities Amenities { get; set; }
 
+        public ICollection<Picture> Pictures { get; set; }
+
 
 
 
