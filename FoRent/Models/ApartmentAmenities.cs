@@ -45,6 +45,6 @@ namespace FoRent.Models
         public string Comment { get; set; }
 
         public ICollection<Apartment> Apartments { get; set; }
-
+        //
     }
 }
