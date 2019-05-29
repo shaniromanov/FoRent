@@ -4,11 +4,15 @@
 }
 input {
     border-radius: 10px;
+    position: relative;
+    top: 10px;
+    left: 10px;
 }
 
 span{
     font-weight: bold;
-   shape-margin:100px;
+   position:relative;
+   padding-left:70px;
 }
 
 #spacial-body {
@@ -63,14 +67,24 @@ span{
     left: 0;
     border-radius: 10px;
 }
+.square {
+    margin: 1px;
+    width: 20%;
+    text-align: left;
+    border: 1px solid gray;
+    display: inline-block;
+}
 
 #infoi {
     z-index: 10;
-    top: 60px;
-    left: 60px;
-    width: 357px;
+    top: 100px;
+    left: 200px;
+    width: 450px;
     height: 500px;
-    background-color: white
+    background-color: white;
+    opacity: 0.6;
+    text-align: center;
+    border: 1px solid black;
 }
 #try {
     position: absolute;
