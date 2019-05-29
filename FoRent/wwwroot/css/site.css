@@ -4,15 +4,13 @@
 }
 input {
     border-radius: 10px;
-    position: relative;
-    top: 10px;
-    left: 10px;
+    padding-left:10px;
 }
 
-span{
+span {
     font-weight: bold;
-   position:relative;
-   padding-left:70px;
+    padding-left: 70px;
+    padding-right: 70px;
 }
 
 #spacial-body {
@@ -28,11 +26,16 @@ span{
     top: 20px;
     right: 20px;
 }
-#browsers{
-
+.center {
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    padding-top:20%;
+    padding: 10px, 10px;
 }
 /* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
+
+* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -65,26 +68,18 @@ span{
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 10px;
-}
-.square {
-    margin: 1px;
-    width: 20%;
-    text-align: left;
-    border: 1px solid gray;
-    display: inline-block;
+    
 }
 
 #infoi {
     z-index: 10;
-    top: 100px;
-    left: 200px;
+    top: 60px;
+    left: 60px;
     width: 450px;
     height: 500px;
     background-color: white;
     opacity: 0.6;
-    text-align: center;
-    border: 1px solid black;
+    border-radius:10px;
 }
 #try {
     position: absolute;

@@ -39,10 +39,11 @@
             </div>
         </div>
         <form id="infoi">
-            <div class = "square">
+            <div class="center">
                 <span>איפה</span>
                 <br />
-                <input type="text" placeholder="כתובת" />
+                <input type="text" placeholder="כתובת" size="50" />
+                <br />
                 <br />
                 <span>צ'אק אין</span>
                 <span>צ'אק אאוט </span>
@@ -50,14 +51,61 @@
                 <input type="date">
 
                 <input type="date">
-
-
                 <br />
-                <button>חיפוש</button>
+                <br />
+                <span>מבוגרים</span>
+                <span>ילדים</span>
+                <input list="numofchild">
+
+                <datalist id="numofchild">
+                    <option value="1 ילד"></option>
+                    <option value=" 2 ילדים"></option>
+                    <option value=" 3 ילדים"></option>
+                    <option value=" 4 ילדים"></option>
+                    <option value=" 5 ילדים"></option>
+                    <option value=" 6 ילדים"></option>
+                    <option value=" 7 ילדים"></option>
+                    <option value=" 8 ילדים"></option>
+                    <option value=" 9 ילדים"></option>
+                    <option value="10 ילדים"></option>
+                    <option value=" 11 ילדים"></option>
+                    <option value="12 ילדים"></option>
+                    <option value=" 13 ילדים"></option>
+                    <option value="14 ילדים"></option>
+                    <option value=" 15 ילדים"></option>
+                    <option value="16 ילדים"></option>
+                    <option value=" 17 ילדים"></option>
+                    <option value="18 ילדים"></option>
+                    <option value=" יותר מ-18 מילדים"></option>
+
+                </datalist>
+
+                <input list="numofadult" />
+
+                <datalist id="numofadult">
+                    <option value="1 מבוגר"></option>
+                    <option value=" 2 מבוגרים"></option>
+                    <option value=" 3 מבוגרים"></option>
+                    <option value=" 4 מבוגרים"></option>
+                    <option value=" 5 מבוגרים"></option>
+                    <option value=" 6 מבוגרים"></option>
+                    <option value=" 7 מבוגרים"></option>
+                    <option value=" 8 מבוגרים"></option>
+                    <option value=" 9 מבוגרים"></option>
+                    <option value="10 מבוגרים"></option>
+                    <option value=" 11 מבוגרים"></option>
+                    <option value="12 מבוגרים"></option>
+                    <option value=" 13 מבוגרים"></option>
+                    <option value="14 מבוגרים"></option>
+                    <option value=" יותר מ-14 מבוגרים"></option>
+                </datalist>
+                <br />
+                <br />
+                <button type="button" class="btn btn-outline-secondary" size="90px">חיפוש</button>
             </div>
         </form>
         <div class="button-location">
-            <button type="button" class="btn btn-light" ,>
+            <button type="button" class="btn btn-light">
                 <a class="button-home" asp-action="Create">הוסף את פרטי הדירה שלך</a>
             </button>
 
@@ -72,46 +120,17 @@
     </section>
 
     <section>
+        <div class="card" style="width: 25rem; padding-left:30px; padding-top:30px;">
+            <img src="~/images/bneibrak.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title"> בני ברק</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-light">Go somewhere</a>
+            </div>
+        </div>
+       
 
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PriceAdult)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PriceChild)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PriceAdult)
-                        </td>
-                        <td>
-
-                            @Html.DisplayFor(modelItem => item.PriceChild)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
