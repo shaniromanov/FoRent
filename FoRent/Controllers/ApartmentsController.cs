@@ -46,7 +46,7 @@ namespace FoRent.Controllers
         // GET: Apartments/Create
         public IActionResult Create()
         {
-            ViewData["A"] 
+           
             return View();
         }
 
