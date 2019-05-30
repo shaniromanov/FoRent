@@ -11,7 +11,7 @@ span {
 }
 
 #spacial-body {
-    padding-top: 0px;
+    padding-top: 0;
     padding-bottom: 20px;
 }
 .button-home{
@@ -59,7 +59,5 @@ span {
     border-radius:10px;
 }
 
-#mapContainer{
 
-}
 
