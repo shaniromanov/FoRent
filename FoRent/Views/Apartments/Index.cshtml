@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <form id="infoi">
+        <form id="infoi" asp-action="Filter">
             <div class="center">
                 <span>איפה</span>
                 <br />
@@ -56,7 +56,7 @@
                 <br />
                 <span>מבוגרים</span>
                 <span>ילדים</span>
-                <input list="numofchild">
+                <input list="numofchild"  id="child">
 
                 <datalist id="numofchild">
                     <option value="1 ילד"></option>
@@ -81,7 +81,7 @@
 
                 </datalist>
 
-                <input list="numofadult" />
+                <input list="numofadult"  id="adult"/>
 
                 <datalist id="numofadult">
                     <option value="1 מבוגר"></option>
@@ -102,7 +102,7 @@
                 </datalist>
                 <br />
                 <br />
-                <button type="button" class="btn btn-outline-secondary" size="90px">חיפוש</button>
+                <button type="submit" class="btn btn-outline-secondary" size="90px">חיפוש</button>
             </div>
         </form>
         <div class="button-location">

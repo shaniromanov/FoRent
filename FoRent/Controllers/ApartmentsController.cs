@@ -18,14 +18,10 @@ namespace FoRent.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(int adult, int child )
+    // GET: Apartments
+        public async Task<IActionResult> Index(int adult, int child)
         {
-            return View(await _context.Apartment.Where(p => p.Amenities.NumOfPersons>=adult+child).ToListAsync());
-        }
-        // GET: Apartments
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Apartment.ToListAsync());
+            return View(await _context.Apartment.Where(p => p.Amenities.NumOfPersons >= adult + child).ToListAsync());
         }
 
         // GET: Apartments/Details/5
@@ -49,7 +45,7 @@ namespace FoRent.Controllers
         // GET: Apartments/Create
         public IActionResult Create()
         {
-            ViewData["Renter"] = new SelectList(_context.Renter.ToList(), "Id", "Name", "phone", "Mail");
+           
             return View();
         }
 

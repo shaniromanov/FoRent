@@ -1,5 +1,5 @@
 ﻿$(function () {
-    $('#name').keyup(function (event) {
+    $('#adult').keyup(function (event) {
 
 
         var form = $('#infoi');
