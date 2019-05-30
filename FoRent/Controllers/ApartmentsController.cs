@@ -18,7 +18,10 @@ namespace FoRent.Controllers
         {
             _context = context;
         }
-
+        public async Task<IActionResult> Index(int adult, int child )
+        {
+            return View(await _context.Apartment.Where(p => p.Amenities.NumOfPersons>=adult+child).ToListAsync());
+        }
         // GET: Apartments
         public async Task<IActionResult> Index()
         {
