@@ -17,8 +17,6 @@ namespace FoRent.Models
         [Display(Name = "מספר סידורי")]
         public int Id { get; set; }
 
-        [Display(Name = "כתובת")]
-        public string Name { get; set; }
 
         [Display(Name = "מחיר למבוגר ללילה")]
         public decimal PriceAdult { get; set; }
