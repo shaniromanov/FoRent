@@ -18,5 +18,14 @@
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Apartments\Details - Copy.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Apartments\Index - Copy.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
 
