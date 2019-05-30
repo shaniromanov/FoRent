@@ -15,11 +15,8 @@ namespace FoRent.Models
         [Display(Name = "סיסמה")]
         public int Id { get; set; }                        
 
-        [Display(Name = "שם פרטי")]
-        public string FirstName { get; set; }             
-
-        [Display(Name = "שם משפחה")]
-        public string LastName { get; set; }               
+        [Display(Name = "שם ")]
+        public string Name { get; set; }                           
 
         [Required]
         [Display(Name = "מספר טלפון")]
@@ -29,8 +26,6 @@ namespace FoRent.Models
         [Display(Name = "כתובת מייל")]
         public string Mail { get; set; }
 
-        [Display(Name = "הערות מיוחדות לגבי הדירה")]
-        public string Comment { get; set; }
 
         [Required]
         public ICollection<Apartment> Apartments { get; set; }

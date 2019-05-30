@@ -46,7 +46,7 @@ namespace FoRent.Controllers
         // GET: Apartments/Create
         public IActionResult Create()
         {
-           
+            ViewData["Renter"] = new SelectList(_context.Renter.ToList(), "Id", "Name", "phone", "Mail");
             return View();
         }
 
