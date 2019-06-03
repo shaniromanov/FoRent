@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
 
-
 namespace FoRent.Controllers
 {
     public class ApartmentsController : Controller
@@ -18,10 +17,11 @@ namespace FoRent.Controllers
         {
             _context = context;
         }
-    // GET: Apartments
-        public async Task<IActionResult> Index(int adult, int child)
+
+        // GET: Apartments
+        public async Task<IActionResult> Index()
         {
-            return View(await _context.Apartment.Where(p => p.Amenities.NumOfPersons >= adult + child).ToListAsync());
+            return View(await _context.Apartment.ToListAsync());
         }
 
         // GET: Apartments/Details/5
@@ -45,7 +45,6 @@ namespace FoRent.Controllers
         // GET: Apartments/Create
         public IActionResult Create()
         {
-           
             return View();
         }
 
@@ -54,7 +53,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,PriceAdult,PriceChild")] Apartment apartment)
+        public async Task<IActionResult> Create([Bind("Id,PriceAdult,PriceChild")] Apartment apartment)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +85,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,PriceAdult,PriceChild")] Apartment apartment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild")] Apartment apartment)
         {
             if (id != apartment.Id)
             {

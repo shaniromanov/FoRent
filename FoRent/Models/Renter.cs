@@ -13,7 +13,7 @@ namespace FoRent.Models
 
         [Required]
         [Display(Name = "סיסמה")]
-        public int Id { get; set; }                        
+        public string Id { get; set; }                        
 
         [Display(Name = "שם ")]
         public string Name { get; set; }                           
@@ -30,7 +30,9 @@ namespace FoRent.Models
         [Required]
         public ICollection<Apartment> Apartments { get; set; }
 
-      
+        public ICollection<Order> Orders { get; set; }
+
+
 
 
 

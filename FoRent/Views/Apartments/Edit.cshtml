@@ -13,7 +13,6 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-         
             <div class="form-group">
                 <label asp-for="PriceAdult" class="control-label"></label>
                 <input asp-for="PriceAdult" class="form-control" />
@@ -35,6 +34,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -25,7 +25,7 @@ namespace FoRent.Controllers
         }
 
         // GET: Renters/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -53,7 +53,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Mail,Comment")] Renter renter)
+        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Mail")] Renter renter)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace FoRent.Controllers
         }
 
         // GET: Renters/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -85,7 +85,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Mail,Comment")] Renter renter)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Phone,Mail")] Renter renter)
         {
             if (id != renter.Id)
             {
@@ -116,7 +116,7 @@ namespace FoRent.Controllers
         }
 
         // GET: Renters/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -136,7 +136,7 @@ namespace FoRent.Controllers
         // POST: Renters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var renter = await _context.Renter.SingleOrDefaultAsync(m => m.Id == id);
             _context.Renter.Remove(renter);
@@ -144,7 +144,7 @@ namespace FoRent.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RenterExists(int id)
+        private bool RenterExists(string id)
         {
             return _context.Renter.Any(e => e.Id == id);
         }

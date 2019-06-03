@@ -30,6 +30,6 @@ namespace FoRent.Models
 
         public DbSet<FoRent.Models.Hirer> Hirer { get; set; }
 
-        public DbSet<Picture> Pictures { get; set; }
+    
     }
 }

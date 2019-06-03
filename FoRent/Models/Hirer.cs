@@ -25,5 +25,7 @@ namespace FoRent.Models
 
         [Display(Name = " שם משתמש ")]
         public string Username { get; set; }
+
+        public ICollection<Apartment> Apartments { get; set; }
     }
 }

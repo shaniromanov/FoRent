@@ -26,5 +26,7 @@ namespace FoRent.Models
         public DateTime CheckOut { get; set; }
 
         public Hirer Hirer { get; set; }
+
+        public Renter Renter { get; set; }
     }
 }
