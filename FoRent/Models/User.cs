@@ -9,7 +9,8 @@ namespace FoRent.Models
     public class User
     {
         [Display(Name = "סיסמא")]
-        public int Id { get; set; }
+        [Key]
+        public string Password { get; set; }
 
         [Display(Name = "שם פרטי")]
         public string FirstName { get; set; }

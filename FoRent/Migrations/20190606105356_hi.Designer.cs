@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190606105356_hi")]
+    partial class hi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +37,7 @@ namespace FoRent.Migrations
 
                     b.Property<decimal>("PriceChild");
 
-                    b.Property<string>("RenterId");
+                    b.Property<int?>("RenterId");
 
                     b.HasKey("Id");
 
@@ -114,9 +115,9 @@ namespace FoRent.Migrations
 
                     b.Property<int>("QuantityChild");
 
-                    b.Property<string>("RenterId");
+                    b.Property<int?>("RenterId");
 
-                    b.Property<string>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
@@ -167,7 +168,7 @@ namespace FoRent.Migrations
 
             modelBuilder.Entity("FoRent.Models.User", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Discriminator")
