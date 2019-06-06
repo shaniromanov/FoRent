@@ -25,7 +25,7 @@ namespace FoRent.Models
         [Display(Name = "צ'אק אאוט")]
         public DateTime CheckOut { get; set; }
 
-        public Hirer Hirer { get; set; }
+        public User User { get; set; }
 
         public Renter Renter { get; set; }
     }

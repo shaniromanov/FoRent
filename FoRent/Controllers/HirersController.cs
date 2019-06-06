@@ -9,22 +9,22 @@ using FoRent.Models;
 
 namespace FoRent.Controllers
 {
-    public class HirersController : Controller
+    public class UsersController : Controller
     {
         private readonly FoRentContext _context;
 
-        public HirersController(FoRentContext context)
+        public UsersController(FoRentContext context)
         {
             _context = context;
         }
 
-        // GET: Hirers
+        // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Hirer.ToListAsync());
+            return View(await _context.User.ToListAsync());
         }
 
-        // GET: Hirers/Details/5
+        // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var hirer = await _context.Hirer
+            var User = await _context.User
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (hirer == null)
+            if (User == null)
             {
                 return NotFound();
             }
 
-            return View(hirer);
+            return View(User);
         }
 
-        // GET: Hirers/Create
+        // GET: Users/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Hirers/Create
+        // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Mail,Username")] Hirer hirer)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Phone,Mail,Username")] User User)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hirer);
+                _context.Add(User);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(hirer);
+            return View(User);
         }
 
-        // GET: Hirers/Edit/5
+        // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var hirer = await _context.Hirer.SingleOrDefaultAsync(m => m.Id == id);
-            if (hirer == null)
+            var User = await _context.User.SingleOrDefaultAsync(m => m.Id == id);
+            if (User == null)
             {
                 return NotFound();
             }
-            return View(hirer);
+            return View(User);
         }
 
-        // POST: Hirers/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Mail,Username")] Hirer hirer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Phone,Mail,Username")] User User)
         {
-            if (id != hirer.Id)
+            if (id != User.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace FoRent.Controllers
             {
                 try
                 {
-                    _context.Update(hirer);
+                    _context.Update(User);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HirerExists(hirer.Id))
+                    if (!UserExists(User.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace FoRent.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(hirer);
+            return View(User);
         }
 
-        // GET: Hirers/Delete/5
+        // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var hirer = await _context.Hirer
+            var User = await _context.User
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (hirer == null)
+            if (User == null)
             {
                 return NotFound();
             }
 
-            return View(hirer);
+            return View(User);
         }
 
-        // POST: Hirers/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hirer = await _context.Hirer.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Hirer.Remove(hirer);
+            var User = await _context.User.SingleOrDefaultAsync(m => m.Id == id);
+            _context.User.Remove(User);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HirerExists(int id)
+        private bool UserExists(int id)
         {
-            return _context.Hirer.Any(e => e.Id == id);
+            return _context.User.Any(e => e.Id == id);
         }
     }
 }

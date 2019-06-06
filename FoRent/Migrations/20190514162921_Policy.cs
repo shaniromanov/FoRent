@@ -31,7 +31,7 @@ namespace FoRent.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hirer",
+                name: "User",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -44,7 +44,7 @@ namespace FoRent.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hirer", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,7 +105,7 @@ namespace FoRent.Migrations
                     ApartmentId = table.Column<int>(nullable: false),
                     CheckIn = table.Column<DateTime>(nullable: false),
                     CheckOut = table.Column<DateTime>(nullable: false),
-                    HirerId = table.Column<int>(nullable: true),
+                    UserId = table.Column<int>(nullable: true),
                     QuantityAdult = table.Column<int>(nullable: false),
                     QuantityChild = table.Column<int>(nullable: false)
                 },
@@ -113,9 +113,9 @@ namespace FoRent.Migrations
                 {
                     table.PrimaryKey("PK_Order", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Order_Hirer_HirerId",
-                        column: x => x.HirerId,
-                        principalTable: "Hirer",
+                        name: "FK_Order_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -160,9 +160,9 @@ namespace FoRent.Migrations
                 column: "RenterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_HirerId",
+                name: "IX_Order_UserId",
                 table: "Order",
-                column: "HirerId");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -186,7 +186,7 @@ namespace FoRent.Migrations
                 name: "Renter");
 
             migrationBuilder.DropTable(
-                name: "Hirer");
+                name: "User");
         }
     }
 }

@@ -7,35 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoRent.Models
 {
-    public class Renter
+    public class Renter: User
     {
-
-
-        [Required]
-        [Display(Name = "סיסמה")]
-        public string Id { get; set; }                        
-
-        [Display(Name = "שם ")]
-        public string Name { get; set; }                           
-
-        [Required]
-        [Display(Name = "מספר טלפון")]
-        public int Phone { get; set; }
-
-        [Required]
-        [Display(Name = "כתובת מייל")]
-        public string Mail { get; set; }
-
-
         [Required]
         public ICollection<Apartment> Apartments { get; set; }
-
-        public ICollection<Order> Orders { get; set; }
-
-
-
-
-
-
     }
 }

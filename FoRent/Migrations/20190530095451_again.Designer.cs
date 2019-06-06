@@ -83,7 +83,7 @@ namespace FoRent.Migrations
                     b.ToTable("ApartmentAmenities");
                 });
 
-            modelBuilder.Entity("FoRent.Models.Hirer", b =>
+            modelBuilder.Entity("FoRent.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -100,7 +100,7 @@ namespace FoRent.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hirer");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("FoRent.Models.Location", b =>
@@ -130,7 +130,7 @@ namespace FoRent.Migrations
 
                     b.Property<DateTime>("CheckOut");
 
-                    b.Property<int?>("HirerId");
+                    b.Property<int?>("UserId");
 
                     b.Property<int>("QuantityAdult");
 
@@ -138,7 +138,7 @@ namespace FoRent.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HirerId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Order");
                 });
@@ -217,9 +217,9 @@ namespace FoRent.Migrations
 
             modelBuilder.Entity("FoRent.Models.Order", b =>
                 {
-                    b.HasOne("FoRent.Models.Hirer", "Hirer")
+                    b.HasOne("FoRent.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("HirerId");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("FoRent.Models.Picture", b =>

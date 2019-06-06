@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FoRent.Models
 {
-    public class Hirer
+    public class User
     {
         [Display(Name = "סיסמא")]
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace FoRent.Models
         [Display(Name = " שם משתמש ")]
         public string Username { get; set; }
 
-        public ICollection<Apartment> Apartments { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

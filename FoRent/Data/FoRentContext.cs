@@ -28,7 +28,7 @@ namespace FoRent.Models
         public DbSet<FoRent.Models.Policy> Policy { get; set; }
 
 
-        public DbSet<FoRent.Models.Hirer> Hirer { get; set; }
+        public DbSet<FoRent.Models.User> User { get; set; }
 
     
     }
