@@ -36,6 +36,7 @@ namespace FoRent.Controllers
                 if (UFind.GetType()== r.GetType())
                 {
 
+
                     HttpCookie cookie = new HttpCookie("LoggedIn");
                     cookie.Value = "true";
                     Response.Cookies.Add(cookie);
