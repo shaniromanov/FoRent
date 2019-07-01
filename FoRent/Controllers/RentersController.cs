@@ -9,22 +9,22 @@ using FoRent.Models;
 
 namespace FoRent.Controllers
 {
-    public class UsersController : Controller
+    public class RentersController : Controller
     {
         private readonly FoRentContext _context;
 
-        public UsersController(FoRentContext context)
+        public RentersController(FoRentContext context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: Renters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.User.ToListAsync());
+            return View(await _context.Renter.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // GET: Renters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,41 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var renter = await _context.Renter
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (renter == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(renter);
         }
 
-        // GET: Users/Create
+        // GET: Renters/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Renters/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Password,FirstName,LastName,Phone,Mail,Username")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(renter);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.idRenter = renter;
+
+                return RedirectToAction("Create", "ApartmentAmenities");
             }
-            return View(user);
+            return View();
         }
 
-        // GET: Users/Edit/5
+        // GET: Renters/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +74,22 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.SingleOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            var renter = await _context.Renter.SingleOrDefaultAsync(m => m.Id == id);
+            if (renter == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(renter);
         }
 
-        // POST: Users/Edit/5
+        // POST: Renters/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Password,FirstName,LastName,Phone,Mail,Username")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
         {
-            if (id != user.Id)
+            if (id != renter.Id)
             {
                 return NotFound();
             }
@@ -96,12 +98,12 @@ namespace FoRent.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(renter);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!RenterExists(renter.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +114,10 @@ namespace FoRent.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(renter);
         }
 
-        // GET: Users/Delete/5
+        // GET: Renters/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +125,30 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var renter = await _context.Renter
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (renter == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(renter);
         }
 
-        // POST: Users/Delete/5
+        // POST: Renters/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.SingleOrDefaultAsync(m => m.Id == id);
-            _context.User.Remove(user);
+            var renter = await _context.Renter.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Renter.Remove(renter);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool RenterExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Renter.Any(e => e.Id == id);
         }
     }
 }

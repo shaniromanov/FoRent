@@ -8,24 +8,32 @@ namespace FoRent.Models
 {
     public class User
     {
+        public int Id { get; set; }
+
+        [Required]
         [Display(Name = "סיסמא")]
-        [Key]
+        
         public string Password { get; set; }
 
+        [Required]
         [Display(Name = "שם פרטי")]
         public string FirstName { get; set; }
+
 
         [Display(Name = "שם משפחה")]
         public string LastName { get; set; }
 
-        [Display(Name = "מספר טלפון")]
-        public int Phone { get; set; }
 
+        [Display(Name = "מספר טלפון")]
+        public string Phone { get; set; }
+
+        [Required]
         [Display(Name = "כתובת מייל")]
         public string Mail { get; set; }
 
+        [Required]
         [Display(Name = " שם משתמש ")]
-        public string Username { get; set; }
+        public string Username{ get; set; }
 
         public ICollection<Order> Orders { get; set; }
     }

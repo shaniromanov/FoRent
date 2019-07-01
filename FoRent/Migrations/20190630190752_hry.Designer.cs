@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190630190752_hry")]
+    partial class hry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +37,7 @@ namespace FoRent.Migrations
 
                     b.Property<decimal>("PriceChild");
 
-                    b.Property<int?>("RenterId");
+                    b.Property<string>("RenterPassword");
 
                     b.HasKey("Id");
 
@@ -46,7 +47,7 @@ namespace FoRent.Migrations
 
                     b.HasIndex("PolicyId");
 
-                    b.HasIndex("RenterId");
+                    b.HasIndex("RenterPassword");
 
                     b.ToTable("Apartment");
                 });
@@ -114,15 +115,15 @@ namespace FoRent.Migrations
 
                     b.Property<int>("QuantityChild");
 
-                    b.Property<int?>("RenterId");
+                    b.Property<string>("RenterPassword");
 
-                    b.Property<int?>("UserId");
+                    b.Property<string>("UserPassword");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RenterId");
+                    b.HasIndex("RenterPassword");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserPassword");
 
                     b.ToTable("Order");
                 });
@@ -167,29 +168,23 @@ namespace FoRent.Migrations
 
             modelBuilder.Entity("FoRent.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Password")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
-                    b.Property<string>("FirstName")
-                        .IsRequired();
+                    b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<string>("Mail")
-                        .IsRequired();
+                    b.Property<string>("Mail");
 
-                    b.Property<string>("Password")
-                        .IsRequired();
+                    b.Property<int>("Phone");
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("Username");
 
-                    b.Property<string>("Username")
-                        .IsRequired();
-
-                    b.HasKey("Id");
+                    b.HasKey("Password");
 
                     b.ToTable("User");
 
@@ -222,18 +217,18 @@ namespace FoRent.Migrations
 
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany("Apartments")
-                        .HasForeignKey("RenterId");
+                        .HasForeignKey("RenterPassword");
                 });
 
             modelBuilder.Entity("FoRent.Models.Order", b =>
                 {
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany()
-                        .HasForeignKey("RenterId");
+                        .HasForeignKey("RenterPassword");
 
                     b.HasOne("FoRent.Models.User", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserPassword");
                 });
 
             modelBuilder.Entity("FoRent.Models.Reviews", b =>

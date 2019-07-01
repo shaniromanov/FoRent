@@ -30,6 +30,7 @@ namespace FoRent.Models
 
         public DbSet<FoRent.Models.User> User { get; set; }
 
+
     
     }
 }

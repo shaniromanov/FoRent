@@ -12,6 +12,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd>
@@ -44,7 +50,7 @@
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Password" />
+        <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="Index">Back to List</a>
     </form>

@@ -11,5 +11,7 @@ namespace FoRent.Models
     {
         [Required]
         public ICollection<Apartment> Apartments { get; set; }
+
+   
     }
 }
