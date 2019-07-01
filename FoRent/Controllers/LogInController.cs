@@ -33,22 +33,22 @@ namespace FoRent.Controllers
             if (UFind != null)
             {
                 Renter r=new Renter();
-                if (UFind.GetType()== r.GetType())
-                {
+                //if (UFind.GetType()== r.GetType())
+                //{
 
 
-                    HttpCookie cookie = new HttpCookie("LoggedIn");
-                    cookie.Value = "true";
-                    Response.Cookies.Add(cookie);
-                    return RedirectToAction("Index", "Manager");
-                }
-                if (UFind.Role == (int)Models.Enums.Role.Doctor)
-                {
-                    HttpCookie cookie = new HttpCookie("LoggedIn");
-                    cookie.Value = "true";
-                    Response.Cookies.Add(cookie);
-                    return RedirectToAction("Index", "Doctor");
-                }
+                //    HttpCookie cookie = new HttpCookie("LoggedIn");
+                //    cookie.Value = "true";
+                //    Response.Cookies.Add(cookie);
+                //    return RedirectToAction("Index", "Manager");
+                //}
+                //if (UFind.Role == (int)Models.Enums.Role.Doctor)
+                //{
+                //    HttpCookie cookie = new HttpCookie("LoggedIn");
+                //    cookie.Value = "true";
+                //    Response.Cookies.Add(cookie);
+                //    return RedirectToAction("Index", "Doctor");
+                //}
             }
             ModelState.AddModelError("Password", "תעודת זהות או סיסמה שגויים");
             return View();
@@ -56,5 +56,4 @@ namespace FoRent.Controllers
 
 
     }
-}
 }
