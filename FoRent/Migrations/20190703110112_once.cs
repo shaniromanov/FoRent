@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FoRent.Migrations
 {
-    public partial class third : Migration
+    public partial class once : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

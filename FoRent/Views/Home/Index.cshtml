@@ -1,19 +1,37 @@
 ﻿
 
-
+@model FoRent.Models.User
 @{
+    ViewBag.Title = "Log In";
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
 <head>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/Home-Page.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#flip").click(function () {
+                $("#panel").slideDown("slow");
+            });
+        });
+    </script>
+
+
 </head>
 
 <body id="spacial-body">
+  
+
     <section id="container">
 
         <div id="navi">
@@ -40,7 +58,33 @@
                 </div>
             </div>
         </div>
-        <form id="infoi" asp-controller="Apartment" asp-action="Index">
+        <div id="panel">
+            <div class="wrapper fadeInDown">
+                <div id="formConten">
+                    <!-- Tabs Titles -->
+                    <h2 class="active"> כניסה </h2>
+
+                    <!-- Login Form -->
+                    <form>
+                        @Html.TextBoxFor(m => m.Username, new { @class = "fadeIn second", @placeholder = "שם משתמש*" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(m => m.Password, new { @class = "fadeIn third", @placeholder = "סיסמה*" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                        @if (@ViewBag.NotValidUser != null)
+                        {
+                            <label class="error"> @ViewBag.NotValidUser</label>
+                        }
+                        <input type="submit" class="fadeIn fourth" value="התחבר">
+                    </form>
+
+                    <!-- Remind Passowrd -->
+                    <div id="formFooter">
+                        <a class="underlineHover" href="#">שכחת סיסמה?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="infoi">
             <div class="center">
                 <span>איפה</span>
                 <br />
@@ -111,18 +155,16 @@
                 <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
             </button>
 
-            <button type="button" class="btn btn-light" ,>
-                <a class="button-home" asp-controller="LogIn" asp-action="LogIn">כניסה לחשבון</a>
-            </button>
+            <button id="flip" type="button" class="btn btn-light">כניסה</button>
 
             <button type="button" class="btn btn-light" ,>
                 <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
             </button>
         </div>
     </section>
-    <br />
-    <br />
-    <section >
+    <hr />
+
+    <section>
         <div class="card-deck">
             <div class="card">
                 <img src="~/images/bneibrak.jpg" class="card-img-top">
@@ -147,12 +189,13 @@
                 </div>
             </div>
         </div>
-
-
+       
     </section>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
 </body>
 </html>
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

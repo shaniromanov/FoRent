@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    [Migration("20190530095451_again")]
-    partial class again
+    [Migration("20190703110112_once")]
+    partial class once
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,26 +84,6 @@ namespace FoRent.Migrations
                     b.ToTable("ApartmentAmenities");
                 });
 
-            modelBuilder.Entity("FoRent.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("Mail");
-
-                    b.Property<int>("Phone");
-
-                    b.Property<string>("Username");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
-                });
-
             modelBuilder.Entity("FoRent.Models.Location", b =>
                 {
                     b.Property<int>("Id")
@@ -130,33 +111,21 @@ namespace FoRent.Migrations
 
                     b.Property<DateTime>("CheckOut");
 
-                    b.Property<int?>("UserId");
-
                     b.Property<int>("QuantityAdult");
 
                     b.Property<int>("QuantityChild");
 
+                    b.Property<int?>("RenterId");
+
+                    b.Property<int?>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RenterId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("FoRent.Models.Picture", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("ApartmentId");
-
-                    b.Property<byte[]>("Image");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("FoRent.Models.Policy", b =>
@@ -179,21 +148,63 @@ namespace FoRent.Migrations
                     b.ToTable("Policy");
                 });
 
-            modelBuilder.Entity("FoRent.Models.Renter", b =>
+            modelBuilder.Entity("FoRent.Models.Reviews", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Mail")
-                        .IsRequired();
+                    b.Property<int?>("ApartmentId");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("review");
 
-                    b.Property<int>("Phone");
+                    b.Property<int>("stars");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("FoRent.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Mail")
+                        .IsRequired();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.Property<string>("Phone");
+
+                    b.Property<string>("Username")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
+                });
+
+            modelBuilder.Entity("FoRent.Models.Renter", b =>
+                {
+                    b.HasBaseType("FoRent.Models.User");
+
+
                     b.ToTable("Renter");
+
+                    b.HasDiscriminator().HasValue("Renter");
                 });
 
             modelBuilder.Entity("FoRent.Models.Apartment", b =>
@@ -217,15 +228,19 @@ namespace FoRent.Migrations
 
             modelBuilder.Entity("FoRent.Models.Order", b =>
                 {
-                    b.HasOne("FoRent.Models.User", "User")
+                    b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany()
+                        .HasForeignKey("RenterId");
+
+                    b.HasOne("FoRent.Models.User", "User")
+                        .WithMany("Orders")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("FoRent.Models.Picture", b =>
+            modelBuilder.Entity("FoRent.Models.Reviews", b =>
                 {
                     b.HasOne("FoRent.Models.Apartment", "Apartment")
-                        .WithMany("Pictures")
+                        .WithMany("Reviews")
                         .HasForeignKey("ApartmentId");
                 });
 #pragma warning restore 612, 618

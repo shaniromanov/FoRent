@@ -12,7 +12,7 @@ namespace FoRent.Models
 
         [Required]
         [Display(Name = "סיסמא")]
-        
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
