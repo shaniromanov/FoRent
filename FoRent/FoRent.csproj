@@ -18,5 +18,11 @@
     <Folder Include="Views\Reviews\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Views\Apartments\Search.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
 

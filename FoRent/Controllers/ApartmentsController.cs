@@ -46,6 +46,7 @@ namespace FoRent.Controllers
         public IActionResult Create()
         {
             return View();
+
         }
 
         // POST: Apartments/Create
@@ -63,6 +64,12 @@ namespace FoRent.Controllers
             }
             return View(apartment);
         }
+        //public async Task<IActionResult> Search(DateTime check_in, DateTime check_out, int numAdults, int numChildrens)
+        //{
+        //    var result = from Availability in _context.Apartment
+        //                 where Availability.
+        //}
+
 
         // GET: Apartments/Edit/5
         public async Task<IActionResult> Edit(int? id)
