@@ -32,7 +32,10 @@ namespace FoRent.Models
 
         public ICollection<Reviews> Reviews { get; set; }
  
-
+        public Apartment ()
+	{
+        Amenities=new ApartmentAmenities();
+	}
 
 
     }

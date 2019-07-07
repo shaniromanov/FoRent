@@ -45,6 +45,7 @@ namespace FoRent.Controllers
         // GET: Apartments/Create
         public IActionResult Create()
         {
+            ViewData["ScreenId"] = new ApartmentAmenities();
             return View();
 
         }
@@ -54,7 +55,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PriceAdult,PriceChild")] Apartment apartment)
+        public async Task<IActionResult> Create([Bind("Id,PriceAdult,PriceChild,AmentiesId")] Apartment apartment)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +63,7 @@ namespace FoRent.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ScreenId"] = new ApartmentAmenities();
             return View(apartment);
         }
         //public async Task<IActionResult> Search(DateTime check_in, DateTime check_out, int numAdults, int numChildrens)
@@ -92,7 +94,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild")] Apartment apartment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild,Amenties")] Apartment apartment)
         {
             if (id != apartment.Id)
             {

@@ -3,182 +3,227 @@
 @{
     ViewData["Title"] = "Details";
 }
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<h2>Details</h2>
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-    <div class="w3-bar w3-white w3-card" id="myNavbar">
-        <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
-        <!-- Right-sided navbar links -->
-        <div class="w3-right w3-hide-small">
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            govmap.createMap('map',
+                {
+                    onLoad: function showExample() {
+                        govmap.zoomToXY({ x: 176085, y: 657600, level: 8
+                            , marker: true });
+                    },
+               
+                    token: 'c908bf09-361b-41ab-91d2-07f1ab7eecef',
+                    layers: ["GASSTATIONS", "PARCEL_HOKS", "KSHTANN_ASSETS", "bus_stops", "PARCEL_ALL"],
+                    showXY: false,
+                    center: { x: 34.8331716, y: 32.086312  }, 
+                    level: 6,
+                    bgButton: true,
+                    identifyOnClick: true,
+                    isEmbeddedToggle: false,
+                    background: "3",
+                    layersMode: 1,
+                    zoomButtons: true
+                   
+                });
+          
+        });
+      
+      
 
-            <a href="#homepage" class="w3-bar-item w3-button">דף הבית</a>
-            <a href="#facilities" class="w3-bar-item w3-button"><i class="fa fa-user"></i> מתקנים</a>
-            <a href="#moreinfo" class="w3-bar-item w3-button"><i class="fa fa-th"></i> מידע נוסף</a>
-            <a href="#policy" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> מדיניות</a>
-            <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> צור קשר</a>
+   
+    </script>
+</head>
+<body>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <h2>Details</h2>
+    <!-- Navbar (sit on top) -->
+    <section class="w3-top">
+        <section class="w3-bar w3-white w3-card" id="myNavbar">
+            <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
+            <!-- Right-sided navbar links -->
+            <div class="w3-right w3-hide-small">
+
+                <a href="#homepage" class="w3-bar-item w3-button">דף הבית</a>
+                <a href="#facilities" class="w3-bar-item w3-button"><i class="fa fa-user"></i> מתקנים</a>
+                <a href="#moreinfo" class="w3-bar-item w3-button"><i class="fa fa-th"></i> מידע נוסף</a>
+                <a href="#policy" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> מדיניות</a>
+                <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> צור קשר</a>
+            </div>
+            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </section>
+        <aside style="float:right">
+            <div id="map" style="width:400px;height:400px"></div>
+            
+        </aside>
+    </section>
+
+  
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
+        <div class="w3-container w3-display-container w3-padding-16">
+            <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
+            <h3>השכרה</h3>
+            <h3>החל מ-$99</h3>
+            <h6>עבור לילה</h6>
+            <hr>
+            <form action="/action_page.php" target="_blank">
+                <p><label><i class="fa fa-calendar-check-o"></i>צק אין</label></p>
+                <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="צק אין" required>
+                <p><label><i class="fa fa-calendar-o"></i> צק אאוט</label></p>
+                <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="צק אאוט" required>
+                <p><label><i class="fa fa-male"></i> מבוגרים</label></p>
+                <input class="w3-input w3-border" type="number" value="1" name="מבוגרים" min="1" max="6">
+                <p><label><i class="fa fa-child"></i> ילדים</label></p>
+                <input class="w3-input w3-border" type="number" value="0" name="ילדים" min="0" max="6">
+                <p><button class="w3-button w3-block w3-black w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> בדוק זמינות</button></p>
+            </form>
         </div>
-        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-</div>
-
+        <div class="w3-bar-block">
+            <a href="#apartment" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-building"></i> דירה</a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16" onclick="document.getElementById('subscribe').style.display='block'"><i class="fa fa-rss"></i> הירשם</a>
+            <a href="#contact" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i>צור קשר</a>
+        </div>
+    </nav>
 
 
-<!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-light-grey w3-collapse w3-top" style="z-index:3;width:260px" id="mySidebar">
-    <div class="w3-container w3-display-container w3-padding-16">
-        <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-transparent w3-display-topright"></i>
-        <h3>השכרה</h3>
-        <h3>החל מ-$99</h3>
-        <h6>עבור לילה</h6>
-        <hr>
-        <form action="/action_page.php" target="_blank">
-            <p><label><i class="fa fa-calendar-check-o"></i>צק אין</label></p>
-            <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="צק אין" required>
-            <p><label><i class="fa fa-calendar-o"></i> צק אאוט</label></p>
-            <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="צק אאוט" required>
-            <p><label><i class="fa fa-male"></i> מבוגרים</label></p>
-            <input class="w3-input w3-border" type="number" value="1" name="מבוגרים" min="1" max="6">
-            <p><label><i class="fa fa-child"></i> ילדים</label></p>
-            <input class="w3-input w3-border" type="number" value="0" name="ילדים" min="0" max="6">
-            <p><button class="w3-button w3-block w3-black w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> בדוק זמינות</button></p>
-        </form>
-    </div>
-    <div class="w3-bar-block">
-        <a href="#apartment" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-building"></i> דירה</a>
-        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-16" onclick="document.getElementById('subscribe').style.display='block'"><i class="fa fa-rss"></i> הירשם</a>
-        <a href="#contact" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i>צור קשר</a>
-    </div>
-</nav>
+    <!-- Top menu on small screens -->
+    <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+        <span class="w3-bar-item">השכרה</span>
+        <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    </header>
 
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-    <span class="w3-bar-item">השכרה</span>
-    <a href="javascript:void(0)" class="w3-right w3-bar-item w3-button" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main w3-white" style="margin-left:260px">
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-white" style="margin-left:260px">
+        <!-- Push down content on small screens -->
+        <div class="w3-hide-large" style="margin-top:80px"></div>
 
-    <!-- Push down content on small screens -->
-    <div class="w3-hide-large" style="margin-top:80px"></div>
-
-    <!-- Slideshow Header -->
-    <div class="w3-container" id="apartment">
-        <h2 class="w3-text-black">הדירה</h2>
-        <div class="w3-display-container mySlides">
-            <img src="/w3images/livingroom.jpg" style="width:100%;margin-bottom:-6px">
-            <div class="w3-display-bottomleft w3-container w3-black">
-                <p>סלון</p>
+        <!-- Slideshow Header -->
+        <div class="w3-container" id="apartment">
+            <h2 class="w3-text-black">הדירה</h2>
+            <div class="w3-display-container mySlides">
+                <img src="/w3images/livingroom.jpg" style="width:100%;margin-bottom:-6px">
+                <div class="w3-display-bottomleft w3-container w3-black">
+                    <p>סלון</p>
+                </div>
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="/w3images/diningroom.jpg" style="width:100%;margin-bottom:-6px">
+                <div class="w3-display-bottomleft w3-container w3-black">
+                    <p>מטבח</p>
+                </div>
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="/w3images/bedroom.jpg" style="width:100%;margin-bottom:-6px">
+                <div class="w3-display-bottomleft w3-container w3-black">
+                    <p>חדר שינה</p>
+                </div>
+            </div>
+            <div class="w3-display-container mySlides">
+                <img src="/w3images/livingroom2.jpg" style="width:100%;margin-bottom:-6px">
+                <div class="w3-display-bottomleft w3-container w3-black">
+                    <p>חדר מגורים</p>
+                </div>
             </div>
         </div>
-        <div class="w3-display-container mySlides">
-            <img src="/w3images/diningroom.jpg" style="width:100%;margin-bottom:-6px">
-            <div class="w3-display-bottomleft w3-container w3-black">
-                <p>מטבח</p>
+        <div class="w3-row-padding w3-section">
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House12.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
+            </div>
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="/w3images/diningroom.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
+            </div>
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="/w3images/bedroom.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
+            </div>
+            <div class="w3-col s3">
+                <img class="demo w3-opacity w3-hover-opacity-off" src="/w3images/livingroom2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
             </div>
         </div>
-        <div class="w3-display-container mySlides">
-            <img src="/w3images/bedroom.jpg" style="width:100%;margin-bottom:-6px">
-            <div class="w3-display-bottomleft w3-container w3-black">
-                <p>חדר שינה</p>
-            </div>
-        </div>
-        <div class="w3-display-container mySlides">
-            <img src="/w3images/livingroom2.jpg" style="width:100%;margin-bottom:-6px">
-            <div class="w3-display-bottomleft w3-container w3-black">
-                <p>חדר מגורים</p>
-            </div>
-        </div>
-    </div>
-    <div class="w3-row-padding w3-section">
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House12.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
-        </div>
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="/w3images/diningroom.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
-        </div>
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="/w3images/bedroom.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
-        </div>
-        <div class="w3-col s3">
-            <img class="demo w3-opacity w3-hover-opacity-off" src="/w3images/livingroom2.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
-        </div>
-    </div>
 
-    <div class="w3-container">
+        <div class="w3-container">
 
-        <div class="w3-row w3-large">
-            <div class="w3-col s6">
-                <p><i class="fa fa-fw fa-male"></i>  מקסימום אנשים: @Html.DisplayFor(model => model.PriceAdult)</p>
-                <p><i class="fa fa-fw fa-bath"></i> חדרי אמבטיה: 2</p>
-                <p><i class="fa fa-fw fa-bed"></i> חדרי שינה: 1</p>
+            <div class="w3-row w3-large">
+                <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-male"></i>  מקסימום אנשים: @Html.DisplayFor(model => model.PriceAdult)</p>
+                    <p><i class="fa fa-fw fa-bath"></i> חדרי אמבטיה: 2</p>
+                    <p><i class="fa fa-fw fa-bed"></i> חדרי שינה: 1</p>
+                </div>
+                <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-clock-o"></i> צק אין: אחרי 15:00</p>
+                    <p><i class="fa fa-fw fa-clock-o"></i> צק אאוט: 12:00</p>
+                </div>
             </div>
-            <div class="w3-col s6">
-                <p><i class="fa fa-fw fa-clock-o"></i> צק אין: אחרי 15:00</p>
-                <p><i class="fa fa-fw fa-clock-o"></i> צק אאוט: 12:00</p>
-            </div>
-        </div>
-        <hr>
-
-        <h4><strong>מתקנים</strong></h4>
-        <div class="w3-row w3-large" style="padding:12px 16px" id="facilities">
-            <div class="w3-col s6">
-                <p><i class="fa fa-fw fa-university"></i> מרפסת</p>
-                <p><i class="fa fa-fw fa-wifi"></i> wifi</p>
-                <p><i class="fa fa-fw fa-car"></i>חניה</p>
-            </div>
-            <div class="w3-col s6">
-                <p><i class="fa fa-fw fa-cutlery"></i> מטבח</p>
-                <p><i class="fa fa-fw fa-thermometer"></i>מיזוג</p>
-                <p><i class="fa fa-fw fa-wheelchair"></i>נגישות</p>
-            </div>
-            <div class="w3-col s6">
-                <p><i class="fa fa-fw fa-bolt"></i>מיחם</p>
-            </div>
-            <div class="w3-col s6">
-                <p><i class="fa fa-fw fa-window-maximize"></i> פלטה</p>
-            </div>
-        </div>
-        <hr>
-
-        <h4><strong>מידע נוסף</strong></h4>
-        <div class="w3-row w3-large" style="padding:12px 16px" id="moreinfo">
-            <p>אנו משאירים לכם דירה נקיה אנא השתדלו להחזירה במצב תקין ככל הניתן..</p>
-            <p>כרטיסי אשראי מתקבלים: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
             <hr>
 
-            <h4><strong>מדיניות</strong></h4>
-            <div class="w3-row w3-large" style="padding:12px 16px" id="policy">
-                <p>מדיניות הביטול והתשלום המוקדם משתנה לפי סוג מקום האירוח. כאשר אתם בוחרים, אנא בדקו את התנאים החלים על כל אחת מהאפשרויות. </p>
-                <p>הירשם לקבלת עדכונים על תאריכים זמינים והצעות מיוחדות.</p>
-                <p><button class="w3-button w3-black w3-third" onclick="document.getElementById('subscribe').style.display='block'">הירשם</button></p>
+            <h4><strong>מתקנים</strong></h4>
+            <div class="w3-row w3-large" style="padding:12px 16px" id="facilities">
+                <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-university"></i> מרפסת</p>
+                    <p><i class="fa fa-fw fa-wifi"></i> wifi</p>
+                    <p><i class="fa fa-fw fa-car"></i>חניה</p>
+                </div>
+                <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-cutlery"></i> מטבח</p>
+                    <p><i class="fa fa-fw fa-thermometer"></i>מיזוג</p>
+                    <p><i class="fa fa-fw fa-wheelchair"></i>נגישות</p>
+                </div>
+                <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-bolt"></i>מיחם</p>
+                </div>
+                <div class="w3-col s6">
+                    <p><i class="fa fa-fw fa-window-maximize"></i> פלטה</p>
+                </div>
             </div>
             <hr>
 
-            <!-- Contact -->
-            <div class="w3-container" id="contact">
-                <h2>צור קשר</h2>
-                <i class="fa fa-map-marker" style="width:30px"></i>ירושלים<br>
-                <i class="fa fa-phone" style="width:30px"></i> טל': +972585492736<br>
-                <i class="fa fa-envelope" style="width:30px"> </i>  mail@mail.com אימייל: <br>
-                <p>יש לך שאלות? קדימה! שאל:</p>
-                <form action="/action_page.php" target="_blank">
-                    <p><input class="w3-input w3-border" type="text" placeholder="שם" required name="Name"></p>
-                    <p><input class="w3-input w3-border" type="text" placeholder="אימייל" required name="Email"></p>
-                    <p><input class="w3-input w3-border" type="text" placeholder="הודעה" required name="Message"></p>
-                    <button type="submit" class="w3-button w3-black w3-third">שלח הודעה</button>
-                </form>
-            </div>
+            <h4><strong>מידע נוסף</strong></h4>
+            <div class="w3-row w3-large" style="padding:12px 16px" id="moreinfo">
+                <p>אנו משאירים לכם דירה נקיה אנא השתדלו להחזירה במצב תקין ככל הניתן..</p>
+                <p>כרטיסי אשראי מתקבלים: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+                <hr>
+
+                <h4><strong>מדיניות</strong></h4>
+                <div class="w3-row w3-large" style="padding:12px 16px" id="policy">
+                    <p>מדיניות הביטול והתשלום המוקדם משתנה לפי סוג מקום האירוח. כאשר אתם בוחרים, אנא בדקו את התנאים החלים על כל אחת מהאפשרויות. </p>
+                    <p>הירשם לקבלת עדכונים על תאריכים זמינים והצעות מיוחדות.</p>
+                    <p><button class="w3-button w3-black w3-third" onclick="document.getElementById('subscribe').style.display='block'">הירשם</button></p>
+                </div>
+                <hr>
+
+                <!-- Contact -->
+                <div class="w3-container" id="contact">
+                    <h2>צור קשר</h2>
+                    <i class="fa fa-map-marker" style="width:30px"></i>ירושלים<br>
+                    <i class="fa fa-phone" style="width:30px"></i> טל': +972585492736<br>
+                    <i class="fa fa-envelope" style="width:30px"> </i>  mail@mail.com אימייל: <br>
+                    <p>יש לך שאלות? קדימה! שאל:</p>
+                    <form action="/action_page.php" target="_blank">
+                        <p><input class="w3-input w3-border" type="text" placeholder="שם" required name="Name"></p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="אימייל" required name="Email"></p>
+                        <p><input class="w3-input w3-border" type="text" placeholder="הודעה" required name="Message"></p>
+                        <button type="submit" class="w3-button w3-black w3-third">שלח הודעה</button>
+                    </form>
+                </div>
+</body>
 
             <footer class="w3-container w3-padding-16" style="margin-top:32px">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></footer>
 
