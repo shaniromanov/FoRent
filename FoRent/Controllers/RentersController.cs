@@ -53,17 +53,15 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
+        public async Task<IActionResult> Create([Bind("Id,password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(renter);
                 await _context.SaveChangesAsync();
-                ViewBag.idRenter = renter;
-
-                return RedirectToAction("Create", "ApartmentAmenities");
+                return RedirectToAction(nameof(Index));
             }
-            return View();
+            return View(renter);
         }
 
         // GET: Renters/Edit/5
@@ -87,7 +85,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
         {
             if (id != renter.Id)
             {

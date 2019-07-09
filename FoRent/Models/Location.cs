@@ -15,6 +15,8 @@ namespace FoRent.Models
 
         public double Lng { get; set; }
 
+        public string Adress { get; set; }
+
         public ICollection<Apartment> Apartments { get; set; }
     }
 }

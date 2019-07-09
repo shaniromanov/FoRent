@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
 
-
 namespace FoRent.Controllers
 {
     public class LocationsController : Controller
@@ -54,7 +53,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Lat,Lng")] Location location)
+        public async Task<IActionResult> Create([Bind("Id,Lat,Lng,Adress")] Location location)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +85,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Lat,Lng")] Location location)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Lat,Lng,Adress")] Location location)
         {
             if (id != location.Id)
             {

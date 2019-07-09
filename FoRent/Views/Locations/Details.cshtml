@@ -3,64 +3,34 @@
 @{
     ViewData["Title"] = "Details";
 }
-@{
-    Layout = null;
-}
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
-            type="text/javascript" charset="utf-8"></script>
-    <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
-            type="text/javascript" charset="utf-8"></script>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-</head>
-<body>
-    <div style="width: 640px; height: 480px" id="mapContainer"> </div>
-    <script>
-    var platform = new H.service.Platform({
-            'app_id': 'nG9zhNvdnzvfQBOxuNmo',
-            'app_code': '8Yp8Ad1-hk5dUni9MiDnig'});
-        var maptypes = platform.createDefaultLayers();
+<h2>Details</h2>
 
-        // Instantiate (and display) a map object:
-        var map = new H.Map(
-            document.getElementById('mapContainer'),
-            maptypes.normal.map,
-            {
-                zoom: 10,
-                center: { lng: 31.4117, lat: 35.0818 }
-            });
-    </script>
-    <h2>Details</h2>
-
-    <div>
-        <h4>Location</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Lat)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Lat)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Lng)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Lng)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</body>
+<div>
+    <h4>Location</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lng)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lng)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

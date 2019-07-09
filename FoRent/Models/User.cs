@@ -13,7 +13,7 @@ namespace FoRent.Models
         [Required]
         [Display(Name = "סיסמא")]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string password { get; set; }
 
         [Required]
         [Display(Name = "שם פרטי")]
@@ -25,14 +25,17 @@ namespace FoRent.Models
 
 
         [Display(Name = "מספר טלפון")]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         [Required]
         [Display(Name = "כתובת מייל")]
+        [DataType(DataType.EmailAddress)]
         public string Mail { get; set; }
 
         [Required]
         [Display(Name = " שם משתמש ")]
+
         public string Username{ get; set; }
 
         public ICollection<Order> Orders { get; set; }

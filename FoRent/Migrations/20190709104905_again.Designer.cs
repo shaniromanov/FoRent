@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190709104905_again")]
+    partial class again
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,12 +182,12 @@ namespace FoRent.Migrations
                     b.Property<string>("Mail")
                         .IsRequired();
 
+                    b.Property<string>("Password")
+                        .IsRequired();
+
                     b.Property<string>("Phone");
 
                     b.Property<string>("Username")
-                        .IsRequired();
-
-                    b.Property<string>("password")
                         .IsRequired();
 
                     b.HasKey("Id");
