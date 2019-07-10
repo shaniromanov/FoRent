@@ -9,22 +9,22 @@ using FoRent.Models;
 
 namespace FoRent.Controllers
 {
-    public class RentersController : Controller
+    public class AvailabilitiesController : Controller
     {
         private readonly FoRentContext _context;
 
-        public RentersController(FoRentContext context)
+        public AvailabilitiesController(FoRentContext context)
         {
             _context = context;
         }
 
-        // GET: Renters
+        // GET: Availabilities
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Renter.ToListAsync());
+            return View(await _context.Availability.ToListAsync());
         }
 
-        // GET: Renters/Details/5
+        // GET: Availabilities/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var renter = await _context.Renter
+            var availability = await _context.Availability
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (renter == null)
+            if (availability == null)
             {
                 return NotFound();
             }
 
-            return View(renter);
+            return View(availability);
         }
 
-        // GET: Renters/Create
+        // GET: Availabilities/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Renters/Create
+        // POST: Availabilities/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,password,FirstName,LastName,Phone,Mail,Username,Apartments.first")] Renter renter)
+        public async Task<IActionResult> Create([Bind("Id,NotAvailable")] Availability availability)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(renter);
+                _context.Add(availability);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(renter);
+            return View(availability);
         }
 
-        // GET: Renters/Edit/5
+        // GET: Availabilities/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var renter = await _context.Renter.SingleOrDefaultAsync(m => m.Id == id);
-            if (renter == null)
+            var availability = await _context.Availability.SingleOrDefaultAsync(m => m.Id == id);
+            if (availability == null)
             {
                 return NotFound();
             }
-            return View(renter);
+            return View(availability);
         }
 
-        // POST: Renters/Edit/5
+        // POST: Availabilities/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NotAvailable")] Availability availability)
         {
-            if (id != renter.Id)
+            if (id != availability.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace FoRent.Controllers
             {
                 try
                 {
-                    _context.Update(renter);
+                    _context.Update(availability);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RenterExists(renter.Id))
+                    if (!AvailabilityExists(availability.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace FoRent.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(renter);
+            return View(availability);
         }
 
-        // GET: Renters/Delete/5
+        // GET: Availabilities/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var renter = await _context.Renter
+            var availability = await _context.Availability
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (renter == null)
+            if (availability == null)
             {
                 return NotFound();
             }
 
-            return View(renter);
+            return View(availability);
         }
 
-        // POST: Renters/Delete/5
+        // POST: Availabilities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var renter = await _context.Renter.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Renter.Remove(renter);
+            var availability = await _context.Availability.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Availability.Remove(availability);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RenterExists(int id)
+        private bool AvailabilityExists(int id)
         {
-            return _context.Renter.Any(e => e.Id == id);
+            return _context.Availability.Any(e => e.Id == id);
         }
     }
 }

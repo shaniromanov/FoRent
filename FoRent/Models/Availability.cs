@@ -9,10 +9,9 @@ namespace FoRent.Models
 {
     public class Availability
     {
-        [Display(Name = "צ'אק אין")]
-        public DateTime CheckIn { get; set; }
+        public int Id { get; set; }
 
-        [Display(Name = "צ'אק אאוט")]
-        public DateTime CheckOut { get; set; }
+        public DateTime NotAvailable { get; set; }
+        public Apartment Apartment { get; set; }
     }
 }

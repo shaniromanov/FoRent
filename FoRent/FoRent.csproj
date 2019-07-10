@@ -5,17 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Availability\**" />
+    <Compile Remove="Views\Reviews\**" />
+    <Content Remove="Views\Availability\**" />
+    <Content Remove="Views\Reviews\**" />
+    <EmbeddedResource Remove="Views\Availability\**" />
+    <EmbeddedResource Remove="Views\Reviews\**" />
+    <None Remove="Views\Availability\**" />
+    <None Remove="Views\Reviews\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Availability\" />
-    <Folder Include="Views\Reviews\" />
   </ItemGroup>
 
   <ItemGroup>

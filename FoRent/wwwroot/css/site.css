@@ -30,6 +30,16 @@
     margin: 15px;
 }
 
+.toRight{
+    
+    float:right;
+ 
+}
+
+.toLeft {
+    text-align-last: right;
+    float: left;
+}
 
 
 
@@ -40,3 +50,4 @@
         display: none;
     }
 }
+

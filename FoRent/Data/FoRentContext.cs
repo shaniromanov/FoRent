@@ -31,6 +31,9 @@ namespace FoRent.Models
         public DbSet<FoRent.Models.User> User { get; set; }
 
 
+        public DbSet<FoRent.Models.Availability> Availability { get; set; }
+
+
     
     }
 }

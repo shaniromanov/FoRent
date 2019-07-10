@@ -15,6 +15,8 @@ namespace FoRent.Models
 
         public double Lng { get; set; }
 
+        [Display(Name ="כתובת")]
+        [Required]
         public string Adress { get; set; }
 
         public ICollection<Apartment> Apartments { get; set; }
