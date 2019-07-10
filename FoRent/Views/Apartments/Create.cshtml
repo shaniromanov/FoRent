@@ -4,13 +4,18 @@
 @{
     ViewData["Title"] = "Create";
 }
-    <h1>הכנס את מקום הארוח שלך</h1>
-
-<div class="row">
+<br />
+<br />
+    <h1 ><b><u>הכנס את מקום הארוח שלך</u></b></h1>
+<br />
+<br />
+<br />
+<br />
+<div class="row toRight">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger-" ></div>
-            <div class="toRight">
+            <div >
                 <h3>פרטים אישיים</h3>
                 <div class="form-group">
                     <label asp-for="Renter.Username" class="control-label"></label>
@@ -143,7 +148,5 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

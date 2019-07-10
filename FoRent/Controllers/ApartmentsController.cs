@@ -21,7 +21,7 @@ namespace FoRent.Controllers
         // GET: Apartments
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.Apartment.Include(a => a.Amenities);
+            var databaseContext = _context.Apartment.Include(a => a.Amenities).Include(l=>l.Location).Include(r=>r.Renter).Include(p=>p.Policy);
             return View(await databaseContext.ToListAsync());
         }
 

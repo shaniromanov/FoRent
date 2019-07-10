@@ -30,10 +30,8 @@
     margin: 15px;
 }
 
-.toRight{
-    
-    float:right;
- 
+.toRight {
+    padding-right: 0px;
 }
 
 .toLeft {
@@ -41,6 +39,13 @@
     float: left;
 }
 
+body.top {
+    padding-top: 0px;
+    padding-bottom: 0px
+}
+footer {
+    padding-top: 100%;
+}
 
 
 /* Hide/rearrange for smaller screens */
