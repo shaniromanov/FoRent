@@ -53,7 +53,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,password,FirstName,LastName,Phone,Mail,Username,Apartments.first")] Renter renter)
+        public async Task<IActionResult> Create([Bind("Id,password,FirstName,LastName,Phone,Mail,Username")] Renter renter)
         {
             if (ModelState.IsValid)
             {

@@ -22,13 +22,13 @@ namespace FoRent.Models
         [Required]
         [Display(Name = "מחיר לילד ללילה")]
         public decimal PriceChild { get; set; }
-        [Required]
+       
         public Location Location { get; set; }
-        [Required]
+       
         public Renter Renter { get; set; }
-        [Required]
+       
         public Policy Policy { get; set; }
-        [Required]
+     
         public ApartmentAmenities Amenities { get; set; }
 
         public ICollection<Reviews> Reviews { get; set; }

@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190710102511_again3")]
+    partial class again3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,17 +27,17 @@ namespace FoRent.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AmenitiesId");
+                    b.Property<int>("AmenitiesId");
 
-                    b.Property<int?>("LocationId");
+                    b.Property<int>("LocationId");
 
-                    b.Property<int?>("PolicyId");
+                    b.Property<int>("PolicyId");
 
                     b.Property<decimal>("PriceAdult");
 
                     b.Property<decimal>("PriceChild");
 
-                    b.Property<int?>("RenterId");
+                    b.Property<int>("RenterId");
 
                     b.HasKey("Id");
 
@@ -227,19 +228,23 @@ namespace FoRent.Migrations
                 {
                     b.HasOne("FoRent.Models.ApartmentAmenities", "Amenities")
                         .WithMany("Apartments")
-                        .HasForeignKey("AmenitiesId");
+                        .HasForeignKey("AmenitiesId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Location", "Location")
                         .WithMany("Apartments")
-                        .HasForeignKey("LocationId");
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Policy", "Policy")
                         .WithMany("Apartments")
-                        .HasForeignKey("PolicyId");
+                        .HasForeignKey("PolicyId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany("Apartments")
-                        .HasForeignKey("RenterId");
+                        .HasForeignKey("RenterId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FoRent.Models.Availability", b =>

@@ -64,6 +64,7 @@ input{
 }
 div.toRight{
     padding-right:70px;
+    float:right
 }
 div.toLeft {
     padding-left: 65px;
