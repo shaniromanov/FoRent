@@ -161,14 +161,13 @@
 
             <div class="w3-row w3-large">
                 <div class="w3-col s6">
-                    <p><i class="fa fa-fw fa-male"></i>  מקסימום אנשים: @Html.DisplayFor(model => model.PriceAdult)</p>
-                    <p><i class="fa fa-fw fa-bath"></i> חדרי אמבטיה: 2</p>
-                    <p><i class="fa fa-fw fa-bed"></i> חדרי שינה: 1</p>
+                    <p><i class="fa fa-fw fa-male"></i>  @Html.DisplayFor(model => model.Amenities.NumOfPersons) :מקסימום אנשים</p>
+                    <p><i class="fa fa-fw fa-bed"></i>   @Html.DisplayFor(model => model.Amenities.NumOfRooms)  :חדרי שינה</p>
                    
                 </div>
                 <div class="w3-col s6">
-                    <p><i class="fa fa-fw fa-clock-o"></i> צק אין: אחרי 15:00</p>
-                    <p><i class="fa fa-fw fa-clock-o"></i> צק אאוט: 12:00</p>
+                    <p><i class="fa fa-fw fa-clock-o"></i>@Html.DisplayFor(model => model.Policy.Checkin)  :כניסה לדירה מהשעה   </p>
+                    <p><i class="fa fa-fw fa-clock-o"></i>@Html.DisplayFor(model => model.Policy.Checkout)  :פינוי הדירה בשעה </p>
                     <br />
                     <br />
                    

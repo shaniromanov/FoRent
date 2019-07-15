@@ -85,56 +85,78 @@
                     <input asp-for="Amenities.Description" class="form-control" />
                     <span asp-validation-for="Amenities.Description" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.Parking" /> @Html.DisplayNameFor(model => model.Amenities.Parking)
-                    </label>
+
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.Parking" /> @Html.DisplayNameFor(model => model.Amenities.Parking)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.Plata" /> @Html.DisplayNameFor(model => model.Amenities.Plata)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.HotWater" /> @Html.DisplayNameFor(model => model.Amenities.HotWater)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.Wifi" /> @Html.DisplayNameFor(model => model.Amenities.Wifi)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.Accessibility" /> @Html.DisplayNameFor(model => model.Amenities.Accessibility)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.AirConditioning" /> @Html.DisplayNameFor(model => model.Amenities.AirConditioning)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Amenities.Balcony" /> @Html.DisplayNameFor(model => model.Amenities.Balcony)
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.Plata" /> @Html.DisplayNameFor(model => model.Amenities.Plata)
-                    </label>
+            <div>
+                <h3>מדיניות</h3>
+                <div class="form-group">
+                    <label asp-for="Policy.Checkin" class="control-label"></label>
+                    <input asp-for="Policy.Checkin" class="form-control" />
+                    <span asp-validation-for="Policy.Checkin" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Policy.Checkout" class="control-label"></label>
+                    <input asp-for="Policy.Checkout" class="form-control" />
+                    <span asp-validation-for="Policy.Checkout" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="Policy.Extrabeds" /> @Html.DisplayNameFor(model => model.Policy.Extrabeds)
+                        </label>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.HotWater" /> @Html.DisplayNameFor(model => model.Amenities.HotWater)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.Wifi" /> @Html.DisplayNameFor(model => model.Amenities.Wifi)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.Accessibility" /> @Html.DisplayNameFor(model => model.Amenities.Accessibility)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.AirConditioning" /> @Html.DisplayNameFor(model => model.Amenities.AirConditioning)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Amenities.Balcony" /> @Html.DisplayNameFor(model => model.Amenities.Balcony)
-                    </label>
-                </div>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Amenities.Comment" class="control-label"></label>
                 <input asp-for="Amenities.Comment" class="form-control" />

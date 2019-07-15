@@ -33,7 +33,7 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var apartment = await _context.Apartment
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (apartment == null)
             {
@@ -56,7 +56,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Renter/*,Location*/,PriceAdult,PriceChild,Amenities")] Apartment apartment)
+        public async Task<IActionResult> Create([Bind("Id,Renter/*,Location*/,PriceAdult,PriceChild,Amenities,Policy")] Apartment apartment)
         {
             if (ModelState.IsValid)
             {

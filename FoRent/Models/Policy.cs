@@ -12,16 +12,18 @@ namespace FoRent.Models
         public int Id { get; set; }
 
         [Display(Name = "צק' אין")]
-        public string Checkin { get; set; } 
+        [DataType(DataType.Time)]
+        public DateTime Checkin { get; set; } 
 
         [Display(Name = "צק'אאוט")]
-        public string Checkout { get; set; } 
+        [DataType(DataType.Time)]
+        public DateTime Checkout { get; set; } 
 
         [Display(Name = "ביטולים")]
         public string Cancellations { get; set; } 
 
         [Display(Name = "מיטות נוספות")]
-        public string Extrabeds { get; set; }
+        public bool Extrabeds { get; set; }
 
         [Display(Name = "כרטיסי אשראי מתקבלים")]
         public string Creditcardsaccepted { get; set; }
