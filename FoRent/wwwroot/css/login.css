@@ -108,7 +108,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset] {
+/*input[type=button], input[type=submit], input[type=reset] {
     background-color: #56baed;
     border: none;
     color: white;
@@ -128,7 +128,7 @@ input[type=button], input[type=submit], input[type=reset] {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-}
+}*/
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
         background-color: #39ace7;
