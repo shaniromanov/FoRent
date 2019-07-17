@@ -17,9 +17,9 @@ namespace FoRent.Models
         public int Id { get; set; }
 
         [Display(Name = "מחיר למבוגר ללילה")]
-        [Required]
+        [Required(ErrorMessage = "שדה חובה")]
         public decimal PriceAdult { get; set; }
-        [Required]
+        [Required(ErrorMessage ="שדה חובה")]
         [Display(Name = "מחיר לילד ללילה")]
         public decimal PriceChild { get; set; }
        

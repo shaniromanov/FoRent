@@ -25,8 +25,6 @@ namespace FoRent.Models
         [Display(Name = "מיטות נוספות")]
         public bool Extrabeds { get; set; }
 
-        [Display(Name = "כרטיסי אשראי מתקבלים")]
-        public string Creditcardsaccepted { get; set; }
 
         public ICollection<Apartment> Apartments { get; set; }
 

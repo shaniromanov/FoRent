@@ -8,17 +8,17 @@ namespace FoRent.Models
 {
     public class Location
     {
-
         public int Id { get; set; }
 
-        public double Lat { get; set; }
-
-        public double Lng { get; set; }
-
-        [Display(Name ="כתובת")]
         [Required]
-        public string Adress { get; set; }
+        [Display(Name = "כתובת")]
+        public string Address { get; set; }
 
-        public ICollection<Apartment> Apartments { get; set; }
+        [Required]
+        [Display(Name = "עיר")]
+        public string City { get; set; }
+        public double? x { get; set; }
+        public double? y { get; set; }
+        public Apartment Apartment { get; set; }
     }
 }

@@ -13,13 +13,16 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Lat)
+                    @Html.DisplayNameFor(model => model.Address)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Lng)
+                    @Html.DisplayNameFor(model => model.City)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Adress)
+                    @Html.DisplayNameFor(model => model.x)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.y)
                 </th>
             <th></th>
         </tr>
@@ -28,13 +31,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Lat)
+                @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Lng)
+                @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Adress)
+                @Html.DisplayFor(modelItem => item.x)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.y)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

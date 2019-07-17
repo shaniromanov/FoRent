@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190717163017_again7")]
+    partial class again7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,15 +108,13 @@ namespace FoRent.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address")
-                        .IsRequired();
+                    b.Property<string>("Address");
 
-                    b.Property<string>("City")
-                        .IsRequired();
+                    b.Property<string>("City");
 
-                    b.Property<double?>("x");
+                    b.Property<double>("x");
 
-                    b.Property<double?>("y");
+                    b.Property<double>("y");
 
                     b.HasKey("Id");
 
@@ -160,6 +159,8 @@ namespace FoRent.Migrations
                     b.Property<DateTime>("Checkin");
 
                     b.Property<DateTime>("Checkout");
+
+                    b.Property<string>("Creditcardsaccepted");
 
                     b.Property<bool>("Extrabeds");
 

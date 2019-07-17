@@ -9,7 +9,7 @@ namespace FoRent.Models
 {
     public class Renter: User
     {
-        [Required]
+      
         public ICollection<Apartment> Apartments { get; set; }
       
     }

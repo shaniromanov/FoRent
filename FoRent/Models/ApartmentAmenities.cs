@@ -10,14 +10,15 @@ namespace FoRent.Models
     public class ApartmentAmenities
     {
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "שדה חובה")]
         [Display(Name = "מספר חדרים בדירה")]
         public double NumOfRooms { get; set; }
 
+        [Required(ErrorMessage = "שדה חובה")]
         [Display(Name = "כמות מיטות בדירה")]
         public int NumOfPersons { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "שדה חובה")]
         [Display(Name = "תיאור הדירה")]
         public string Description { get; set; }
 
