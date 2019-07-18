@@ -13,15 +13,16 @@
         $(document).ready(function () {
             govmap.createMap('map',
                 {
+                  
                     onLoad: function showExample() {
-                        govmap.zoomToXY({ x: 176085, y: 657600, level: 8
-                            , marker: true });
+                        govmap.zoomToXY({
+                            x: Apartment.Location.x, y: partment.Location.x, level: 8
+                            , marker: true
+                        });
                     },
-               
+
                     token: 'c908bf09-361b-41ab-91d2-07f1ab7eecef',
-                    layers: ["GASSTATIONS", "PARCEL_HOKS", "KSHTANN_ASSETS", "bus_stops", "PARCEL_ALL"],
                     showXY: false,
-                    center: { x: 34.8331716, y: 32.086312  }, 
                     level: 6,
                     bgButton: true,
                     identifyOnClick: true,
@@ -29,15 +30,16 @@
                     background: "3",
                     layersMode: 1,
                     zoomButtons: true
-                   
-                });
-          
-        });
-      
-      
 
-   
+                });
+
+        });
+
+
+
+
     </script>
+    
 </head>
 <body>
 

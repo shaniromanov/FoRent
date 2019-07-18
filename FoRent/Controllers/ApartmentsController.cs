@@ -33,7 +33,7 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy)
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (apartment == null)
             {
