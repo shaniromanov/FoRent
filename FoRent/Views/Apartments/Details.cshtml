@@ -11,17 +11,18 @@
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+          
             govmap.createMap('map',
                 {
                     onLoad: function geo() {
-                        govmap.geocode({ keyword: 'החלוצים 10 חולון', type: govmap.geocodeType.AccuracyOnly }
-                        ).then(function (response) {
-                            console.log(response)
-                        });
-                    },
+                    govmap.geocode({ keyword: 'החלוצים 10 חולון', type: govmap.geocodeType.AccuracyOnly }
+                    ).then(function (response) {
+                        console.log(response)
+                    });
+                },
                     onLoad: function showExample() {
                         govmap.zoomToXY({
-                            x: data.x, y: data.y, level: 8
+                            x: d.data.x, y: d.data.y, level: 8
                             , marker: true
                         });
                     },
