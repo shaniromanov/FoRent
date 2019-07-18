@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FoRent.Controllers
 {
@@ -22,6 +23,37 @@ namespace FoRent.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
+        }
+
+        public IActionResult Login()
+        {
+            ViewBag.Fail = false;
+
+
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("Id,Username,password")] User user)
+        {
+            var result = from u in _context.User
+                         where u.Username == user.Username && u.password == user.password
+                         select u;
+
+            if (result.ToList().Count > 0)
+            {
+                HttpContext.Session.SetString("user", user.Username);
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewBag.Fail = true;
+
+
+
+            return View(user);
         }
 
         // GET: Users/Details/5

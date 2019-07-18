@@ -20,14 +20,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#flip").click(function () {
-                $("#panel").slideDown("slow");
-            });
-        });
-    </script>
-
+ 
 
 </head>
 
@@ -55,43 +48,15 @@
                         <img src="~/images/House15.jpg" class="d-block w-100">
                     </div>
                     <div class="carousel-item">
-                        <img src="~/images/House16.jpg" class="d-block w-100">
+                        <img src="~/images/House16.jpg" class="d-block w-100">                 
                     </div>
                 </div>
             </div>
         </div>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="wrapper fadeInDown modal-dialog">
-                <div class="modal-content" >
-
-                    <!-- close option -->
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                    <!-- Tabs Titles -->
-                    <h2 class="active"> כניסה </h2>
-
-                    <!-- Login Form -->
-                    <form >
-                        <br/>
-                        @Html.TextBoxFor(m => m.Username, new { @class = "fadeIn second", @placeholder = "שם משתמש*" })
-                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
-                        @Html.TextBoxFor(m => m.password, new { @class = "fadeIn third", @placeholder = "סיסמה*" })
-                        @Html.ValidationMessageFor(m => m.password)
-                        @if (@ViewBag.NotValidUser != null)
-                        {
-                            <label class="error"> @ViewBag.NotValidUser</label>
-                        }
-                        <br />
-                        <br />
-                        <input type="submit" class="fadeIn fourth" value="התחבר">
-                        <br />
-                        <br />
-                    </form>
-
-                    <!-- Remind Passowrd -->
-                    <div id="formFooter">
-                        <a class="underlineHover" href="#">שכחת סיסמה?</a>
-                    </div>
+                <div class="modal-content">
+                    @Html.ActionLink("כניסה", "Login", "Users")
                 </div>
             </div>
         </div>
