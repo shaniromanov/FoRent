@@ -13,15 +13,20 @@
         $(document).ready(function () {
             govmap.createMap('map',
                 {
-                  
+                    onLoad: function geo() {
+                        govmap.geocode({ keyword: 'החלוצים 10 חולון', type: govmap.geocodeType.AccuracyOnly }
+                        ).then(function (response) {
+                            console.log(response)
+                        });
+                    },
                     onLoad: function showExample() {
                         govmap.zoomToXY({
-                            x: Apartment.Location.x, y: partment.Location.x, level: 8
+                            x: data.x, y: data.y, level: 8
                             , marker: true
                         });
                     },
 
-                    token: 'c908bf09-361b-41ab-91d2-07f1ab7eecef',
+                    token: '5a4b8472-b95b-4687-8179-0ccb621c7990',
                     showXY: false,
                     level: 6,
                     bgButton: true,
