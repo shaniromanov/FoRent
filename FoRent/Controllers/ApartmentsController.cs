@@ -21,6 +21,8 @@ namespace FoRent.Controllers
         // GET: Apartments
         public async Task<IActionResult> Index(string city, DateTime checkIn, DateTime checkOut, int adult, int child)
         {
+            ViewBag.NumOfAdult = adult;
+            ViewBag.NumOfChild = child;
             var databaseContext = _context.Apartment.Include(a => a.Amenities).Include(l=>l.Location).Include(r=>r.Renter).Include(p=>p.Policy);
             
             return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());

@@ -105,14 +105,15 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                 
+
                     <div class="card-columns">
 
                         <div class="w3-third w3-container">
                             <img src="~/images/House15.jpg" alt="Norway" style="width:100%">
                                 <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
-                                <h6 class="w3-opacity">((@Html.DisplayFor(modelItem => item.PriceAdult)+@Html.DisplayFor(modelItem => item.PriceChild))</h6>
-                                <p>@Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+                            @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
+                                <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
+                                <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
                                 <p>15m<sup>2</sup></p>
                                 <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
                                 <button class="w3-button w3-block w3-black w3-margin-bottom">בחר דירה</button>
