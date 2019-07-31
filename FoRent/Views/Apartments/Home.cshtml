@@ -1,8 +1,9 @@
-﻿
+﻿@model IEnumerable<FoRent.Models.Apartment>
 
-@model FoRent.Models.User
+
+
 @{
-    ViewBag.Title = "Log In";
+
     Layout = null;
 }
 
@@ -20,13 +21,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   
+
 
 
 </head>
 
 <body id="spacial-body">
-  
+
 
     <section id="container">
 
@@ -65,26 +66,26 @@
                     <h2 class="active"> כניסה </h2>
 
                     <!-- Login Form -->
-                    <form asp-action="Index">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Username" class="control-label"></label>
-                            <input asp-for="Username" class="form-control" />
-                            <span asp-validation-for="Username" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="password" class="control-label"></label>
-                            <input asp-for="password" class="form-control" />
-                            <span asp-validation-for="password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="כניסה" class="btn btn-default" />
-                        </div>
-                        @if (ViewBag.Fail)
-                        {
-                            <div>שם משתמש או סיסמה שגויים, נסה שנית</div>
-                        }
-                    </form>
+                    @*<form asp-action="Index">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Username" class="control-label"></label>
+                                <input asp-for="Username" class="form-control" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="password" class="control-label"></label>
+                                <input asp-for="password" class="form-control" />
+                                <span asp-validation-for="password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="כניסה" class="btn btn-default" />
+                            </div>
+                            @if (ViewBag.Fail)
+                            {
+                                <div>שם משתמש או סיסמה שגויים, נסה שנית</div>
+                            }
+                        </form>*@
 
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
@@ -94,75 +95,51 @@
             </div>
         </div>
 
-         
 
-       
-        <form id="infoi">
-            <div class="center">
-                <br />
-                <br />
-                <div>איפה</div>
-                <input />
-                <br />
-                <br />
-                <div class="toRight">צ'אק אין</div>
-                <div class="toLeft">צ'אק אאוט </div>
-                <br />
-                <input class="toRight" type="date" data-date-format="DD MM YYYY" />
-                <input class="toLeft" type="date" data-date-format="DD MM YYYY" />
-                <br />
-                <br />
-                <div class="toRight">מבוגרים</div>
-                <div class="toLeft">ילדים</div>
-                <br />
-                <input class="toRight" list="numofchild" id="child" />
 
-                <datalist id="numofchild">
-                    <option value="1 ילד"></option>
-                    <option value=" 2 ילדים"></option>
-                    <option value=" 3 ילדים"></option>
-                    <option value=" 4 ילדים"></option>
-                    <option value=" 5 ילדים"></option>
-                    <option value=" 6 ילדים"></option>
-                    <option value=" 7 ילדים"></option>
-                    <option value=" 8 ילדים"></option>
-                    <option value=" 9 ילדים"></option>
-                    <option value="10 ילדים"></option>
-                    <option value=" 11 ילדים"></option>
-                    <option value="12 ילדים"></option>
-                    <option value=" 13 ילדים"></option>
-                    <option value="14 ילדים"></option>
-                    <option value=" 15 ילדים"></option>
-                    <option value="16 ילדים"></option>
-                    <option value=" 17 ילדים"></option>
-                    <option value="18 ילדים"></option>
-                    <option value=" יותר מ-18 מילדים"></option>
 
-                </datalist>
+        <form asp-action="Index" id="infoi" class="center" >
 
-                <input class="toLeft" list="numofadult" id="adult" />
+            <br />
+            <br />
+            <div>עיר</div>
+            <input type="text" name="city" />
+            <br />
+            <br />
+            <div class="toRight">צ'אק אין</div>
+            <div class="toLeft">צ'אק אאוט </div>
+            <br />
+            <input name="checkIn" class="toRight" type="date" data-date-format="DD MM YYYY" />
+            <input name="checkOut" class="toLeft" type="date" data-date-format="DD MM YYYY" />
+            <br />
+            <br />
+            <div class="toRight">מבוגרים</div>
+            <div class="toLeft">ילדים</div>
+            <br />
+            <input name="adult" class="toRight" list="numofchild" id="child" />
 
-                <datalist id="numofadult">
-                    <option value="1 מבוגר"></option>
-                    <option value=" 2 מבוגרים"></option>
-                    <option value=" 3 מבוגרים"></option>
-                    <option value=" 4 מבוגרים"></option>
-                    <option value=" 5 מבוגרים"></option>
-                    <option value=" 6 מבוגרים"></option>
-                    <option value=" 7 מבוגרים"></option>
-                    <option value=" 8 מבוגרים"></option>
-                    <option value=" 9 מבוגרים"></option>
-                    <option value="10 מבוגרים"></option>
-                    <option value=" 11 מבוגרים"></option>
-                    <option value="12 מבוגרים"></option>
-                    <option value=" 13 מבוגרים"></option>
-                    <option value="14 מבוגרים"></option>
-                    <option value=" יותר מ-14 מבוגרים"></option>
-                </datalist>
-                <br />
-                <br />
-                <button type="submit" class="btn btn-outline-secondary" size="90px">חיפוש</button>
-            </div>
+            <datalist id="numofchild">
+                @for (int i = 1; i < 19; i++)
+                    {
+                <option value=@i>מבוגרים</option>
+                    }
+            </datalist>
+
+            <input name="child" class="toLeft" list="numofadult" id="adult" />
+
+            <datalist id="numofadult">
+                @for (int i = 1; i < 19; i++)
+                    {
+                <option value=@i>ילדים</option>
+                    }
+            </datalist>
+
+            <br />
+            <br />
+            <button type="submit" class="btn btn-outline-secondary" size="90px" method="post">חיפוש</button>
+
+
+
         </form>
         <div class="button-location">
             <button type="button" class="btn btn-light">
@@ -203,13 +180,11 @@
                 </div>
             </div>
         </div>
-       
+
     </section>
 
-    
+
 </body>
 </html>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+

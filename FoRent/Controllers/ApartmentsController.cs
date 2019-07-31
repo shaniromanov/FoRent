@@ -19,11 +19,21 @@ namespace FoRent.Controllers
         }
 
         // GET: Apartments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string city, DateTime checkIn, DateTime checkOut, int adult, int child)
         {
             var databaseContext = _context.Apartment.Include(a => a.Amenities).Include(l=>l.Location).Include(r=>r.Renter).Include(p=>p.Policy);
-            return View(await databaseContext.ToListAsync());
+            
+            return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
         }
+
+       
+        public IActionResult Home()
+        {
+            return View();
+        }
+
+      
+
 
         // GET: Apartments/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -67,11 +77,10 @@ namespace FoRent.Controllers
            
             return View(apartment);
         }
-        //public async Task<IActionResult> Search(DateTime check_in, DateTime check_out, int numAdults, int numChildrens)
-        //{
-        //    var result = from Availability in _context.Apartment
-        //                 where Availability.
-        //}
+        public async Task<IActionResult> Search()
+        {
+            return View(await _context.Apartment.Where(p => p.Location.City.Contains((String)TempData["City"])&&((p.Amenities.NumOfPersons)>=((int)TempData["Adult"]+ (int)TempData["Child"]))).ToListAsync());
+        }
 
 
         // GET: Apartments/Edit/5

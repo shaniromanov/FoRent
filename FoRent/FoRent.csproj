@@ -25,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Apartments\Home.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Apartments\Search.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
