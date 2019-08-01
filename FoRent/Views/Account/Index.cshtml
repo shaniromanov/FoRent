@@ -7,22 +7,24 @@
 
     <div class="wrapper fadeInDown">
        
-            <form method="post" asp-controller="account" asp-action="login" id="formContent">
-                <h2 class="active">כניסה</h2>
-                <br />
-                <br />
-                <input type="text" name="_username" placeholder="שם משתמש" class="fadeIn first">
+        <form method="post" asp-controller="account" asp-action="login" id="formContent">
+            <h2 class="active">כניסה</h2>
+            <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="https://img.icons8.com/ultraviolet/40/000000/administrator-male.png" alt="User Icon" />
+            </div>
+            <input type="text" name="_username" placeholder="שם משתמש" class="fadeIn second">
 
-                <br />
-                <br />
-                <input type="password" name="_password" placeholder="סיסמה" class="fadeIn second">
-                <br />
-                <br />
+            <br />
+            <br />
+            <input type="password" name="_password" placeholder="סיסמה" class="fadeIn third">
+            <br />
+            <br />
 
-                <input type="submit" value="כניסה" class="fadeIn third">
-
-                @ViewBag.error
-            </form>
+            <input type="submit" value="כניסה" class="fadeIn fourth">
+            
+            @ViewBag.error
+        </form>
        
     </div>
 @*</body>
