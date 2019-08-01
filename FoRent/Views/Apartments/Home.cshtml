@@ -21,8 +21,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
+   <script src="~/js/home.js"></script>
 
 </head>
 
@@ -55,11 +54,11 @@
                 </div>
             </div>
         </div>
-     
 
 
 
-        <form asp-action="Index" id="infoi" class="center" >
+
+        <form asp-action="Index" id="infoi" class="center">
 
             <br />
             <br />
@@ -81,18 +80,18 @@
 
             <datalist id="numofchild">
                 @for (int i = 1; i < 19; i++)
-                    {
-                <option value=@i>מבוגרים</option>
-                    }
+                {
+                    <option value=@i>מבוגרים</option>
+                }
             </datalist>
 
             <input name="child" class="toLeft" list="numofadult" id="adult" />
 
             <datalist id="numofadult">
                 @for (int i = 1; i < 19; i++)
-                    {
-                <option value=@i>ילדים</option>
-                    }
+                {
+                    <option value=@i>ילדים</option>
+                }
             </datalist>
 
             <br />
@@ -107,14 +106,23 @@
                 <a class="button-home" asp-controller="Apartments" asp-action="Create">הוסף את פרטי הדירה שלך</a>
             </button>
 
-            <button type="button" class="btn btn-light">
-                <a class="button-home" asp-controller="Account" asp-action="Index">כניסה</a>
-            </button>
+            <button id="flip" type="button" class="btn btn-light">כניסה</button>
+
 
             <button type="button" class="btn btn-light">
                 <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
             </button>
+           
+            <div id="panel">
+                <button type="button" class="close" aria-label="Close" id="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <meta name="viewport" content="width=device-width" />
+                <link rel="stylesheet" href="~/css/login.css" />
+                @Html.Partial("~/Views/Account/Index.cshtml")
+            </div>
         </div>
+       
     </section>
     <hr />
 
@@ -145,6 +153,7 @@
         </div>
 
     </section>
+   
 
 
 </body>

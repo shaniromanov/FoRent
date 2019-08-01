@@ -21,7 +21,7 @@ span {
     position: absolute;
     z-index: 10;
     top: 20px;
-    right: 20px;
+    right:20px;
 }
 .center {
     text-align: center;
@@ -68,6 +68,27 @@ div.toRight{
 }
 div.toLeft {
     padding-left: 65px;
+}
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    /*background-color: #e5eecc;
+    border: solid 1px #c3c3c3;*/
+   
+}
+
+#panel {
+   
+    display: none;
+    min-width:550px;
+
+   
+}
+#close {
+    position: absolute;
+    z-index: 10;
+    top: 80px;
+    right: 90px;
 }
 
 
