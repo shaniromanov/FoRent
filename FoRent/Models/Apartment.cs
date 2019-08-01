@@ -34,6 +34,8 @@ namespace FoRent.Models
         public ICollection<Reviews> Reviews { get; set; }
 
         public ICollection<Availability> Availability { get; set; }
+        public ICollection<Order> Orders { get; set; }
+
 
 
     }
