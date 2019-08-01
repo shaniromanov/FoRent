@@ -1,12 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
-
+﻿
 /* BASIC */
 
 html {
-    /*background-color: #56baed;*/
-    background-image: url("/images/stocksnap.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: white;
 }
 
 body {
@@ -31,32 +27,9 @@ h2 {
     color: #cccccc;
 }
 
-h1 {
-    text-align: center;
-    font-size: 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    display: inline-block;
-    margin: 40px 8px 10px 8px;
-}
-
 
 
 /* STRUCTURE */
-.error {
-    border: none;
-    color: #bf3030;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px;
-    width: 85%;
-    transition: all 0.5s ease-in-out;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-}
 
 .wrapper {
     display: flex;
@@ -73,13 +46,13 @@ h1 {
     border-radius: 10px 10px 10px 10px;
     background: #fff;
     padding: 30px;
-    width: 90%;
-    max-width: 450px;
+    width: 70%;
+    max-width: 300px;
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    text-align: right;
+    text-align: center;
 }
 
 #formFooter {
@@ -108,7 +81,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-/*input[type=button], input[type=submit], input[type=reset] {
+input[type=button], input[type=submit], input[type=reset] {
     background-color: #56baed;
     border: none;
     color: white;
@@ -128,7 +101,9 @@ h2.active {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-}*/
+    width: 50%;
+    max-width: 80px;
+}
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
         background-color: #39ace7;
@@ -142,7 +117,7 @@ h2.active {
         transform: scale(0.95);
     }
 
-input[type=text] {
+input[type=text], input[type=password] {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -152,7 +127,8 @@ input[type=text] {
     display: inline-block;
     font-size: 16px;
     margin: 5px;
-    width: 85%;
+    width: 50%;
+    max-width: 200px;
     border: 2px solid #f6f6f6;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -163,12 +139,12 @@ input[type=text] {
     border-radius: 5px 5px 5px 5px;
 }
 
-    input[type=text]:focus {
+    input[type=text], input[type=password]:focus {
         background-color: #fff;
         border-bottom: 2px solid #5fbae9;
     }
 
-    input[type=text]:placeholder {
+    input[type=text], input[type=password]:placeholder {
         color: #cccccc;
     }
 
@@ -262,28 +238,24 @@ input[type=text] {
         -webkit-animation-delay: 0.4s;
         -moz-animation-delay: 0.4s;
         animation-delay: 0.4s;
-        text-align: right;
     }
 
     .fadeIn.second {
         -webkit-animation-delay: 0.6s;
         -moz-animation-delay: 0.6s;
         animation-delay: 0.6s;
-        text-align: right;
     }
 
     .fadeIn.third {
         -webkit-animation-delay: 0.8s;
         -moz-animation-delay: 0.8s;
         animation-delay: 0.8s;
-        text-align: right;
     }
 
     .fadeIn.fourth {
         -webkit-animation-delay: 1s;
         -moz-animation-delay: 1s;
         animation-delay: 1s;
-        text-align: right;
     }
 
 /* Simple CSS3 Fade-in Animation */
@@ -316,26 +288,4 @@ input[type=text] {
 
 #icon {
     width: 60%;
-}
-
-* {
-    box-sizing: border-box;
-    text-align: center;
-}
-#panel, #flip {
-    
-    text-align: right;
-    background-color: whitesmoke;
-    border: solid 1px #c3c3c3;
-}
-
-#panel {
-    position: absolute;
-    right: 0;
-    display: none;
-    background-color: whitesmoke;
-    width: 20%;
-    top: 65px;
-    height: 50%;
-    text-align: right;
 }

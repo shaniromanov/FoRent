@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FoRent
 {
@@ -24,7 +25,7 @@ namespace FoRent
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
+            services.AddSession();
             services.AddDbContext<FoRentContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("FoRentContext")));
         }
@@ -42,8 +43,9 @@ namespace FoRent
                 app.UseExceptionHandler("/Home/Error");
             }
 
+           
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

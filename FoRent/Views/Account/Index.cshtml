@@ -1,0 +1,36 @@
+﻿@{
+
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/login.css" />
+</head>
+<body>
+
+
+    <div class="wrapper fadeInDown">
+       
+            <form method="post" asp-controller="account" asp-action="login" id="formContent">
+                <h2 class="active">כניסה</h2>
+                <br />
+                <br />
+                <input type="text" name="_username" placeholder="שם משתמש" class="fadeIn first">
+
+                <br />
+                <br />
+                <input type="password" name="_password" placeholder="סיסמה" class="fadeIn second">
+                <br />
+                <br />
+
+                <input type="submit" value="כניסה" class="fadeIn third">
+
+                @ViewBag.error
+            </form>
+       
+    </div>
+</body>
+</html>
