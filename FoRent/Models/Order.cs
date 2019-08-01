@@ -28,5 +28,8 @@ namespace FoRent.Models
         public User User { get; set; }
 
         public Renter Renter { get; set; }
+
+        public Order Orders { get; set; }
+
     }
 }
