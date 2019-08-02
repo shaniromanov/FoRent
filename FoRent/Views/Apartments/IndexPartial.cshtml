@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FoRent.Models.Apartment>
+
+
+  
+    @{
+
+        Layout = null;
+    }
+ 
+    
+        <div class="card-columns">
+
+            <div class="w3-third w3-container">
+                <img src="~/images/House15.jpg" alt="Norway" style="width:100%">
+                <h3>model.Amenities.Description)</h3>
+                <p>מספר חדרים: model.Amenities.NumOfRooms)</p>
+                <p>מספר נפשות:model.Amenities.NumOfPersons)</p>
+               
+                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="model.Id">בחר דירה</a></button>
+
+
+
+                <p>
+            </div>
+        </div>
+
+        <br />
+ 
+

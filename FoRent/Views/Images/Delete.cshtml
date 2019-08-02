@@ -1,0 +1,45 @@
+﻿@model FoRent.Models.Image
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Image</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LivingRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LivingRoom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DiningRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DiningRoom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BedRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BedRoom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ketchen)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ketchen)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

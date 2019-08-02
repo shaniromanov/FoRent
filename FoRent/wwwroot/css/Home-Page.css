@@ -1,4 +1,6 @@
-﻿
+﻿body, h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", Arial, Helvetica, sans-serif
+}
 input {
     border-radius: 10px;
     padding-left:10px;
@@ -11,8 +13,10 @@ span {
 }
 
 #spacial-body {
-    padding-top: 0;
+    padding-top: 1px;
     padding-bottom: 20px;
+
+    
 }
 .button-home{
     color: black;
@@ -20,8 +24,8 @@ span {
 .button-location {
     position: absolute;
     z-index: 10;
-    top: 20px;
-    right:20px;
+    padding-top: 2%;
+    padding-left: 75%;
 }
 .center {
     text-align: center;
@@ -35,8 +39,8 @@ span {
 
 #container {
     width: 100%;
-    height: 860px;
     position: relative;
+
 }
 
 #navi,
@@ -44,7 +48,7 @@ span {
     width: 100%;
     position: absolute;
     top: 0;
-    left: 0;
+    
     
 }
 
@@ -59,8 +63,9 @@ span {
     border-radius:10px;
 }
 
-input{
-    max-width:180px;
+
+input {
+    max-width: 180px;
 }
 div.toRight{
     padding-right:70px;
@@ -78,17 +83,27 @@ div.toLeft {
 }
 
 #panel {
-   
     display: none;
-    min-width:550px;
-
-   
+    min-width: 550px;
+    padding-right: 163px;
 }
 #close {
     position: absolute;
     z-index: 10;
-    top: 80px;
+    top: 130px;
     right: 90px;
+    padding-right: 148px;
+}
+
+#error{
+    background-color:gainsboro;
+    color:black;
+    text-align:center;
+
+}
+
+.apartments {
+    padding-top: 67%;
 }
 
 

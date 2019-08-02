@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<FoRent.Models.Apartment>
 
-
-
 @{
 
     Layout = null;
@@ -21,8 +19,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   <script src="~/js/home.js"></script>
-
+    <script src="~/js/home.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body id="spacial-body">
@@ -112,7 +114,10 @@
             <button type="button" class="btn btn-light">
                 <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
             </button>
-           
+            <br />
+            <br />
+            <p id="error"> @TempData["Error"]</p>
+
             <div id="panel">
                 <button type="button" class="close" aria-label="Close" id="close">
                     <span aria-hidden="true">&times;</span>
@@ -122,11 +127,11 @@
                 @Html.Partial("~/Views/Account/Index.cshtml")
             </div>
         </div>
-       
+
     </section>
     <hr />
 
-    <section>
+    <section class="apartments">
         <div class="card-deck">
             <div class="card">
                 <img src="~/images/bneibrak.jpg" class="card-img-top">
@@ -151,9 +156,13 @@
                 </div>
             </div>
         </div>
+        @*@foreach (var item in Model)
+        {
+            @Html.Partial("~/Views/Apartments/IndexPartial.cshtml", item)
+        }*@
 
     </section>
-   
+
 
 
 </body>

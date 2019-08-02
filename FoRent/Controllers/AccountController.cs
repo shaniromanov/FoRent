@@ -41,7 +41,8 @@ namespace FoRent.Controllers
             else
             {
                 ViewBag.error = "שם משתמש או סיסמה שגויים";
-                return View("Index");
+                TempData["Error"] = "שם משתמש או סיסמה שגויים, נסה שנית ";
+                return RedirectToAction("Home","Apartments");
             }
         }
 

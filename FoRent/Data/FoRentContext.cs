@@ -34,6 +34,9 @@ namespace FoRent.Models
         public DbSet<FoRent.Models.Availability> Availability { get; set; }
 
 
+        public DbSet<FoRent.Models.Image> Image { get; set; }
+
+
     
     }
 }
