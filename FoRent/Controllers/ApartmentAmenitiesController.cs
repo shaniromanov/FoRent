@@ -60,7 +60,7 @@ namespace FoRent.Controllers
             {
                 _context.Add(apartmentAmenities);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","Policies");
             }
             return View(apartmentAmenities);
         }

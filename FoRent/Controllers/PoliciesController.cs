@@ -52,13 +52,13 @@ namespace FoRent.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Checkin,Checkout,Cancellations,Extrabeds,Creditcardsaccepted")] Policy policy)
+        public async Task<IActionResult> Create([Bind("Id,Checkin,Checkout,Cancellations,Extrabeds")] Policy policy)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(policy);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Upload_Image", "Images");
             }
             return View(policy);
         }

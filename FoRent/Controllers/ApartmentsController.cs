@@ -70,19 +70,23 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Renter,Location,PriceAdult,PriceChild,Amenities,Policy")] Apartment apartment)
+        public async Task<IActionResult> Create([Bind("Id,PriceAdult,PriceChild")] Apartment apartment)
         {
             if (ModelState.IsValid)
             {
-               
+                apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                apartment.Location = _context.Location.OrderByDescending(u => u.Id).FirstOrDefault();
+                apartment.Amenities = _context.ApartmentAmenities.OrderByDescending(u => u.Id).FirstOrDefault();
+                apartment.Policy = _context.Policy.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Image = _context.Image.OrderByDescending(u => u.Id).FirstOrDefault();
 
 
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
-                
-                return RedirectToAction(nameof(Index));
+              
+                return RedirectToAction("Success","Apartments");
             }
+            ViewBag.Success = false;
             return View(apartment);
 
         }

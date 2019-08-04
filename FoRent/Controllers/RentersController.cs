@@ -59,7 +59,7 @@ namespace FoRent.Controllers
             {
                 _context.Add(renter);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","Locations");
             }
             return View(renter);
         }

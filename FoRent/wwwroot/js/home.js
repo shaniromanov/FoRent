@@ -11,5 +11,6 @@
             $("#close").click(function () {
                 $("#panel").hide();
             });
-        });
-   
+});
+
+

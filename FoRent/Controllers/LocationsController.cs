@@ -53,13 +53,13 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Address,City,x,y")] Location location)
+        public async Task<IActionResult> Create([Bind("Id,Address,City")] Location location)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(location);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","ApartmentAmenities");
             }
             return View(location);
         }
