@@ -1,37 +1,29 @@
-﻿
-<!DOCTYPE html>
+﻿@model IEnumerable<FoRent.Models.Image>
 
 
 
-<html>
-
-<head>
-
-    <meta name="viewport" content="width=device-width" />
-
-    <title>Upload_Image</title>
-
-</head>
-
-<body>
-
-    <form asp-controller="Image" asp-action="Upload_Image" method="post"
-          enctype="multipart/form-data">
 
 
 
-        <input type="file" name="file" />
+<h3>ראשית עליך להעלות 4 תמונות של הדירה שלך</h3>
+<form asp-controller="Images" asp-action="Upload_Image" method="post"
+      enctype="multipart/form-data">
 
-        <button type="submit">Upload Image</button>
-
-    </form>
-
+    <input type="file" name="file1" value="תמונה 1"/>
 
 
     <br />
+    <input type="file" name="file2" value="תמונה 2"/>
 
-    <label>Uploaded File= @ViewData["FilePath"]</label>
 
-</body>
+    <br />
+    <input type="file" name="file3" value="תמונה 3"/>
 
-</html>
+
+    <br />
+    <input type="file" name="file4" value="תמונה 4"/>
+
+    <br />
+    <button type="submit">שמור </button>
+</form>
+

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
 
+
+
 namespace FoRent.Controllers
 {
     public class ApartmentsController : Controller
@@ -23,18 +25,18 @@ namespace FoRent.Controllers
         {
             ViewBag.NumOfAdult = adult;
             ViewBag.NumOfChild = child;
-            var databaseContext = _context.Apartment.Include(a => a.Amenities).Include(l=>l.Location).Include(r=>r.Renter).Include(p=>p.Policy);
-            
+            var databaseContext = _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy);
+
             return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
         }
 
-       
+
         public IActionResult Home()
         {
             return View();
         }
 
-      
+
 
 
         // GET: Apartments/Details/5
@@ -58,7 +60,7 @@ namespace FoRent.Controllers
         // GET: Apartments/Create
         public IActionResult Create()
         {
-           
+
             return View();
 
         }
@@ -72,13 +74,21 @@ namespace FoRent.Controllers
         {
             if (ModelState.IsValid)
             {
+               
+                apartment.Image = _context.Image.OrderByDescending(u => u.Id).FirstOrDefault();
+
+
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
-           
             return View(apartment);
+
         }
+  
+            
+        
         public async Task<IActionResult> Search()
         {
             return View(await _context.Apartment.Where(p => p.Location.City.Contains((String)TempData["City"])&&((p.Amenities.NumOfPersons)>=((int)TempData["Adult"]+ (int)TempData["Child"]))).ToListAsync());

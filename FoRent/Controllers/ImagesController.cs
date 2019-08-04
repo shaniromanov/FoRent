@@ -9,6 +9,7 @@ using FoRent.Models;
 using System.IO;                    //*Directory
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using System.Reflection.Emit;
 
 namespace FoRent.Controllers
 {
@@ -47,8 +48,8 @@ namespace FoRent.Controllers
 
 
         [HttpPost] //Postback
-
-        public async Task<IActionResult> Upload_Image(IFormFile file)
+      
+        public async Task<IActionResult> Upload_Image(IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
 
         {
 
@@ -56,7 +57,10 @@ namespace FoRent.Controllers
 
             //< check >
 
-            if (file == null || file.Length == 0) return Content("file not selected");
+            if (file1 == null || file1.Length == 0) return Content("לא נבחר קובץ");
+            if (file2 == null || file2.Length == 0) return Content("לא נבחר קובץ");
+            if (file3 == null || file3.Length == 0) return Content("לא נבחר קובץ");
+            if (file4 == null || file4.Length == 0) return Content("לא נבחר קובץ");
 
             //</ check >
 
@@ -66,19 +70,42 @@ namespace FoRent.Controllers
 
             string path_Root = _appEnvironment.WebRootPath;
 
-            string path_to_Images = path_Root + "\\User_Files\\Images\\" + file.FileName;
-
+            string path_to_Images1 = path_Root + "\\User_Files\\Images\\" + file1.FileName;
+            string path_to_Images2 = path_Root + "\\User_Files\\Images\\" + file2.FileName;
+            string path_to_Images3 = path_Root + "\\User_Files\\Images\\" + file3.FileName;
+            string path_to_Images4 = path_Root + "\\User_Files\\Images\\" + file4.FileName;
             //</ get Path >
 
 
 
             //< Copy File to Target >
 
-            using (var stream = new FileStream(path_to_Images, FileMode.Create))
+            using (var stream = new FileStream(path_to_Images1, FileMode.Create))
 
             {
 
-                await file.CopyToAsync(stream);
+                await file1.CopyToAsync(stream);
+
+            }
+            using (var stream = new FileStream(path_to_Images2, FileMode.Create))
+
+            {
+
+                await file2.CopyToAsync(stream);
+
+            }
+            using (var stream = new FileStream(path_to_Images3, FileMode.Create))
+
+            {
+
+                await file3.CopyToAsync(stream);
+
+            }
+            using (var stream = new FileStream(path_to_Images4, FileMode.Create))
+
+            {
+
+                await file4.CopyToAsync(stream);
 
             }
 
@@ -87,10 +114,21 @@ namespace FoRent.Controllers
 
 
             //< output >
+            Image image=new Image();
+            image.BedRoom= path_to_Images1;
+            image.DiningRoom = path_to_Images2;
+            image.Ketchen = path_to_Images3;
+            image.LivingRoom = path_to_Images4;
 
-            ViewData["FilePath"] = path_to_Images;
+           
+                   
+                 
 
-            return View();
+            _context.Add(image);
+            await _context.SaveChangesAsync();
+           
+
+            return RedirectToAction("Create","Apartments");
 
             //</ output >
 

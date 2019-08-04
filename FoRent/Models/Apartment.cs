@@ -4,10 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
-
-
-
-
+using System.ComponentModel;
 
 namespace FoRent.Models
 {
@@ -30,7 +27,7 @@ namespace FoRent.Models
         public Policy Policy { get; set; }
      
         public ApartmentAmenities Amenities { get; set; }
-
+        [DefaultValue("0")]
         public Image Image { get; set; }
 
         public ICollection<Reviews> Reviews { get; set; }
