@@ -42,7 +42,7 @@
             </button>
         </div>
     </nav>
-    @{
+    @*@{
         if (HttpContextAccessor.HttpContext.Session.GetString("Login")==null)
         {
             @Html.ActionLink("Login ", "Index", "Login", null, new { style = "color:red" })
@@ -58,7 +58,7 @@
 
     }
 
-    <label><a href="/Postad">Post Ad </a></label>
+    <label><a href="/Postad">Post Ad </a></label>*@
     <div class="container body-content">
         @RenderBody()
         <hr />

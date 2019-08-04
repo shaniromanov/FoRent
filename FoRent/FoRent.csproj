@@ -28,6 +28,9 @@
     <Content Update="Views\Apartments\Home.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Apartments\Success.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Apartments\IndexPartial.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

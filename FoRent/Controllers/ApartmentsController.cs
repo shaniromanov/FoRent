@@ -179,6 +179,13 @@ namespace FoRent.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Success()
+        {
+
+            return View();
+
+        }
+
         private bool ApartmentExists(int id)
         {
             return _context.Apartment.Any(e => e.Id == id);
