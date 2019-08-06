@@ -14,7 +14,7 @@ namespace FoRent.Models
         {
         }
 
-        public DbSet<FoRent.Models.Apartment> Apartment { get; set; }
+       
 
         public DbSet<FoRent.Models.Location> Location { get; set; }
 
@@ -29,14 +29,29 @@ namespace FoRent.Models
 
 
         public DbSet<FoRent.Models.User> User { get; set; }
-
-
-        public DbSet<FoRent.Models.Availability> Availability { get; set; }
-
+        
 
         public DbSet<FoRent.Models.Image> Image { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ApartmentAvailability>()
+                .HasKey(t => new { t.AvailabilityId, t.ApartmentId });
 
+            modelBuilder.Entity<ApartmentAvailability>()
+               .HasOne(pt => pt.Availability)
+               .WithMany(t => t.ApartmentAvailabilities)
+               .HasForeignKey(pt => pt.Availability);
 
-    
+            modelBuilder.Entity<ApartmentAvailability>()
+                .HasOne(pt => pt.Apartment)
+                .WithMany(p => p.ApartmentAvailabilities)
+                .HasForeignKey(pt => pt.Apartment);
+
+        }
+
+        public DbSet<FoRent.Models.Apartment> Apartment { get; set; }
+        public DbSet<FoRent.Models.Availability> Availability { get; set; }
+        //public DbSet<FoRent.Models.ApartmentAvailability> ApartmentAvailabilities { get; set; }
     }
 }

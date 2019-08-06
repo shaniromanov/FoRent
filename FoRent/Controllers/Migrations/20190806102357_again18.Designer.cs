@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190806102357_again18")]
+    partial class again18
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,7 +303,6 @@ namespace FoRent.Migrations
                         .WithMany("Reviews")
                         .HasForeignKey("ApartmentId");
                 });
-    
 #pragma warning restore 612, 618
         }
     }

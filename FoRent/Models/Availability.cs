@@ -9,9 +9,10 @@ namespace FoRent.Models
 {
     public class Availability
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public DateTime NotAvailable { get; set; }
-        public Apartment Apartment { get; set; }
+
+        public ICollection<ApartmentAvailability> ApartmentAvailabilities { get; set; }
     }
 }

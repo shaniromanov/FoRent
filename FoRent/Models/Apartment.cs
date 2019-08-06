@@ -27,12 +27,12 @@ namespace FoRent.Models
         public Policy Policy { get; set; }
      
         public ApartmentAmenities Amenities { get; set; }
-        [DefaultValue("0")]
+        
         public Image Image { get; set; }
 
         public ICollection<Reviews> Reviews { get; set; }
 
-        public ICollection<Availability> Availability { get; set; }
+        public ICollection<ApartmentAvailability> ApartmentAvailabilities { get; set; }
         public ICollection<Order> Orders { get; set; }
 
 
