@@ -32,11 +32,13 @@
 
 .toRight {
     padding-right: 0px;
+    text-align:center;
 }
 
 .toLeft {
-    text-align-last: right;
+    
     float: left;
+    text-align: center;
 }
 
 body.top {

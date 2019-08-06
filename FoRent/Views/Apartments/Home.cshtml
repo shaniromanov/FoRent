@@ -65,7 +65,8 @@
             <br />
             <br />
             <div>עיר</div>
-            <input type="text" name="city" />
+            <input type="text" name="city" required  oninvalid="this.setCustomValidity('*שדה חובה')"
+              oninput="this.setCustomValidity('')" />
             <br />
             <br />
             <div class="toRight">צ'אק אין</div>
@@ -78,23 +79,9 @@
             <div class="toRight">מבוגרים</div>
             <div class="toLeft">ילדים</div>
             <br />
-            <input name="adult" class="toRight" list="numofchild" id="child" />
+            <input name="adult" class="toRight"  id="child" value="2" min="1" type="number" />
 
-            <datalist id="numofchild">
-                @for (int i = 1; i < 19; i++)
-                {
-                    <option value=@i>מבוגרים</option>
-                }
-            </datalist>
-
-            <input name="child" class="toLeft" list="numofadult" id="adult" />
-
-            <datalist id="numofadult">
-                @for (int i = 1; i < 19; i++)
-                {
-                    <option value=@i>ילדים</option>
-                }
-            </datalist>
+            <input name="child" class="toLeft"  id="adult" value="0" min="0" type="number"/>
 
             <br />
             <br />

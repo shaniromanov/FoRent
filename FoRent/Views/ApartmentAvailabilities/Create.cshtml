@@ -22,10 +22,12 @@
             </div>
         </form>
         <div class="form-group">
-            <button type="button" class="btn btn-light">
+            @*<button type="button" class="btn btn-light">
                 <a asp-controller="Apartments" asp-action="Success">סיים</a>
-            </button>
-           
+            </button>*@
+            <form action="~/Apartments/Success">
+                <input type="submit" value="הכנס את מקום האירוח שלך" />
+            </form>
         </div>
     </div>
 </div>
