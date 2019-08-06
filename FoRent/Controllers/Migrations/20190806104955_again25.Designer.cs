@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190806104955_again25")]
+    partial class again25
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

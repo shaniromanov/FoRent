@@ -84,7 +84,7 @@ namespace FoRent.Controllers
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
               
-                return RedirectToAction("Success","Apartments");
+                return RedirectToAction("Create","ApartmentAvailabilities");
             }
             ViewBag.Success = false;
             return View(apartment);

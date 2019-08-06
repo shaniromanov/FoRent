@@ -9,7 +9,7 @@ namespace FoRent.Models
 {
     public class Availability
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public DateTime NotAvailable { get; set; }
 

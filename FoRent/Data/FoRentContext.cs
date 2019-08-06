@@ -41,17 +41,18 @@ namespace FoRent.Models
             modelBuilder.Entity<ApartmentAvailability>()
                .HasOne(pt => pt.Availability)
                .WithMany(t => t.ApartmentAvailabilities)
-               .HasForeignKey(pt => pt.Availability);
+               .HasForeignKey(pt => pt.AvailabilityId);
 
             modelBuilder.Entity<ApartmentAvailability>()
                 .HasOne(pt => pt.Apartment)
                 .WithMany(p => p.ApartmentAvailabilities)
-                .HasForeignKey(pt => pt.Apartment);
+                .HasForeignKey(pt => pt.ApartmentId);
 
         }
 
         public DbSet<FoRent.Models.Apartment> Apartment { get; set; }
         public DbSet<FoRent.Models.Availability> Availability { get; set; }
+        public DbSet<FoRent.Models.ApartmentAvailability> ApartmentAvailability { get; set; }
         //public DbSet<FoRent.Models.ApartmentAvailability> ApartmentAvailabilities { get; set; }
     }
 }
