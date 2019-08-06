@@ -16,6 +16,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Migrations\20190806102357_again18.cs" />
+    <Compile Remove="Controllers\Migrations\20190806102357_again18.Designer.cs" />
+    <Compile Remove="Controllers\Migrations\20190806104955_again25.cs" />
+    <Compile Remove="Controllers\Migrations\20190806104955_again25.Designer.cs" />
+    <Compile Remove="Controllers\Migrations\20190806200657_again26.cs" />
+    <Compile Remove="Controllers\Migrations\20190806200657_again26.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
   </ItemGroup>

@@ -48,7 +48,7 @@ namespace FoRent.Controllers
         // GET: ApartmentAvailabilities/Create
         public IActionResult Create()
         {
-            ViewBag["anotherDate"] = "סמן תאריך כתפוס";
+            ViewBag.anotherDate = "סמן תאריך כתפוס";
             return View();
         }
 
@@ -68,17 +68,21 @@ namespace FoRent.Controllers
                             select a;
 
                 if (result.ToList().Count() > 0)
-                    ViewBag["exist"] = "התאריך שבחרת כבר סומן כתפוס";
+                    ViewBag.exist = "התאריך שבחרת כבר סומן כתפוס";
                 else
                 {
-                    apartmentAvailability.Availability = new Availability();
-                    apartmentAvailability.Availability.NotAvailable = date;
+                    var temp = new Availability();
+                    temp.NotAvailable = date;
+
+                    apartmentAvailability.Availability = temp;
+                    apartmentAvailability.AvailabilityId = temp.Id;
+                    apartmentAvailability.ApartmentId = apartmentAvailability.Apartment.Id;
                     _context.Add(apartmentAvailability);
                     await _context.SaveChangesAsync();
-                    ViewBag["anotherDate"] = "סמן תאריך נוסף כתפוס";
+                    
                 }
-               
-               
+
+                ViewBag.anotherDate = "סמן תאריך נוסף כתפוס";
             }
             //ViewData["ApartmentId"] = new SelectList(_context.Apartment, "Id", "Id", apartmentAvailability.ApartmentId);
             //ViewData["AvailabilityId"] = new SelectList(_context.Availability, "Id", "Id", apartmentAvailability.AvailabilityId);

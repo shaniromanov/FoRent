@@ -12,8 +12,8 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    [Migration("20190806102357_again18")]
-    partial class again18
+    [Migration("20190806200845_again13")]
+    partial class again13
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,9 +93,22 @@ namespace FoRent.Migrations
                     b.ToTable("ApartmentAmenities");
                 });
 
+            modelBuilder.Entity("FoRent.Models.ApartmentAvailability", b =>
+                {
+                    b.Property<int>("AvailabilityId");
+
+                    b.Property<int>("ApartmentId");
+
+                    b.HasKey("AvailabilityId", "ApartmentId");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("ApartmentAvailability");
+                });
+
             modelBuilder.Entity("FoRent.Models.Availability", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("NotAvailable");
@@ -275,6 +288,19 @@ namespace FoRent.Migrations
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany("Apartments")
                         .HasForeignKey("RenterId");
+                });
+
+            modelBuilder.Entity("FoRent.Models.ApartmentAvailability", b =>
+                {
+                    b.HasOne("FoRent.Models.Apartment", "Apartment")
+                        .WithMany("ApartmentAvailabilities")
+                        .HasForeignKey("ApartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("FoRent.Models.Availability", "Availability")
+                        .WithMany("ApartmentAvailabilities")
+                        .HasForeignKey("AvailabilityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("FoRent.Models.Order", b =>

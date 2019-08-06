@@ -13,17 +13,23 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input type="date" data-date-format="DD MM YYYY" />
+                <input name="date" type="date" data-date-format="DD MM YYYY" />
             </div>
-         
+            <p>@ViewBag.exist</p>
+
             <div class="form-group">
-                <input type="submit" value="@ViewBag." class="btn btn-default" />
+                <input type="submit" value="@ViewBag.anotherDate" class="btn btn-default" />
             </div>
         </form>
+        <div class="form-group">
+            <button type="button" class="btn btn-light">
+                <a asp-controller="Apartments" asp-action="Success">סיים</a>
+            </button>
+           
+        </div>
     </div>
 </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
