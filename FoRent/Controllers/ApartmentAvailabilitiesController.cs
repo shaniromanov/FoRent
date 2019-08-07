@@ -71,9 +71,8 @@ namespace FoRent.Controllers
                     ViewBag.exist = "התאריך שבחרת כבר סומן כתפוס";
                 else
                 {
-                    var temp = new Availability();
-                    temp.NotAvailable = date;
-
+                    var temp = _context.Availability.Where(a => a.NotAvailable.Equals(date)).First();
+  
                     apartmentAvailability.Availability = temp;
                     apartmentAvailability.AvailabilityId = temp.Id;
                     apartmentAvailability.ApartmentId = apartmentAvailability.Apartment.Id;

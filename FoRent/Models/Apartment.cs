@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoRent.Models
 {
@@ -35,7 +36,9 @@ namespace FoRent.Models
         public ICollection<ApartmentAvailability> ApartmentAvailabilities { get; set; }
         public ICollection<Order> Orders { get; set; }
 
-
-
+        public static implicit operator DbSet<object>(Apartment v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

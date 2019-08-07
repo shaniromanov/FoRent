@@ -72,8 +72,8 @@
             <div class="toRight">צ'אק אין</div>
             <div class="toLeft">צ'אק אאוט </div>
             <br />
-            <input name="checkIn" class="toRight" type="date" data-date-format="DD MM YYYY" />
-            <input name="checkOut" class="toLeft" type="date" data-date-format="DD MM YYYY" />
+            <input  name="checkIn" class="toRight" type="date" data-date-format="DD MM YYYY" max="@DateTime.Now.AddMonths(3)"/>
+            <input name="checkOut" class="toLeft" type="date" data-date-format="DD MM YYYY"  max="@DateTime.Now.AddMonths(3)"/>
             <br />
             <br />
             <div class="toRight">מבוגרים</div>

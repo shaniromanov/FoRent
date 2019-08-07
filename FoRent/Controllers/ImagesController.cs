@@ -115,14 +115,14 @@ namespace FoRent.Controllers
 
             //< output >
             Image image=new Image();
-            image.BedRoom= path_to_Images1;
-            image.DiningRoom = path_to_Images2;
-            image.Ketchen = path_to_Images3;
-            image.LivingRoom = path_to_Images4;
+            image.BedRoom = "/" + Path.GetFileName(file1.FileName);
+            image.DiningRoom = "/" + Path.GetFileName(file2.FileName);
+            image.Ketchen = "/" + Path.GetFileName(file3.FileName);
+            image.LivingRoom = "/" + Path.GetFileName(file4.FileName);
 
-           
-                   
-                 
+
+
+
 
             _context.Add(image);
             await _context.SaveChangesAsync();

@@ -110,7 +110,8 @@
                     <div class="card-columns">
 
                         <div class="w3-third w3-container">
-                            <img src="~/images/House15.jpg" alt="Norway" style="width:100%">
+                            <img src="@Html.DisplayFor(modelItem => item.Image.DiningRoom)" alt="Norway" style="width:100%">
+                            
                                 <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
                             @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
                                 <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
