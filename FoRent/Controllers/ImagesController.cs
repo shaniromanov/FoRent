@@ -115,10 +115,10 @@ namespace FoRent.Controllers
 
             //< output >
             Image image=new Image();
-            image.BedRoom = "/" + Path.GetFileName(file1.FileName);
-            image.DiningRoom = "/" + Path.GetFileName(file2.FileName);
-            image.Ketchen = "/" + Path.GetFileName(file3.FileName);
-            image.LivingRoom = "/" + Path.GetFileName(file4.FileName);
+            image.BedRoom = "/User_Files/Images/" + Path.GetFileName(file1.FileName);
+            image.DiningRoom = "/User_Files/Images/" + Path.GetFileName(file2.FileName);
+            image.Ketchen = "/User_Files/Images/" + Path.GetFileName(file3.FileName);
+            image.LivingRoom = "/User_Files/Images/" + Path.GetFileName(file4.FileName);
 
 
 

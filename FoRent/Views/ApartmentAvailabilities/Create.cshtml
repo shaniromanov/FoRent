@@ -3,17 +3,30 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>עדכון תאריכים תפוסים</h1>
-
-<h4>ניתן להזין תאריכם תפוסים ל-3 חודשים הקרובים</h4>
+<br />
+<br />
+<br />
+<h1><b>יצירת דירה</b></h1>
+<br />
+<h4>עדכון תאריכים תפוסים</h4>
+<br />
 <hr />
+<br />
+<br />
+
+
+
+
 <div class="row">
+    <h6>ניתן להזין תאריכם תפוסים ל-3 חודשים הקרובים</h6>
     <div class="col-md-4">
+
         <form asp-action="Create">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input name="date" type="date" data-date-format="DD MM YYYY"  />
+
+                <input name="date" type="date" data-date-format="DD MM YYYY" />
             </div>
             <p>@ViewBag.exist</p>
 
@@ -23,15 +36,12 @@
         </form>
         <div class="form-group">
             @*<button type="button" class="btn btn-light">
-                <a asp-controller="Apartments" asp-action="Success">סיים</a>
-            </button>*@
+                    <a asp-controller="Apartments" asp-action="Success">סיים</a>
+                </button>*@
             <form action="~/Apartments/Success">
-                <input type="submit" value="הכנס את מקום האירוח שלך" />
+                <input type="submit" value="הכנס את מקום האירוח שלך" style="min-width:200px"/>
             </form>
         </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>

@@ -238,6 +238,8 @@ input[type=text], input[type=password] {
         -webkit-animation-delay: 0.4s;
         -moz-animation-delay: 0.4s;
         animation-delay: 0.4s;
+        margin-left: 45%;
+        margin-right: 45%;
     }
 
     .fadeIn.second {
