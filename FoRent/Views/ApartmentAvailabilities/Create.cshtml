@@ -4,16 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+<h2>עדכון תאריכים תפוסים</h2>
 
-<h4>ApartmentAvailability</h4>
+<h4>ניתן להזין תאריכם תפוסים ל-3 חודשים הקרובים</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input name="date" type="date" data-date-format="DD MM YYYY" />
+                <input name="date" type="date" data-date-format="DD MM YYYY"  />
             </div>
             <p>@ViewBag.exist</p>
 

@@ -16,26 +16,39 @@ namespace FoRent
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+           
             var host = BuildWebHost(args);
 
 
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                
-                FoRentContext context = services.GetRequiredService<FoRentContext>();
 
-                for(int i=1;i<94;i++)
+                FoRentContext context = services.GetRequiredService<FoRentContext>();
+                if (context.Availability.Count() > 0 && context.Availability.OrderBy(u => u.Id).FirstOrDefault().NotAvailable < DateTime.Now)
                 {
-                    DateTime dateTime =DateTime.Now;
-                    context.Add(new Availability() {NotAvailable= dateTime, Id=i });
-                    context.SaveChanges();
-                    dateTime = dateTime.AddDays(1);
+                    foreach (var remove in context.Availability)
+                    {
+                        context.Availability.Remove(remove);
+                    }
+
+                }
+                if (context.Availability.Count() == 0)
+                {
+                    DateTime dateTime = DateTime.Now.Date;
+                    
+                    for (int i = 1; i < 94; i++)
+                    {
+                        
+                        context.Availability.Add(new Availability() { NotAvailable = dateTime });
+                        context.SaveChanges();
+                        dateTime = dateTime.AddDays(1);
+                    }
+
                 }
             }
-
-            host.Run();
+                host.Run();
+                BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

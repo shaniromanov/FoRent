@@ -59,6 +59,7 @@ namespace FoRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DateTime date)
         {
+            ViewBag.anotherDate = "סמן תאריך נוסף כתפוס";
             if (ModelState.IsValid)
             {
                 ApartmentAvailability apartmentAvailability = new ApartmentAvailability();
@@ -68,10 +69,13 @@ namespace FoRent.Controllers
                             select a;
 
                 if (result.ToList().Count() > 0)
-                    ViewBag.exist = "התאריך שבחרת כבר סומן כתפוס";
+                    ViewBag.errorTime = "התאריך שבחרת כבר סומן כתפוס";
+                else if (date.CompareTo(DateTime.Now.AddMonths(3))>0) {
+                    ViewBag.errorTime = "*יש להזין תאריכים בתווך של 3 חודשים מהיום";
+                }
                 else
                 {
-                    var temp = _context.Availability.Where(a => a.NotAvailable.Equals(date)).First();
+                    var temp = _context.Availability.Where(a => a.NotAvailable.Equals(date)).FirstOrDefault();
   
                     apartmentAvailability.Availability = temp;
                     apartmentAvailability.AvailabilityId = temp.Id;
@@ -81,9 +85,9 @@ namespace FoRent.Controllers
                     
                 }
 
-                ViewBag.anotherDate = "סמן תאריך נוסף כתפוס";
+                TempData["ApartmentId"] = apartmentAvailability.ApartmentId;
             }
-            //ViewData["ApartmentId"] = new SelectList(_context.Apartment, "Id", "Id", apartmentAvailability.ApartmentId);
+           
             //ViewData["AvailabilityId"] = new SelectList(_context.Availability, "Id", "Id", apartmentAvailability.AvailabilityId);
             return View();
         }
