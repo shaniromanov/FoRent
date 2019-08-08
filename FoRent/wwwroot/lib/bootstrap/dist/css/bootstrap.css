@@ -229,12 +229,12 @@ th {
     max-width: 100% !important;
   }
   p,
-  h2,
+  h1,
   h3 {
     orphans: 3;
     widows: 3;
   }
-  h2,
+  h1,
   h3 {
     page-break-after: avoid;
   }
@@ -1172,13 +1172,13 @@ hr {
   cursor: pointer;
 }
 h1,
-h2,
+h1,
 h3,
 h4,
 h5,
 h6,
 .h1,
-.h2,
+.h1,
 .h3,
 .h4,
 .h5,
@@ -1189,25 +1189,25 @@ h6,
   color: inherit;
 }
 h1 small,
-h2 small,
+h1 small,
 h3 small,
 h4 small,
 h5 small,
 h6 small,
 .h1 small,
-.h2 small,
+.h1 small,
 .h3 small,
 .h4 small,
 .h5 small,
 .h6 small,
 h1 .small,
-h2 .small,
+h1 .small,
 h3 .small,
 h4 .small,
 h5 .small,
 h6 .small,
 .h1 .small,
-.h2 .small,
+.h1 .small,
 .h3 .small,
 .h4 .small,
 .h5 .small,
@@ -1218,8 +1218,8 @@ h6 .small,
 }
 h1,
 .h1,
-h2,
-.h2,
+h1,
+.h1,
 h3,
 .h3 {
   margin-top: 20px;
@@ -1227,14 +1227,14 @@ h3,
 }
 h1 small,
 .h1 small,
-h2 small,
-.h2 small,
+h1 small,
+.h1 small,
 h3 small,
 .h3 small,
 h1 .small,
 .h1 .small,
-h2 .small,
-.h2 .small,
+h1 .small,
+.h1 .small,
 h3 .small,
 .h3 .small {
   font-size: 65%;
@@ -1266,8 +1266,8 @@ h1,
 .h1 {
   font-size: 36px;
 }
-h2,
-.h2 {
+h1,
+.h1 {
   font-size: 30px;
 }
 h3,

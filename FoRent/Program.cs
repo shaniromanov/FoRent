@@ -30,8 +30,9 @@ namespace FoRent
                     foreach (var remove in context.Availability)
                     {
                         context.Availability.Remove(remove);
+                        
                     }
-
+                    context.SaveChanges();
                 }
                 if (context.Availability.Count() == 0)
                 {
