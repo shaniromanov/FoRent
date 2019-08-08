@@ -34,49 +34,48 @@ namespace FoRent.Controllers
             {
                 return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
             }
-            else if (!(checkIn.Equals(check)) && checkOut.Equals(check))
-            {
-                checkOut = checkIn.AddDays(1);
-            }
-            else if ((checkIn.Equals(check)) && !(checkOut.Equals(check)))
-            {
-                ViewBag.ErrorDate = "לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
-                return View();
-            }
-            else if (!(checkIn.Equals(check)) && !(checkOut.Equals(check))&& (checkIn.CompareTo(checkOut)>0))
-            {
-                ViewBag.ErrorDate = "צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
-                return View();
-            }
+            //else if (!(checkIn.Equals(check)) && checkOut.Equals(check))
+            //{
+            //    checkOut = checkIn.AddDays(1);
+            //}
+            //else if ((checkIn.Equals(check)) && !(checkOut.Equals(check)))
+            //{
+            //    ViewBag.ErrorDate = "לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
+            //    return View();
+            //}
+            //else if (!(checkIn.Equals(check)) && !(checkOut.Equals(check))&& (checkIn.CompareTo(checkOut)>0))
+            //{
+            //    ViewBag.ErrorDate = "צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
+            //    return View();
+            //}
 
-            for (int i = 0; i < 31; i++)
-            {
-                if (checkIn.CompareTo(checkOut) > 0)
-                {
-                    break;
-                }
-                count++;
-                dateTimes.Add(checkIn);
-                checkIn.AddDays(1); 
-            }
-            if (count > 30)
-            {
-                ViewBag.ErrorDate = "מצטערים, לא ניתן לבצע הזמנות שאורכן מעל ל-30 לילות ";
-                return View();
-            }
-            
-               //var result=  from a in _context.ApartmentAvailability group a.Apartment by a.Availability.NotAvailable.Equals(checkIn)&&  into grp
-               //         where !(grp.)
-               //         select c;
+            //for (int i = 0; i < 31; i++)
+            //{
+            //    if (checkIn.CompareTo(checkOut) > 0)
+            //    {
+            //        break;
+            //    }
+            //    count++;
+            //    dateTimes.Add(checkIn);
+            //    checkIn.AddDays(1); 
+            //}
+            //if (count > 30)
+            //{
+            //    ViewBag.ErrorDate = "מצטערים, לא ניתן לבצע הזמנות שאורכן מעל ל-30 לילות ";
+            //    return View();
+            //}
+
+            //var result=  from a in _context.ApartmentAvailability group a.Apartment by a.Availability.NotAvailable.Equals(checkIn)&&  into grp
+            //         where !(grp.)
+            //         select c;
             //Availability.NotAvailable.contain(checkIn)
 
 
 
-
-            return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
+            return View();
+            //return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
         }
-
-
+        
         public IActionResult Home()
         {
             return View();
