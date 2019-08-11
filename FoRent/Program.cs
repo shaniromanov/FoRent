@@ -32,16 +32,16 @@ namespace FoRent
                         if (remove.NotAvailable < DateTime.Now.Date)
                         {
                             context.Availability.Remove(remove);
-                            context.SaveChangesAsync();
+                            
                             var lastDate = context.Availability.OrderByDescending(u => u.Id).FirstOrDefault();
                             DateTime dateTime = lastDate.NotAvailable.AddDays(1);
                             context.Availability.Add(new Availability() { NotAvailable = dateTime });
-                            context.SaveChangesAsync();
+                           
 
                         }
 
                     }
-
+                    context.SaveChanges();
                 }
                 if (context.Availability.Count() == 0)
                 {

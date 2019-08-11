@@ -38,12 +38,12 @@ namespace FoRent.Controllers
             }
             else if ((checkIn.Equals(check)) && !(checkOut.Equals(check)))
             {
-                TempData["ErrorDate"] = "לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
+                TempData["ErrorDate"] = "*לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
                 return RedirectToAction("Home");
             }
             else if (!(checkIn.Equals(check)) && !(checkOut.Equals(check))&& (checkIn>checkOut))
             {
-                TempData["ErrorDate"] = "צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
+                TempData["ErrorDate"] = "*צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
                 return RedirectToAction("Home");
             }
 
