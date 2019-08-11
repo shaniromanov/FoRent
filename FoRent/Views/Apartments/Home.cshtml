@@ -69,11 +69,12 @@
               oninput="this.setCustomValidity('')" />
             <br />
             <br />
-            <div class="toRight">צ'אק אין</div>
-            <div class="toLeft">צ'אק אאוט </div>
+            <div class="toRight">צ'אק אאוט</div>
+            <div class="toLeft">צ'אק אין </div>
             <br />
-            <input  name="checkIn" class="toRight" type="date" data-date-format="DD MM YYYY" max="@DateTime.Now.AddMonths(3)"/>
-            <input name="checkOut" class="toLeft" type="date" data-date-format="DD MM YYYY"  max="@DateTime.Now.AddMonths(3)"/>
+            <p>@ViewBag.ErrorDate</p>
+            <input  name="checkOut" class="toRight" type="date" data-date-format="DD MM YYYY" max="@DateTime.Now.AddMonths(3)"/>
+            <input name="checkIn" class="toLeft" type="date" data-date-format="DD MM YYYY"  max="@DateTime.Now.AddMonths(3)"/>
             <br />
             <br />
             <div class="toRight">מבוגרים</div>

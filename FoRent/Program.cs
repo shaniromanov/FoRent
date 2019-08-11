@@ -25,22 +25,30 @@ namespace FoRent
                 var services = scope.ServiceProvider;
 
                 FoRentContext context = services.GetRequiredService<FoRentContext>();
-                if (context.Availability.Count() > 0 && context.Availability.OrderBy(u => u.Id).FirstOrDefault().NotAvailable < DateTime.Now)
+                if (context.Availability.Count() > 0 && context.Availability.OrderBy(u => u.Id).FirstOrDefault().NotAvailable < DateTime.Now.Date)
                 {
                     foreach (var remove in context.Availability)
                     {
-                        context.Availability.Remove(remove);
-                        
+                        if (remove.NotAvailable < DateTime.Now.Date)
+                        {
+                            context.Availability.Remove(remove);
+                            var lastDate = context.Availability.OrderByDescending(u => u.Id).FirstOrDefault();
+                            DateTime dateTime = lastDate.NotAvailable.AddDays(1);
+                            context.Availability.Add(new Availability() { NotAvailable = dateTime });
+                            context.SaveChanges();
+
+                        }
+
                     }
-                    context.SaveChanges();
+
                 }
                 if (context.Availability.Count() == 0)
                 {
                     DateTime dateTime = DateTime.Now.Date;
-                    
+
                     for (int i = 1; i < 94; i++)
                     {
-                        
+
                         context.Availability.Add(new Availability() { NotAvailable = dateTime });
                         context.SaveChanges();
                         dateTime = dateTime.AddDays(1);
@@ -48,7 +56,7 @@ namespace FoRent
 
                 }
             }
-                host.Run();
+            host.Run();
                 BuildWebHost(args).Run();
         }
 

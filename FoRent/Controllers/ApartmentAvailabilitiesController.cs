@@ -63,29 +63,29 @@ namespace FoRent.Controllers
             if (ModelState.IsValid)
             {
                 ApartmentAvailability apartmentAvailability = new ApartmentAvailability();
-                apartmentAvailability.Apartment = _context.Apartment.OrderByDescending(u => u.Id).FirstOrDefault();
+                apartmentAvailability.Apartment = _context.Apartment.Where(u => u.Id==(int)TempData["Availability"]).FirstOrDefault();
                 var result = from a in _context.ApartmentAvailability
                             where (a.Apartment.Equals(apartmentAvailability.Apartment))&&(a.Availability.NotAvailable.Equals(date))
                             select a;
 
                 if (result.ToList().Count() > 0)
-                    ViewBag.errorTime = "התאריך שבחרת כבר סומן כתפוס";
+                    ViewBag.errorTime = "*התאריך שבחרת כבר סומן כתפוס";
                 else if (date.CompareTo(DateTime.Now.AddMonths(3))>0) {
                     ViewBag.errorTime = "*יש להזין תאריכים בתווך של 3 חודשים מהיום";
                 }
                 else
                 {
-                    var temp = _context.Availability.Where(a => a.NotAvailable.Equals(date)).FirstOrDefault();
+                   
   
-                    apartmentAvailability.Availability = temp;
-                    apartmentAvailability.AvailabilityId = temp.Id;
-                    apartmentAvailability.ApartmentId = apartmentAvailability.Apartment.Id;
+                    apartmentAvailability.Availability = _context.Availability.Where(a => a.NotAvailable.Equals(date)).FirstOrDefault(); ;
+                    apartmentAvailability.AvailabilityId = apartmentAvailability.Availability.Id;
+                    apartmentAvailability.ApartmentId = (int)TempData["Availability"];
                     _context.Add(apartmentAvailability);
                     await _context.SaveChangesAsync();
                     
                 }
 
-                TempData["ApartmentId"] = apartmentAvailability.ApartmentId;
+                TempData["Availability"] = TempData["Availability"];
             }
            
             //ViewData["AvailabilityId"] = new SelectList(_context.Availability, "Id", "Id", apartmentAvailability.AvailabilityId);

@@ -23,8 +23,6 @@ namespace FoRent.Controllers
         // GET: Apartments
         public async Task<IActionResult> Index(string city, DateTime checkIn, DateTime checkOut, int adult, int child)
         {
-            int count = 0;
-            
             ViewBag.NumOfAdult = adult;
             ViewBag.NumOfChild = child;
             ViewBag.City = child;
@@ -41,25 +39,35 @@ namespace FoRent.Controllers
             else if ((checkIn.Equals(check)) && !(checkOut.Equals(check)))
             {
                 ViewBag.ErrorDate = "לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
-                return View();
+                return RedirectToAction("Home");
             }
-            else if (!(checkIn.Equals(check)) && !(checkOut.Equals(check))&& (checkIn.CompareTo(checkOut)>0))
+            else if (!(checkIn.Equals(check)) && !(checkOut.Equals(check))&& (checkIn>checkOut))
             {
                 ViewBag.ErrorDate = "צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
-                return View();
+                return RedirectToAction("Home");
             }
 
             
             
              var result=  from a in _context.Apartment
-                          join b in _context.ApartmentAvailability on a.Id equals b.ApartmentId
-                          where !(b.Availability.NotAvailable>checkIn && b.Availability.NotAvailable < checkOut)
+                          join b in _context.ApartmentAvailability.Include(c=>c.Availability) on a.Id equals b.ApartmentId
+                          where b.Availability.NotAvailable >= checkIn && b.Availability.NotAvailable <= checkOut
                           select a;
-          
+            result.Distinct();
 
 
+            //var minus=result.ToListAsync();
 
-            return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
+            //var db = from a in _context.Apartment
+            //         where a.Id!=minus.Id
+            //         select a;
+            var query = from c in _context.Apartment
+                        where !(from o in result
+                                select o.Id).Contains(c.Id)
+                        select c;
+            
+            
+            return View(await query.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
         }
 
 
@@ -115,7 +123,7 @@ namespace FoRent.Controllers
 
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
-              
+                TempData["Availability"] = apartment.Id;
                 return RedirectToAction("Create","ApartmentAvailabilities");
             }
             ViewBag.Success = false;

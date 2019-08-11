@@ -49,9 +49,12 @@ body.top {
 footer {
     padding-top: 100%;
 }
+.button-home {
+    color: dimgrey;
+}
 
-h4, h1 {
-    text-align:center;
+h4, h1, h3 {
+    text-align: center;
     font-family: 'Ellinia CLM', serif;
 }
 /* Hide/rearrange for smaller screens */
