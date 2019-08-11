@@ -64,7 +64,7 @@
 
             <br />
             <br />
-            <div>עיר</div>
+            <div style="text-align:center">עיר</div>
             <input type="text" name="city" required  oninvalid="this.setCustomValidity('*שדה חובה')"
               oninput="this.setCustomValidity('')" />
             <br />
@@ -72,10 +72,10 @@
             <div class="toRight">צ'אק אאוט</div>
             <div class="toLeft">צ'אק אין </div>
             <br />
-            <p>@ViewBag.ErrorDate</p>
+            
             <input  name="checkOut" class="toRight" type="date" data-date-format="DD MM YYYY" max="@DateTime.Now.AddMonths(3)"/>
             <input name="checkIn" class="toLeft" type="date" data-date-format="DD MM YYYY"  max="@DateTime.Now.AddMonths(3)"/>
-            <br />
+            <p style="color:red">@TempData["ErrorDate"]</p>
             <br />
             <div class="toRight">מבוגרים</div>
             <div class="toLeft">ילדים</div>
@@ -120,7 +120,7 @@
     <hr />
 
     <section class="apartments">
-        <div class="card-deck">
+        @*<div class="card-deck">
             <div class="card">
                 <img src="~/images/bneibrak.jpg" class="card-img-top">
                 <div class="card-body">
@@ -143,11 +143,10 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
-        </div>
-        @*@foreach (var item in Model)
-        {
-            @Html.Partial("~/Views/Apartments/IndexPartial.cshtml", item)
-        }*@
+        </div>*@
+      
+            @Html.Partial("~/Views/Apartments/IndexPartial.cshtml", Model)
+       
 
     </section>
 

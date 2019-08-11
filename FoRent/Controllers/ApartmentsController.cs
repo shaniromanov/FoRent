@@ -38,12 +38,12 @@ namespace FoRent.Controllers
             }
             else if ((checkIn.Equals(check)) && !(checkOut.Equals(check)))
             {
-                ViewBag.ErrorDate = "לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
+                TempData["ErrorDate"] = "לא ניתן להזין צ'אק אאוט ללא צ'אק אין";
                 return RedirectToAction("Home");
             }
             else if (!(checkIn.Equals(check)) && !(checkOut.Equals(check))&& (checkIn>checkOut))
             {
-                ViewBag.ErrorDate = "צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
+                TempData["ErrorDate"] = "צ'אק אאוט חייב להיות מאוחר יותר מהצ'אק אין";
                 return RedirectToAction("Home");
             }
 
@@ -71,9 +71,9 @@ namespace FoRent.Controllers
         }
 
 
-        public IActionResult Home()
+        public async Task<IActionResult> Home()
         {
-            return View();
+            return View(await _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
         }
 
 
