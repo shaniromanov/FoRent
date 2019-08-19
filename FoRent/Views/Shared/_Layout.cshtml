@@ -3,59 +3,64 @@
 @inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+<link rel="stylesheet" href="style.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="footer, address, phone, icons" />
+
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/navbar.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css">
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/css/navbar.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</environment>
+<environment exclude="Development">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</environment>
+<link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200'
+      rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="~/js/site.js"></script>
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+<section class="w3-top">
+    <div class="topnav">
 
-    </environment>
-    <link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200'
-          rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="~/js/site.js"></script>
-    <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
-    <section class="w3-top">
-        <div class="topnav">
+        <div id="menu-nav">
+            <div id="navigation-bar">
+                <ul>
+                    <li><a href="#"><i class="fa fa-rss"></i> <span>Blog</span></a></li>
+                    <li><a href="#"><i class="fa fa-user"></i><span>אודותינו</span></a></li>
+                    <li><a href="#"><i class="fa fa-book"></i><span>צור קשר</span></a></li>
+                    <li><a href="#"><i class="fa fa-handshake"></i><span>שירותים מוצעים</span></a></li>
+                    <li><a href="http://localhost:61537/"><i class="fa fa-home"></i><span>בית</span></a></li>
 
-            <div id="menu-nav">
-                <div id="navigation-bar">
-                    <ul>
-
-                        <li><a href="#"><i class="fa fa-rss"></i> <span>Blog</span></a></li>
-                        <li><a href="#"><i class="fa fa-user"></i><span>אודותינו</span></a></li>
-                        <li><a href="#"><i class="fa fa-book"></i><span>צור קשר</span></a></li>
-                        <li><a href="#"><i class="fa fa-handshake"></i><span>שירותים מוצעים</span></a></li>
-                        <li><a href="#"><i class="fa fa-home"></i><span>בית</span></a></li>
-
-                    </ul>
-                </div>
+                </ul>
             </div>
         </div>
+    </div>
 
-    </section>
-            <head>
+</section>
+<head>
 
-            </head>
+</head>
 <body>
-   
 
 
-        @*@{
+    @*@{
             if (HttpContextAccessor.HttpContext.Session.GetString("Login")==null)
             {
                 @Html.ActionLink("Login ", "Index", "Login", null, new { style = "color:red" })
@@ -72,35 +77,100 @@
         }
 
         <label><a href="/Postad">Post Ad </a></label>*@
-        <div class="container body-content">
-            @RenderBody()
+    <div class="container body-content">
+        @RenderBody()
 
 
-            <footer>
-                <p>&copy; 2019 - FoRent</p>
-            </footer>
+        <footer>
+            <p>&copy; 2019 - FoRent</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+
+        <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+<footer class="footer-distributed">
+
+    <div class="footer-left">
+
+        <h3>Forent<span>ForYou</span></h3>
+
+        <p class="footer-links">
+
+            <a href="#">Blog</a>
+            ·
+            <a href="#">מחירים</a>
+            ·
+            <a href="#">אודותינו</a>
+            ·
+            <a href="#">שירותים מוצעים</a>
+            ·
+            <a href="#">צור קשר</a>
+            ·
+            <a href="http://localhost:61537/">בית</a>
+
+        </p>
+
+        <p class="footer-company-name">webdevtrick &copy; 2019</p>
+    </div>
+
+    <div class="footer-center">
+
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>21 Revolution Street</span> Delhi, India</p>
         </div>
 
-        <environment include="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>+1 555 123456</p>
+        </div>
 
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-            </script>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:support@company.com">contact@ForentForYou.com</a></p>
+        </div>
 
-            <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
-        </environment>
+    </div>
 
-        @RenderSection("Scripts", required: false)
-</body>
+    <div class="footer-right">
+
+        <p class="footer-company-about">
+            <span>About the company</span>
+            Web Dev Trick is a blog for web designers, graphic designers, web developers &amp; SEO Learner.
+        </p>
+
+        <div class="footer-icons">
+
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-github"></i></a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
 </html>

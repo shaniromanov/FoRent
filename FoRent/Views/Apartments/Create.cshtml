@@ -1,18 +1,40 @@
 ﻿@model FoRent.Models.Apartment
 
-<br />
-<br />
-<br />
+
+<style>
+    .container {
+        background-image: url("~/images/unnamed-2-1 (1).jpg");
+        position: center;
+    }
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+    }
+
+    img {
+        margin: 0;
+        width: 100%;
+        position: center;
+        height: auto;
+        opacity: 0.3;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <img src="~/images/background.jpg" alt="Cinque Terre" width="1000" height="300">
+        <div class="center">Centered</div>
+    </div>
+
+</body>
+
 <h1><b>יצירת דירה</b></h1>
 <br />
 <h4>מחירים</h4>
-<br />
-<hr />
-<br />
-<br />
-
-
-
 <div class="row toRight">
     <div class="col-md-4">
 
@@ -42,6 +64,3 @@
 
     </div>
 </div>
-
-
-

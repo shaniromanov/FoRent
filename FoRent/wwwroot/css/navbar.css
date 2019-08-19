@@ -1,8 +1,8 @@
 ﻿
 #menu-nav {
-    max-width:inherit;
+    max-width: inherit;
     margin: 0;
-    background-color: black;
+    background-color: #33383b;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -24,17 +24,17 @@
 
 #navigation-bar a {
     color: white;
-    font-size: 20px;
+    font-size: 17px;
     text-decoration: none;
     text-align: center;
-    padding: 20px 0;
+    padding: 13px 0;
     display: block;
     position: relative;
     transition: all 0.3s ease;
 }
 
     #navigation-bar a:hover {
-        color: #e74c3c;
+        color: #5383d3;
     }
 
     #navigation-bar a::before {
@@ -45,7 +45,7 @@
         left: 50%;
         bottom: 0;
         height: 2px;
-        background-color: #e74c3c;
+        background-color: #5383d3;
     }
 
     #navigation-bar a:hover::before {
