@@ -1,0 +1,21 @@
+﻿@import url('navbar.css');
+.container {
+    background-image: url("~/images/unnamed-2-1 (1).jpg");
+    position: center;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+img {
+    margin: 0;
+    width: 100%;
+    position: center;
+    height: auto;
+    opacity: 0.3;
+}
