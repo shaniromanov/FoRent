@@ -87,7 +87,7 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location)
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location).Include(i => i.Image)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (apartment == null)
             {

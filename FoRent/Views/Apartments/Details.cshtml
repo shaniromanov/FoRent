@@ -119,25 +119,25 @@
         <div class="w3-container" id="apartment">
             <h1 class="w3-text-black" style="text-align:center">הדירה</h1>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House12.jpg" style="width:100%;margin-bottom:-6px">
+                <img src= @Html.DisplayFor(model => model.Image.BedRoom) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
                     
                 </div>
             </div>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House5.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.DiningRoom) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
                
                 </div>
             </div>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House17.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.Ketchen) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
                     
                 </div>
             </div>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House16.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.LivingRoom) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
                     
                 </div>
@@ -146,16 +146,16 @@
         </div>
         <div class="w3-row-padding w3-section">
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House12.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.BedRoom) style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
             </div>
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House5.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.DiningRoom) style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
             </div>
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House17.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.Ketchen) style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
             </div>
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House16.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.LivingRoom) style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
             </div>
         </div>
 
