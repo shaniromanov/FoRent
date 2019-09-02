@@ -53,7 +53,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Address,City")] Location location)
+        public async Task<IActionResult> Create([Bind("Id,Address,City,x,y")] Location location)
         {
             if (ModelState.IsValid)
             {
