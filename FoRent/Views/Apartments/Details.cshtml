@@ -10,17 +10,13 @@
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
     <script type="text/javascript">
+
+    
         $(document).ready(function () {
           
             govmap.createMap('map',
                 {
-                  
-                    onLoad: function showExample() {
-                        govmap.zoomToXY({
-                            x: 176085, y: 657600, level: 8
-                            , marker: true
-                        });
-                    },
+                 
 
                     token: '5a4b8472-b95b-4687-8179-0ccb621c7990',
                     showXY: false,
@@ -31,18 +27,22 @@
                     background: "3",
                     layersMode: 1,
                     zoomButtons: true
-
+               
                 });
 
         });
-
-
-
-
+      
+        function showExample(_x, _y) {
+            govmap.zoomToXY({
+                x: _x, y: _y, level: 8
+                , marker: true
+            });
+        }
+     
     </script>
     
 </head>
-<body>
+<body onload="showExample(@Html.DisplayFor(model => model.Location.x),@Html.DisplayFor(model => model.Location.y))">
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -182,7 +182,7 @@
 
                     <h4><strong>מיקום</strong></h4>
                     <div style="float:left">
-                        <div id="map" style="width:400px;height:400px"></div>
+                        <div id="map" style="width:400px;height:400px" ></div>
 
                     </div>
 
