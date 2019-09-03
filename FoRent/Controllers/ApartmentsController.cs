@@ -56,11 +56,7 @@ namespace FoRent.Controllers
             result.Distinct();
 
 
-            //var minus=result.ToListAsync();
-
-            //var db = from a in _context.Apartment
-            //         where a.Id!=minus.Id
-            //         select a;
+            
             var query = from c in _context.Apartment
                         where !(from o in result
                                 select o.Id).Contains(c.Id)
