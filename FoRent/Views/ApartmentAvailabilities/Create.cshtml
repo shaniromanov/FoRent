@@ -31,7 +31,7 @@
             @ViewBag.exist
 
             <div class="form-group">
-                <input id="btnSave" type="submit" value="סמן תאריך כתפוס" class="btn btn-default" />
+                <button id="btnSave" value="סמן תאריך כתפוס" class="btn btn-default">סמן תאריך כתפוס</button>
             </div>
         </form>
         <div class="form-group">
@@ -45,28 +45,5 @@
 
 @section Scripts {
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
-
-        $(function () {  
-             $("#btnSave").click(function () {  
-            //alert("");  
-                 var form = $(this).parent("form");  
-                 $.ajax({  
-                     type: "POST",  
-                     url: form.attr("asp-action"),
-                     data: form.serialize,
-                     dataType: "application/json; charset=utf-8",
-                     contentType: date,
-                     success: function (response) {
-                         if (response.success) 
-                             alert(response.responseText);
-                        
-                         //swal("התאריך נקלט במערכת", "באפשרותך להזין תאריכים נוספים", "success");
-                     }, 
-                          
-            });  
-            return false;  
-        });  
-    });
-    </script>
+    <script src="~/js/available.js"></script>
 }
