@@ -152,9 +152,11 @@
                 </div>
             </div>
         </div>*@
-      
-            @Html.Partial("~/Views/Apartments/IndexPartial.cshtml", Model)
-       
+        <form action="~/Apartments/Success">
+            <input type="submit" value="סיים" style="min-width:200px" />
+        </form>
+        @Html.Partial("~/Views/Apartments/IndexPartial.cshtml", Model)
+
 
     </section>
 
