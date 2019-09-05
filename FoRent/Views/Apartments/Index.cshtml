@@ -1,20 +1,17 @@
 ﻿@model IEnumerable<FoRent.Models.Apartment>
 
 
-    @{
-        ViewData["Title"] = "Index";
+@{
+    ViewData["Title"] = "Index";
 
-    }
-    @{
+}
 
-        Layout = null;
-    }
- 
-   
 
-    <!DOCTYPE html>
-    <html>
-    <!-- Navbar (sit on top) -->
+
+
+<!DOCTYPE html>
+<html>
+@*<!-- Navbar (sit on top) -->
     <section class="w3-top">
         <section class="w3-bar w3-white w3-card" id="myNavbar">
             <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
@@ -34,26 +31,20 @@
             </a>
         </section>
 
-    </section>
-    <br />
-    <br />
-    <br />
+    </section>*@
 
-    @*var sumPrice=((PriceAdult*QuantityAdult)+(PriceChild*QuantityChild))*@
+@*var sumPrice=((PriceAdult*QuantityAdult)+(PriceChild*QuantityChild))*@
 
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        body, h1, h1, h3, h4, h5, h6 {
-            font-family: "Raleway", Arial, Helvetica, sans-serif
-        }
-    </style>
-    <body dir="rtl" class="w3-light-grey">
-        <!-- Page content -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<body dir="rtl" class="w3-light-grey">
+    @*Page content
         <div class="w3-content" style="max-width:1532px;">
 
             <div class="w3-container w3-margin-top" id="rooms">
@@ -84,10 +75,22 @@
 
             </div>
 
-            </p>
-            <a asp-action="Create">הוסף את מקום הארוח שלך</a>
+            </p>*@
 
-            @*<table class="table">
+    <a asp-action="Create">הוסף את מקום הארוח שלך</a>
+    <div class="w3-col m2">
+        <label><i class="fa fa-search"></i>מיין </label>
+        <select>
+            <option value="order">מהנמוך לגבוה</option>
+            <option value="order">מהגבוה לנמוך</option>
+
+
+        </select>
+    </div>
+    <br />
+    <br />
+
+    @*<table class="table">
         <thead>
             <tr>
                 <th>
@@ -102,35 +105,35 @@
                 <th></th>
             </tr>
         </thead>*@
-            <table>
-            <tbody>
-                @foreach (var item in Model)
-                {
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
 
-                    <div class="card-columns">
+                <div class="card-columns">
 
-                        <div class="w3-third w3-container">
-                            <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
-                            
-                                <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
-                            @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
-                                <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
-                                <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
-                                <p>15m<sup>2</sup></p>
-                                <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-                                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
-                              
-                                
-                               
-                                <p>
-                            </div>
-                        </div>
-                    
+                    <div class="w3-third w3-container">
+                        <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
 
-                }
-                <br />
-            </tbody>
-            </table>
+                        <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
+                        @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
+                        <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
+                        <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+                        <p>15m<sup>2</sup></p>
+                        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+                        <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
+
+
+
+                        <p>
+                    </div>
+                </div>
+
+
+            }
+            <br />
+        </tbody>
+    </table>
 </body>
 
-    </html>
+</html>
