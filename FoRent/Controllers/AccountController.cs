@@ -36,7 +36,7 @@ namespace FoRent.Controllers
             if (_username != null && _password != null && result.ToList().Count > 0)
             {
                 HttpContext.Session.SetString("username", _username);
-                return View("Success");
+                return RedirectToAction("Home", "Apartments");
             }
             else
             {
@@ -51,7 +51,7 @@ namespace FoRent.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("username");
-            return RedirectToAction("Index");
+            return RedirectToAction("Home", "Apartments");
         }
     }
 }

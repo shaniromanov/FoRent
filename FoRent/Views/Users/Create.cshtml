@@ -4,10 +4,16 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>User</h4>
+<br />
+<br />
+<br />
+<h1><b>יצירת משתמש חדש</b></h1>
+<br />
+<h4>הרשם</h4>
+<br />
 <hr />
+<br />
+<br />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -17,6 +23,7 @@
                 <input asp-for="Username" class="form-control" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
+            <p style="color:red">@ViewBag.error</p>
             <div class="form-group">
                 <label asp-for="password" class="control-label"></label>
                 <input asp-for="password" class="form-control" />

@@ -12,11 +12,11 @@
     <title>Success</title>
 </head>
 <body>
-
-    <h3>Success Page</h3>
-    Welcome @Context.Session.GetString("username")
+    @if (User.Identity.IsAuthenticated) { 
+        <h3>Success Page</h3>
+    <span>היי</span>   @Context.Session.GetString("username") 
     <br>
-    <a asp-controller="account" asp-action="logout">Logout</a>
-
+    <a asp-controller="account" asp-action="logout">יציאה מהחשבון</a>
+    }
 </body>
 </html>
