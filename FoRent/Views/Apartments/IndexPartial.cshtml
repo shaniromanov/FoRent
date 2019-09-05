@@ -6,41 +6,46 @@
 
     Layout = null;
 }
-<div dir="rtl" class="w3-light-grey">
+
     <div class="w3-content" style="max-width:1532px;">
 
-        <table>
-            <tbody>
-                @foreach (var item in Model)
-                {
-
-                    <div class="card-columns">
-
-                        <div class="w3-third w3-container">
-                            <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
-
-                            <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
-                            @{ var calculate = item.PriceAdult * 2;}
-                            <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
-                            <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
-                            <p>15m<sup>2</sup></p>
-                            <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-                            <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
-
-
-
-                            <p>
-                        </div>
+        <div class="card-columns">
+            @foreach (var item in Model)
+            {
+                <div class="card" style="width: 22rem;">
+                    <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" class="card-img-top">
+                    <div class="card-body">
+                        @{ var calculate = item.PriceAdult * 2;}
+                        <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Amenities.Description)</h5>
+                        <p class="card-text">@calculate<span> ש"ח</span></p>
+                        <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+                        <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
                     </div>
+                </div>
+                @*<div class="card-columns">
+
+                <div class="w3-third w3-container">
+                    <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
+
+                    <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
+                    @{ var calculate = item.PriceAdult * 2;}
+                    <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
+                    <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+
+                    <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
 
 
-                }
-                <br />
-            </tbody>
-        </table>
-        <br />
+
+                    <p>*@
+                @*</div>
+                </div>*@
+
+
+            }
+
+        </div>
     </div>
-</div>
 
 
 

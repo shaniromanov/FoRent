@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
+using System.Net;
 
 namespace FoRent.Controllers
 {
@@ -48,7 +49,7 @@ namespace FoRent.Controllers
         // GET: ApartmentAvailabilities/Create
         public IActionResult Create()
         {
-            ViewBag.anotherDate = "סמן תאריך כתפוס";
+            //ViewBag.anotherDate = "סמן תאריך כתפוס";
             return View();
         }
 
@@ -59,38 +60,53 @@ namespace FoRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(DateTime date)
         {
-            ViewBag.anotherDate = "סמן תאריך נוסף כתפוס";
-            if (ModelState.IsValid)
+            //ViewBag.anotherDate = "סמן תאריך נוסף כתפוס";
+            ApartmentAvailability apartmentAvailability = new ApartmentAvailability();
+            apartmentAvailability.Apartment = _context.Apartment.Where(u => u.Id == (int)TempData["Availability"]).FirstOrDefault();
+            var result = from a in _context.ApartmentAvailability
+                         where (a.Apartment.Equals(apartmentAvailability.Apartment)) && (a.Availability.NotAvailable.Equals(date))
+                         select a;
+            result.DefaultIfEmpty();
+            if (result.ToList().Count() > 0)
+                ModelState.AddModelError("date", "*התאריך שבחרת כבר סומן כתפוס");
+            else if (date.CompareTo(DateTime.Now.AddMonths(3)) > 0)
             {
-                ApartmentAvailability apartmentAvailability = new ApartmentAvailability();
-                apartmentAvailability.Apartment = _context.Apartment.Where(u => u.Id==(int)TempData["Availability"]).FirstOrDefault();
-                var result = from a in _context.ApartmentAvailability
-                            where (a.Apartment.Equals(apartmentAvailability.Apartment))&&(a.Availability.NotAvailable.Equals(date))
-                            select a;
+                ModelState.AddModelError("date","*יש להזין תאריכים בתווך של 3 חודשים מהיום");
+            }
+            if (!ModelState.IsValid)
+                return Json(new { success = false, responseText = "The attached file is not supported." });
+            //if (ModelState.IsValid)
+            //{
+            //ApartmentAvailability apartmentAvailability = new ApartmentAvailability();
+            //apartmentAvailability.Apartment = _context.Apartment.Where(u => u.Id==(int)TempData["Availability"]).FirstOrDefault();
+            //var result = from a in _context.ApartmentAvailability
+            //            where (a.Apartment.Equals(apartmentAvailability.Apartment))&&(a.Availability.NotAvailable.Equals(date))
+            //            select a;
 
-                if (result.ToList().Count() > 0)
-                    ViewBag.errorTime = "*התאריך שבחרת כבר סומן כתפוס";
-                else if (date.CompareTo(DateTime.Now.AddMonths(3))>0) {
-                    ViewBag.errorTime = "*יש להזין תאריכים בתווך של 3 חודשים מהיום";
-                }
-                else
-                {
-                   
-  
-                    apartmentAvailability.Availability = _context.Availability.Where(a => a.NotAvailable.Equals(date)).FirstOrDefault(); ;
+            //if (result.ToList().Count() > 0)
+            //    ViewBag.errorTime = "*התאריך שבחרת כבר סומן כתפוס";
+            //else if (date.CompareTo(DateTime.Now.AddMonths(3))>0) {
+            //    ViewBag.errorTime = "*יש להזין תאריכים בתווך של 3 חודשים מהיום";
+            //}
+            //else
+            //{
+
+
+            apartmentAvailability.Availability = _context.Availability.Where(a => a.NotAvailable.Equals(date)).FirstOrDefault(); ;
                     apartmentAvailability.AvailabilityId = apartmentAvailability.Availability.Id;
                     apartmentAvailability.ApartmentId = (int)TempData["Availability"];
                     _context.Add(apartmentAvailability);
                     await _context.SaveChangesAsync();
                     
-                }
+                //}
 
                 TempData["Availability"] = TempData["Availability"];
-            }
-           
-            //ViewData["AvailabilityId"] = new SelectList(_context.Availability, "Id", "Id", apartmentAvailability.AvailabilityId);
-            return View();
+            var response= Json(new { success = true, responseText = "Your message successfuly sent!" });
+            return response;
         }
+         
+        
+
 
         // GET: ApartmentAvailabilities/Edit/5
         public async Task<IActionResult> Edit(int? id)

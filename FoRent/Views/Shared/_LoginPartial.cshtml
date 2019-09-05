@@ -1,0 +1,30 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+
+@if (Context.Session.GetString("username")!=null)
+{
+    <text>
+
+        <p> הי @Context.Session.GetString("username"),</p>
+        @using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", style = "display:inline" }))
+        {
+        <button type="button" class="btn btn-light">
+            <a asp-controller="account" asp-action="logout">יציאה מהחשבון</a>
+        </button>
+
+        }
+    </text>
+}
+else
+{
+    <button id="flip" type="button" class="btn btn-light">כניסה</button>
+    <div id="panel">
+        <button type="button" class="close" aria-label="Close" id="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/css/login.css" />
+        @Html.Partial("~/Views/Account/Index.cshtml")
+    </div>
+    @*@Html.ActionLink("כניסה", "login", "account")*@
+}

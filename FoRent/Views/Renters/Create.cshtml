@@ -27,6 +27,7 @@
                 <input asp-for="Username" class="form-control" /><br />
                 <span asp-validation-for="Username" class="text-danger"></span><br />
             </div>
+            <p>@ViewBag.error</p>
             <div class="form-group float-label-control">
                 <label asp-for="FirstName" class="control-label"></label><br />
                 <input asp-for="FirstName" class="form-control" /><br />

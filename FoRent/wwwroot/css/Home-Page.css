@@ -25,7 +25,7 @@ span {
     position: absolute;
     z-index: 10;
     padding-top: 2%;
-    padding-left: 75%;
+    padding-left: 70%;
 }
 .center {
     text-align: center;
@@ -34,7 +34,9 @@ span {
     padding-top:20%;
     padding: 10px;
 }
-
+.card-columns {
+        column-count: 4;
+}
 
 
 #container {

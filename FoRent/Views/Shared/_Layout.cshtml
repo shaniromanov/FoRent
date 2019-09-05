@@ -6,7 +6,8 @@
 
 
 <head>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/js/available.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -27,7 +28,7 @@
         <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="style.css">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -38,7 +39,7 @@
     </environment>
     <link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200'
           rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
 
@@ -47,7 +48,7 @@
             <div id="menu-nav">
                 <div id="navigation-bar">
                     <ul>
-                        <li><a href="#"><i class="fa fa-rss"></i> <span>Blog</span></a></li>
+                        @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
                         <li><a href="#"><i class="fa fa-user"></i><span>אודותינו</span></a></li>
                         <li><a href="#"><i class="fa fa-book"></i><span>צור קשר</span></a></li>
                         <li><a href="#"><i class="fa fa-handshake"></i><span>שירותים מוצעים</span></a></li>
@@ -59,7 +60,7 @@
 
 </head>
 <body>
-
+  
 
     <div class="container body-content">
         @RenderBody()
@@ -68,9 +69,10 @@
 
     </div>
 
-  
+
 
     @RenderSection("Scripts", required: false)
+
 </body>
 <footer class="footer-distributed">
 
