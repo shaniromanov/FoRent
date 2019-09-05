@@ -32,10 +32,11 @@ namespace FoRent.Controllers
             var result = from u in _context.User
                          where u.Username == _username && u.password == _password
                          select u;
-
+            var role = result.First().GetType().ToString();
             if (_username != null && _password != null && result.ToList().Count > 0)
             {
                 HttpContext.Session.SetString("username", _username);
+                HttpContext.Session.SetString("Role", role);
                 return RedirectToAction("Home", "Apartments");
             }
             else
