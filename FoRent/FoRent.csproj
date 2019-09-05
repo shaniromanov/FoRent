@@ -45,7 +45,7 @@
     <Content Update="Views\Apartments\IndexPartial.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Apartments\Search.cshtml">
+    <Content Update="Views\Apartments\SpecialIndex.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Images\Upload_Image.cshtml">

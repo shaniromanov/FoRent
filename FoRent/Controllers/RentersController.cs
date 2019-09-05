@@ -12,7 +12,7 @@ namespace FoRent.Controllers
     public class RentersController : Controller
     {
         private readonly FoRentContext _context;
-
+        public static string UserRole = null;
         public RentersController(FoRentContext context)
         {
             _context = context;
@@ -60,7 +60,7 @@ namespace FoRent.Controllers
                 var result = from u in _context.Renter
                              where u.Username == renter.Username
                              select u;
-                var list = result.ToList().DefaultIfEmpty();
+                var list = result.ToList();
                 if (list.Count() > 0)
                 {
                     ViewBag.error = "שם משתמש זה כבר קיים במערכת";
@@ -68,6 +68,7 @@ namespace FoRent.Controllers
                 }
                 _context.Add(renter);
                 await _context.SaveChangesAsync();
+                UserRole = "Owner";
                 return RedirectToAction("Create","Locations");
             }
             return View(renter);

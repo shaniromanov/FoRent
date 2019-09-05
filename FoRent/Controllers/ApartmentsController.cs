@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
+using Microsoft.AspNetCore.Http;
 
 
 
@@ -129,9 +130,13 @@ namespace FoRent.Controllers
   
             
         
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> SpecialIndex()
         {
-            return View(await _context.Apartment.Where(p => p.Location.City.Contains((String)TempData["City"])&&((p.Amenities.NumOfPersons)>=((int)TempData["Adult"]+ (int)TempData["Child"]))).ToListAsync());
+            var result = from a in _context.Apartment
+                         where a.Renter.Username== HttpContext.Session.GetString("username")
+                         select a;
+            result.DefaultIfEmpty();
+            return View(await result.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
         }
 
 

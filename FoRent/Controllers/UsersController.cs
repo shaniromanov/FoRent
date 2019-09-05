@@ -13,7 +13,7 @@ namespace FoRent.Controllers
     public class UsersController : Controller
     {
         private readonly FoRentContext _context;
-
+        public static string UserRole = null;
         public UsersController(FoRentContext context)
         {
             _context = context;
@@ -98,6 +98,7 @@ namespace FoRent.Controllers
                 }
                 _context.Add(user);
                 await _context.SaveChangesAsync();
+                UserRole = "Client";
                 return RedirectToAction(nameof(Index));
             }
             return View(user);

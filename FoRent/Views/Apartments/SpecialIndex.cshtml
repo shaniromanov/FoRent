@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FoRent.Models.Apartment>
+
+
+<h1>הדירות שלך</h1>
+
+
+<hr />
+<div class="w3-content" style="max-width:1532px;">
+
+    <div class="card-columns">
+        @foreach (var item in Model)
+            {
+        <div class="card" style="width: 22rem;">
+            <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" class="card-img-top">
+            <div class="card-body">
+                @{ var calculate = item.PriceAdult * 2;}
+                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Amenities.Description)</h5>
+                <p class="card-text">@calculate<span> ש"ח</span></p>
+                <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">צפה בדף הדירה</a></button>
+                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Edit" asp-route-id="@item.Id">ערוך דירה</a></button>
+                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Delete" asp-route-id="@item.Id">מחוק דירה</a></button>
+            </div>
+        </div>
+
+            }
+
+    </div>
+</div>
+
+
+
