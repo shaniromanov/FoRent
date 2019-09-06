@@ -21,7 +21,21 @@ namespace FoRent.Controllers
         {
             _context = context;
         }
+        // GET: Apartments/EditControl
+        public IActionResult EditControl(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            ViewBag.id = id;
+            ViewBag.amenities = _context.Apartment.Where(a => a.Id == id).Select(a => a.Amenities.Id).First().ToString();
+            ViewBag.policy = _context.Apartment.Where(a => a.Id == id).Select(a => a.Policy.Id).First().ToString();
+            ViewBag.location = _context.Apartment.Where(a => a.Id == id).Select(a => a.Location.Id).First().ToString();
+            ViewBag.image = _context.Apartment.Where(a => a.Id == id).Select(a => a.Image.Id).First().ToString();
+            return View();
+        }
         // GET: Apartments
         public async Task<IActionResult> Index(string city, DateTime checkIn, DateTime checkOut, int adult, int child)
         {
@@ -151,12 +165,7 @@ namespace FoRent.Controllers
             return View(await result.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
         }
         // GET: Apartments/EditControl
-        public IActionResult EditControl(int id)
-        {
-            ViewBag.id=id;
-            return View();
-
-        }
+    
 
         // GET: Apartments/Edit/5
         public async Task<IActionResult> Edit(int? id)
