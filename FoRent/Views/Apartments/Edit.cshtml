@@ -5,16 +5,17 @@
 <br />
 <h1><b>עריכת דירה</b></h1>
 <br />
-<h4>מחירים</h4>
+
 <br />
-<hr />
-<br />
-<br />
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <h4><u>מחירים</u></h4>
+            <br />
+            <br />
             <div class="form-group">
                 <label asp-for="PriceAdult" class="control-label"></label>
                 <input asp-for="PriceAdult" class="form-control" />
@@ -25,11 +26,120 @@
                 <input asp-for="PriceChild" class="form-control" />
                 <span asp-validation-for="PriceChild" class="text-danger"></span>
             </div>
+            <br />
+            <h4><u>שירותים מוצעים</u></h4>
+            <br />
+            <br />
+         
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <label asp-for="Amenities.Accessibility" class="control-label"></label>
+                <input asp-for="Amenities.Accessibility" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.Accessibility)"/>
+                <span asp-validation-for="Amenities.Accessibility" class="text-danger"></span>
             </div>
-        </form>
+            <div class="form-group">
+                <label asp-for="Amenities.AirConditioning" class="control-label"></label>
+                <input asp-for="Amenities.AirConditioning" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.AirConditioning)"/>
+                <span asp-validation-for="Amenities.AirConditioning" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.Balcony" class="control-label"></label>
+                <input asp-for="Amenities.Balcony" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.Balcony)"/>
+                <span asp-validation-for="Amenities.Balcony" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Amenities.HotWater" class="control-label"></label>
+                <input asp-for="Amenities.HotWater" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.HotWater)" />
+                <span asp-validation-for="Amenities.HotWater" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.Parking" class="control-label"></label>
+                <input asp-for="Amenities.Parking" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.Parking)" />
+                <span asp-validation-for="Amenities.Parking" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.Plata" class="control-label"></label>
+                <input asp-for="Amenities.Plata" class="form-control" />
+                <span asp-validation-for="Amenities.HotWater" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.Wifi" class="control-label"></label>
+                <input asp-for="Amenities.Wifi" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.Wifi)"/>
+                <span asp-validation-for="Amenities.Wifi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.NumOfPersons" class="control-label"></label>
+                <input asp-for="Amenities.NumOfPersons" class="form-control" value=@Html.DisplayFor(modelItem => Model.Amenities.NumOfPersons)/>
+                <span asp-validation-for="Amenities.NumOfPersons" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.NumOfRooms" class="control-label"></label>
+                <input asp-for="Amenities.NumOfRooms" class="form-control" />
+                <span asp-validation-for="Amenities.NumOfRooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.Comment" class="control-label"></label>
+                <input asp-for="Amenities.Comment" class="form-control"  value="@Html.DisplayFor(modelItem => Model.Amenities.Comment)"/>
+                <span asp-validation-for="Amenities.Comment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amenities.Description" class="control-label"></label>
+                <input asp-for="Amenities.Description" class="form-control" value="@Html.DisplayFor(modelItem => Model.Amenities.Comment)"/>
+                <span asp-validation-for="Amenities.Description" class="text-danger"></span>
+            </div>
+            <br />
+            <h4><u>מדיניות</u></h4>
+            <br />
+            <br />
+            <div class="form-group">
+                <label asp-for="Policy.Cancellations" class="control-label"></label>
+                <input asp-for="Policy.Cancellations" class="form-control" />
+                <span asp-validation-for="Policy.Cancellations" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Policy.Checkin" class="control-label"></label>
+                <input asp-for="Policy.Checkin" class="form-control" />
+                <span asp-validation-for="Policy.Checkin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Policy.Checkout" class="control-label"></label>
+                <input asp-for="Policy.Checkout" class="form-control" />
+                <span asp-validation-for="Policy.Checkout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Policy.Extrabeds" class="control-label"></label>
+                <input asp-for="Policy.Extrabeds" class="form-control" />
+                <span asp-validation-for="Policy.Extrabeds" class="text-danger"></span>
+            </div>
+            <br />
+            <h4><u>מיקום</u></h4>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="hidden" asp-for="Location.x" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Location.y" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.Address" class="control-label"></label>
+                <input asp-for="Location.Address" class="form-control" />
+                <span asp-validation-for="Location.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.City" class="control-label"></label>
+                <input asp-for="Location.City" class="form-control" />
+                <span asp-validation-for="Location.City" class="text-danger"></span>
+            </div>
+ 
+
+
+    <div class="form-group">
+        <input type="submit" value="שמור שינויים" class="btn btn-default" />
     </div>
+    </form>
+</div>
 </div>
 
 

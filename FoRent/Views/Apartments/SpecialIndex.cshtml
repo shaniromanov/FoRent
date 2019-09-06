@@ -18,7 +18,7 @@
                 <p class="card-text">@calculate<span> ש"ח</span></p>
                 <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
                 <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">צפה בדף הדירה</a></button>
-                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Edit" asp-route-id="@item.Id">ערוך דירה</a></button>
+                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="EditControl" asp-route-id="@item.Id">ערוך דירה</a></button>
                 <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Delete" asp-route-id="@item.Id">מחוק דירה</a></button>
             </div>
         </div>

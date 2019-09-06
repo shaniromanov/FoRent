@@ -1,0 +1,13 @@
+﻿
+@model FoRent.Models.Apartment
+
+<br />
+<br />
+<br />
+<h1><b>עריכת הדירה שלך</b></h1>
+<br />
+<br />
+<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Apartments" asp-action="Edit" asp-route-id="@ViewBag.id">ערוך מחיר</a></button>
+<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="ApartmentAmenities" asp-action="Edit" asp-route-id="@ViewBag.amenities">ערוך מאפיינים</a></button>
+<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Policies" asp-action="Edit" asp-route-id="@ViewBag.id">ערוך מדיניות</a></button>
+

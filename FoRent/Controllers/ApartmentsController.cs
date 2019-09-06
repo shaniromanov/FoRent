@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
 using Microsoft.AspNetCore.Http;
+using FoRent.Controllers;
 
 
 
@@ -149,7 +150,13 @@ namespace FoRent.Controllers
             result.DefaultIfEmpty();
             return View(await result.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
         }
+        // GET: Apartments/EditControl
+        public IActionResult EditControl(int id)
+        {
+            ViewBag.id=id;
+            return View();
 
+        }
 
         // GET: Apartments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -172,7 +179,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild,Amenties")] Apartment apartment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild,Amenties,Policy,Location,Image,ApartmentAvailabilities")] Apartment apartment)
         {
             if (id != apartment.Id)
             {
