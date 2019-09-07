@@ -34,6 +34,7 @@ namespace FoRent.Controllers
             ViewBag.policy = _context.Apartment.Where(a => a.Id == id).Select(a => a.Policy.Id).First().ToString();
             ViewBag.location = _context.Apartment.Where(a => a.Id == id).Select(a => a.Location.Id).First().ToString();
             ViewBag.image = _context.Apartment.Where(a => a.Id == id).Select(a => a.Image.Id).First().ToString();
+            TempData["ApartmentId"] = id;
             return View();
         }
         // GET: Apartments

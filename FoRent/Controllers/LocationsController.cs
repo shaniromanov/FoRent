@@ -110,7 +110,7 @@ namespace FoRent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("EditControl", "Apartments", TempData["ApartmentId"]);
             }
             return View(location);
         }
