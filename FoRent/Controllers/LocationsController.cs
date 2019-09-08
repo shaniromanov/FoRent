@@ -110,7 +110,9 @@ namespace FoRent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("EditControl", "Apartments", TempData["ApartmentId"]);
+                var apartmentId = _context.Apartment.Include(l => l.Location).Where(a => a.Location.Id == id).Select(i => i.Id).FirstOrDefault();
+
+                return RedirectToAction("EditControl", "Apartments", new { id = apartmentId });
             }
             return View(location);
         }

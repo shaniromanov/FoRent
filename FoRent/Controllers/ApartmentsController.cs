@@ -214,7 +214,9 @@ namespace FoRent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+               
+
+                return RedirectToAction("EditControl", "Apartments", new { id = id });
             }
             return View(apartment);
         }
@@ -242,10 +244,28 @@ namespace FoRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var apartment = await _context.Apartment.SingleOrDefaultAsync(m => m.Id == id);
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(p => p.Policy).Include(i => i.Image).SingleOrDefaultAsync(m => m.Id == id);
+            var location = _context.Location.Where(n => n.Id == apartment.Location.Id).FirstOrDefault();
+            var amenities= _context.ApartmentAmenities.Where(n => n.Id == apartment.Amenities.Id).FirstOrDefault();
+            var image = _context.Image.Where(n => n.Id == apartment.Image.Id).FirstOrDefault();
+            var policy = _context.Policy.Where(n => n.Id == apartment.Policy.Id).FirstOrDefault();
+            var available = _context.ApartmentAvailability.Where(n => n.ApartmentId == id).ToList();
+
             _context.Apartment.Remove(apartment);
+            
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+           
+            _context.Location.Remove(location);
+            _context.ApartmentAmenities.Remove(amenities);
+            _context.Image.Remove(image);
+            _context.Policy.Remove(policy);
+            foreach(ApartmentAvailability n in available)
+            {
+                _context.ApartmentAvailability.Remove(n);
+            }
+           
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Home));
         }
 
         public IActionResult Success()

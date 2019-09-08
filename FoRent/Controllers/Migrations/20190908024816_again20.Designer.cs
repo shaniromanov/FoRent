@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190908024816_again20")]
+    partial class again20
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,19 +275,23 @@ namespace FoRent.Migrations
                 {
                     b.HasOne("FoRent.Models.ApartmentAmenities", "Amenities")
                         .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "AmenitiesId");
+                        .HasForeignKey("FoRent.Models.Apartment", "AmenitiesId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Image", "Image")
                         .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "ImageId");
+                        .HasForeignKey("FoRent.Models.Apartment", "ImageId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Location", "Location")
                         .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "LocationId");
+                        .HasForeignKey("FoRent.Models.Apartment", "LocationId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Policy", "Policy")
                         .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "PolicyId");
+                        .HasForeignKey("FoRent.Models.Apartment", "PolicyId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany("Apartments")

@@ -46,7 +46,7 @@ namespace FoRent.Models
         [Display(Name = "הערות נוספות")]
         public string Comment { get; set; }
 
-        public ICollection<Apartment> Apartments { get; set; }
+        public Apartment Apartment { get; set; }
         //
     }
 }

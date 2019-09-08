@@ -26,7 +26,7 @@ namespace FoRent.Models
         public bool Extrabeds { get; set; }
 
 
-        public ICollection<Apartment> Apartments { get; set; }
+        public Apartment Apartment { get; set; }
 
 
 

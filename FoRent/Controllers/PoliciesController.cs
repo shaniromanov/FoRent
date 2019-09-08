@@ -109,7 +109,9 @@ namespace FoRent.Models
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var apartmentId = _context.Apartment.Include(l => l.Policy).Where(a => a.Policy.Id == id).Select(i => i.Id).FirstOrDefault();
+
+                return RedirectToAction("EditControl", "Apartments", new { id = apartmentId });
             }
             return View(policy);
         }
