@@ -40,19 +40,30 @@
     </environment>
     <link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200'
           rel='stylesheet' type='text/css'>
-
+    <script src="~/js/indexLogin.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
-
+ 
     <script src="~/js/site.js"></script>
     <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
             <div id="menu-nav">
                 <div id="navigation-bar">
                     <ul>
                         @*@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")*@
-                        <li><a href="#"><i class="fa fa-user"></i><span>אודותינו</span></a></li>
-                        <li><a href="#"><i class="fa fa-book"></i><span>צור קשר</span></a></li>
-                        <li><a href="#"><i class="fa fa-handshake"></i><span>שירותים מוצעים</span></a></li>
+
+                        @if (Context.Session.GetString("username") != null)
+                        {
+                            <li><a asp-controller="account" asp-action="logout"><i class="fa fa-user"></i> <span>יציאה מהחשבון</span></a></li>
+
+                        }
+                        else
+                        {
+                            <li><a asp-controller="account" asp-action="index" ><i class="fa fa-user"></i> <span>כניסה</span></a></li>
+                           
+                        }
+                        <li><a href="#"><i class="fa fa-book"></i><span>אודותינו</span></a></li>
+                        <li><a href="#"><i class="fa fa-phone"></i><span>צור קשר</span></a></li>
+                        <li><a href="#"><i class="fa fa-bed"></i><span>שירותים מוצעים</span></a></li>
                         <li><a href="http://localhost:61537/"><i class="fa fa-home"></i><span>בית</span></a></li>
 
                     </ul>
@@ -61,7 +72,7 @@
 
 </head>
 <body>
-  
+
 
     <div class="container body-content">
         @RenderBody()
@@ -70,7 +81,7 @@
 
     </div>
 
-
+    <script src="~/js/indexLogin.js"></script>
 
     @RenderSection("Scripts", required: false)
 
