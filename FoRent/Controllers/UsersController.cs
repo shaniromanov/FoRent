@@ -90,15 +90,15 @@ namespace FoRent.Controllers
                 var result= from u in _context.User
                             where u.Username == user.Username
                             select u;
-                var list=result.ToList().DefaultIfEmpty();
-                if (list.Count() > 0)
+                var tempUser=result.FirstOrDefault();
+                if (tempUser != null)
                 {
                     ViewBag.error = "שם משתמש זה כבר קיים במערכת";
                     return View();
                 }
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Home", "Apartments");
             }
             return View(user);
         }

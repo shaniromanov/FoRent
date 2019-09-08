@@ -11,6 +11,7 @@ using FoRent.Controllers;
 
 
 
+
 namespace FoRent.Controllers
 {
     public class ApartmentsController : Controller
@@ -138,7 +139,33 @@ namespace FoRent.Controllers
         {
             if (ModelState.IsValid)
             {
-                apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                var check = HttpContext.Session.GetString("Role");
+                if (HttpContext.Session.GetString("username") != null)
+                    if (HttpContext.Session.GetString("Role") == "FoRent.Models.Renter")
+                     {
+                    apartment.Renter = _context.Renter.Where(r => r.Username == HttpContext.Session.GetString("username")).FirstOrDefault();
+                     }
+                    else
+                    {
+                        var temp=_context.User.Where(r => r.Username == HttpContext.Session.GetString("username")).FirstOrDefault();
+                        var renter = new Renter();
+                        renter.FirstName = temp.FirstName;
+                        renter.LastName = temp.LastName;
+                        renter.Mail = temp.Mail;
+                        renter.password = temp.password;
+                        renter.Username = temp.Username;
+                        renter.Phone = temp.Phone;
+                        renter.Orders = temp.Orders;
+                        _context.Add(renter);
+                        _context.User.Remove(temp);
+                        await _context.SaveChangesAsync();
+                        apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                        HttpContext.Session.SetString("Role", apartment.Renter.GetType().ToString());
+                    }
+                else
+                {
+                    apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                }
                 apartment.Location = _context.Location.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Amenities = _context.ApartmentAmenities.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Policy = _context.Policy.OrderByDescending(u => u.Id).FirstOrDefault();
@@ -148,6 +175,7 @@ namespace FoRent.Controllers
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
                 TempData["Availability"] = apartment.Id;
+              
                 return RedirectToAction("Create","ApartmentAvailabilities");
             }
             ViewBag.Success = false;

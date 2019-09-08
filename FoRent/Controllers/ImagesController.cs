@@ -81,32 +81,20 @@ namespace FoRent.Controllers
             //< Copy File to Target >
 
             using (var stream = new FileStream(path_to_Images1, FileMode.Create))
-
             {
-
                 await file1.CopyToAsync(stream);
-
             }
             using (var stream = new FileStream(path_to_Images2, FileMode.Create))
-
             {
-
                 await file2.CopyToAsync(stream);
-
             }
             using (var stream = new FileStream(path_to_Images3, FileMode.Create))
-
             {
-
                 await file3.CopyToAsync(stream);
-
             }
             using (var stream = new FileStream(path_to_Images4, FileMode.Create))
-
             {
-
                 await file4.CopyToAsync(stream);
-
             }
 
             //</ Copy File to Target >
@@ -196,7 +184,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,LivingRoom,DiningRoom,BedRoom,Ketchen")] Image image)
+        public async Task<IActionResult> Edit(int id, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4, Image image)
         {
             if (id != image.Id)
             {
@@ -207,6 +195,50 @@ namespace FoRent.Controllers
             {
                 try
                 {
+                    string path_Root = _appEnvironment.WebRootPath;
+
+                    if (file1 != null && file1.Length != 0)
+                    {
+
+                        string path_to_Images1 = path_Root + "\\User_Files\\Images\\" + file1.FileName;
+                        using (var stream = new FileStream(path_to_Images1, FileMode.Create))
+                        {
+                            await file1.CopyToAsync(stream);
+                        }
+                        image.BedRoom = "/User_Files/Images/" + Path.GetFileName(file1.FileName);
+                    }
+                    else
+                        image.BedRoom = _context.Image.Where(i => i.Id == id).Select(i => i.BedRoom).FirstOrDefault();
+                    if (file2 != null && file2.Length != 0) {
+                        string path_to_Images2 = path_Root + "\\User_Files\\Images\\" + file2.FileName;
+                       using (var stream = new FileStream(path_to_Images2, FileMode.Create))
+                      {
+                          await file2.CopyToAsync(stream);
+                       }
+                    image.DiningRoom = "/User_Files/Images/" + Path.GetFileName(file2.FileName);
+                    }
+                    else
+                        image.DiningRoom = _context.Image.Where(i => i.Id == id).Select(i => i.DiningRoom).FirstOrDefault();
+                    if (file3 != null && file3.Length != 0) {
+                        string path_to_Images3 = path_Root + "\\User_Files\\Images\\" + file3.FileName;
+                        using (var stream = new FileStream(path_to_Images3, FileMode.Create))
+                        {
+                            await file3.CopyToAsync(stream);
+                        }
+                        image.Ketchen = "/User_Files/Images/" + Path.GetFileName(file3.FileName);
+                    }
+                    else
+                        image.Ketchen = _context.Image.Where(i => i.Id == id).Select(i => i.Ketchen).FirstOrDefault();
+                    if (file4 != null && file4.Length != 0) {
+                        string path_to_Images4 = path_Root + "\\User_Files\\Images\\" + file4.FileName;
+                        using (var stream = new FileStream(path_to_Images4, FileMode.Create))
+                        {
+                            await file4.CopyToAsync(stream);
+                        }
+                        image.LivingRoom = "/User_Files/Images/" + Path.GetFileName(file4.FileName);
+                    }
+                    else
+                        image.LivingRoom = _context.Image.Where(i => i.Id == id).Select(i => i.LivingRoom).FirstOrDefault();
                     _context.Update(image);
                     await _context.SaveChangesAsync();
                 }

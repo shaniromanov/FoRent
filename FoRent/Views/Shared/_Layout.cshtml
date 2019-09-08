@@ -49,8 +49,7 @@
             <div id="menu-nav">
                 <div id="navigation-bar">
                     <ul>
-                        @*@Html.Partial("~/Views/Shared/_LoginPartial.cshtml")*@
-
+      
                         @if (Context.Session.GetString("username") != null)
                         {
                             <li><a asp-controller="account" asp-action="logout"><i class="fa fa-user"></i> <span>יציאה מהחשבון</span></a></li>
@@ -81,7 +80,7 @@
 
     </div>
 
-    <script src="~/js/indexLogin.js"></script>
+
 
     @RenderSection("Scripts", required: false)
 

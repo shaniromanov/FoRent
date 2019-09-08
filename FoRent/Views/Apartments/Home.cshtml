@@ -112,13 +112,22 @@
 
                     </div>
                 </div>
+                <br />
             }
-            <br />
-            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
 
-            <button type="button" class="btn btn-light">
-                <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
-            </button>
+            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
+            @if (Context.Session.GetString("username") != null)
+            {
+                <button type="button" class="btn btn-light">
+                    <a class="button-home" asp-controller="Locations" asp-action="Create">הוסף את פרטי הדירה שלך</a>
+                </button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-light">
+                    <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
+                </button>
+            }
 
             <button type="button" class="btn btn-light">
                 <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
