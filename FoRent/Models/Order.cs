@@ -31,7 +31,7 @@ namespace FoRent.Models
 
         public Order Orders { get; set; }
 
-        public int PaymentId { get; set; }
-        public OrderPayment OrderPayment { get; set; }
+        public int? PaymentId { get; set; }
+        public OrderPayment Payment { get; set; }
     }
 }

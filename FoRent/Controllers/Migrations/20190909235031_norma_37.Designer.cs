@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190909235031_norma_37")]
+    partial class norma_37
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,9 +171,11 @@ namespace FoRent.Migrations
 
                     b.Property<DateTime>("CheckOut");
 
+                    b.Property<int?>("OrderPaymentId");
+
                     b.Property<int?>("OrdersId");
 
-                    b.Property<int?>("PaymentId");
+                    b.Property<int>("PaymentId");
 
                     b.Property<int>("QuantityAdult");
 
@@ -186,9 +189,9 @@ namespace FoRent.Migrations
 
                     b.HasIndex("ApartmentId");
 
-                    b.HasIndex("OrdersId");
+                    b.HasIndex("OrderPaymentId");
 
-                    b.HasIndex("PaymentId");
+                    b.HasIndex("OrdersId");
 
                     b.HasIndex("RenterId");
 
@@ -315,13 +318,13 @@ namespace FoRent.Migrations
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("FoRent.Models.OrderPayment", "OrderPayment")
+                        .WithMany()
+                        .HasForeignKey("OrderPaymentId");
+
                     b.HasOne("FoRent.Models.Order", "Orders")
                         .WithMany()
                         .HasForeignKey("OrdersId");
-
-                    b.HasOne("FoRent.Models.OrderPayment", "Payment")
-                        .WithMany()
-                        .HasForeignKey("PaymentId");
 
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany()

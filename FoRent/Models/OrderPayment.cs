@@ -11,13 +11,13 @@ namespace FoRent.Models
         public int OrderPaymentId { get; set; }
 
         [Display(Name = "מספר כרטיס אשראי")]
-        public int CC_Number { get; set; }
+        public string CC_Number { get; set; }
 
         [Display(Name = "תוקף כרטיס אשראי")]
-        public int CC_Exp { get; set; }
+        public string CC_Exp { get; set; }
 
         [Display(Name = "3 ספרות בגב הכרטיס")]
-        public DateTime CC_CVV { get; set; }
+        public string CC_CVV { get; set; }
 
     }
 }

@@ -20,7 +20,7 @@ namespace FoRent.Controllers
     }
 
     // GET: Orders
-    [Authorize]
+    //[Authorize]
     public async Task<IActionResult> Index()
     {
       return View(await _context.Order.ToListAsync());
