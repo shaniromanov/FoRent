@@ -36,7 +36,7 @@ namespace FoRent.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("Id,Username,password")] User user)
+        public IActionResult Login([Bind("Id,Username,password")] User user)
         {
             var result = from u in _context.User
                          where u.Username == user.Username && u.password == user.password
@@ -50,8 +50,6 @@ namespace FoRent.Controllers
             }
 
             ViewBag.Fail = true;
-
-
 
             return View(user);
         }
@@ -89,9 +87,18 @@ namespace FoRent.Controllers
         {
             if (ModelState.IsValid)
             {
+                var result= from u in _context.User
+                            where u.Username == user.Username
+                            select u;
+                var tempUser=result.FirstOrDefault();
+                if (tempUser != null)
+                {
+                    ViewBag.error = "שם משתמש זה כבר קיים במערכת";
+                    return View();
+                }
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Home", "Apartments");
             }
             return View(user);
         }

@@ -111,7 +111,9 @@ namespace FoRent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                var apartmentId = _context.Apartment.Include(l => l.Amenities).Where(a => a.Amenities.Id == id).Select(i => i.Id).FirstOrDefault();
+
+                return RedirectToAction("EditControl", "Apartments", new { id = apartmentId });
             }
             return View(apartmentAmenities);
         }

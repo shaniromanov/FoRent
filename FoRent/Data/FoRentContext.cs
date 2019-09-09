@@ -47,9 +47,9 @@ namespace FoRent.Models
                 .HasOne(pt => pt.Apartment)
                 .WithMany(p => p.ApartmentAvailabilities)
                 .HasForeignKey(pt => pt.ApartmentId);
-
+            
         }
-
+      
         public DbSet<FoRent.Models.Apartment> Apartment { get; set; }
         public DbSet<FoRent.Models.Availability> Availability { get; set; }
         public DbSet<FoRent.Models.ApartmentAvailability> ApartmentAvailability { get; set; }

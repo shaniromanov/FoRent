@@ -6,14 +6,17 @@
 
 
 <head>
-    <link href="~/css/review.css" rel="stylesheet" />
-    <link href="~/css/location.css" rel="stylesheet" />
-    <script src="~/js/location.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-    <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/js/available.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
     <link rel="stylesheet" href="style.css">
@@ -24,14 +27,15 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+
         <link rel="stylesheet" href="~/css/navbar.css" />
         <link rel="stylesheet" href="~/css/footer.css" />
         <link href="~/css/location.css" rel="stylesheet" />
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="style.css">
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -42,34 +46,38 @@
     </environment>
     <link href='http://serve.fontsproject.com/css?family=Ellinia+CLM:200'
           rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="~/js/indexLogin.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
 
     <script src="~/js/site.js"></script>
     <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
-    <section class="w3-top">
-        <div class="topnav">
+    <div id="menu-nav">
+        <div id="navigation-bar">
+            <ul>
 
-            <div id="menu-nav">
-                <div id="navigation-bar">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-rss"></i> <span>Blog</span></a></li>
-                        <li><a href="#"><i class="fa fa-user"></i><span>אודותינו</span></a></li>
-                        <li><a href="#"><i class="fa fa-book"></i><span>צור קשר</span></a></li>
-                        <li><a href="#"><i class="fa fa-handshake"></i><span>שירותים מוצעים</span></a></li>
-                        <li><a href="http://localhost:61537/"><i class="fa fa-home"></i><span>בית</span></a></li>
+                @if (Context.Session.GetString("username") != null)
+                {
+                    <li><a asp-controller="account" asp-action="logout"><i class="fa fa-user"></i> <span>יציאה מהחשבון</span></a></li>
 
-                    </ul>
-                </div>
-            </div>
+                }
+                else
+                {
+                    <li><a asp-controller="account" asp-action="index"><i class="fa fa-user"></i> <span>כניסה</span></a></li>
+
+                }
+                <li><a href="#"><i class="fa fa-book"></i><span>אודותינו</span></a></li>
+                <li><a href="#"><i class="fa fa-phone"></i><span>צור קשר</span></a></li>
+                <li><a href="#"><i class="fa fa-bed"></i><span>שירותים מוצעים</span></a></li>
+                <li><a href="http://localhost:61537/"><i class="fa fa-home"></i><span>בית</span></a></li>
+
+            </ul>
         </div>
+    </div>
 
-    </section>
 </head>
 <body>
-
-
+ 
     <div class="container body-content">
         @RenderBody()
 
@@ -77,9 +85,10 @@
 
     </div>
 
-  
+
 
     @RenderSection("Scripts", required: false)
+
 </body>
 <footer class="footer-distributed">
 

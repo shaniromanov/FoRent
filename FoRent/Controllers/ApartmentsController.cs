@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
+using Microsoft.AspNetCore.Http;
+using FoRent.Controllers;
+
 
 
 
@@ -19,7 +22,22 @@ namespace FoRent.Controllers
         {
             _context = context;
         }
+        // GET: Apartments/EditControl
+        public IActionResult EditControl(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            ViewBag.id = id;
+            ViewBag.amenities = _context.Apartment.Where(a => a.Id == id).Select(a => a.Amenities.Id).First().ToString();
+            ViewBag.policy = _context.Apartment.Where(a => a.Id == id).Select(a => a.Policy.Id).First().ToString();
+            ViewBag.location = _context.Apartment.Where(a => a.Id == id).Select(a => a.Location.Id).First().ToString();
+            ViewBag.image = _context.Apartment.Where(a => a.Id == id).Select(a => a.Image.Id).First().ToString();
+            TempData["ApartmentId"] = id;
+            return View();
+        }
         // GET: Apartments
         public async Task<IActionResult> Index(string city, DateTime checkIn, DateTime checkOut, int adult, int child)
         {
@@ -56,11 +74,7 @@ namespace FoRent.Controllers
             result.Distinct();
 
 
-            //var minus=result.ToListAsync();
-
-            //var db = from a in _context.Apartment
-            //         where a.Id!=minus.Id
-            //         select a;
+            
             var query = from c in _context.Apartment
                         where !(from o in result
                                 select o.Id).Contains(c.Id)
@@ -70,7 +84,18 @@ namespace FoRent.Controllers
             return View(await query.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
         }
 
+        //public async Task<IActionResult> Index1(double price)
+        //{
 
+        //    ViewBag.PriceAdult = price;
+        //    var order = from a in _context.Apartment
+        //                orderby a.PriceAdult
+        //                select a;
+
+
+
+        //    return View( _context.Apartment.Include(a => a.PriceAdult));
+        //}
         public async Task<IActionResult> Home()
         {
             return View(await _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
@@ -86,26 +111,9 @@ namespace FoRent.Controllers
             {
                 return NotFound();
             }
-            
-            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location).Include(r => r.Reviews)
+
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location).Include(i => i.Image)
                 .SingleOrDefaultAsync(m => m.Id == id);
-            int sum1 = 0;
-            int sum2 = 0;
-            int sum3 = 0;
-            int sum4 = 0;
-           
-            foreach (var item in apartment.Reviews)
-            {
-               sum1 += item.Location;
-                sum2 += item.Checkin;
-                sum3 += item.Cleanliness;
-                sum4 += item.Price;
-
-                Mm = (sum1 + sum2 + sum3 + sum4) / 4;
-
-            }
-
-
             if (apartment == null)
             {
                 return NotFound();
@@ -131,7 +139,33 @@ namespace FoRent.Controllers
         {
             if (ModelState.IsValid)
             {
-                apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                var check = HttpContext.Session.GetString("Role");
+                if (HttpContext.Session.GetString("username") != null)
+                    if (HttpContext.Session.GetString("Role") == "FoRent.Models.Renter")
+                     {
+                    apartment.Renter = _context.Renter.Where(r => r.Username == HttpContext.Session.GetString("username")).FirstOrDefault();
+                     }
+                    else
+                    {
+                        var temp=_context.User.Where(r => r.Username == HttpContext.Session.GetString("username")).FirstOrDefault();
+                        var renter = new Renter();
+                        renter.FirstName = temp.FirstName;
+                        renter.LastName = temp.LastName;
+                        renter.Mail = temp.Mail;
+                        renter.password = temp.password;
+                        renter.Username = temp.Username;
+                        renter.Phone = temp.Phone;
+                        renter.Orders = temp.Orders;
+                        _context.Add(renter);
+                        _context.User.Remove(temp);
+                        await _context.SaveChangesAsync();
+                        apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                        HttpContext.Session.SetString("Role", apartment.Renter.GetType().ToString());
+                    }
+                else
+                {
+                    apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
+                }
                 apartment.Location = _context.Location.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Amenities = _context.ApartmentAmenities.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Policy = _context.Policy.OrderByDescending(u => u.Id).FirstOrDefault();
@@ -141,6 +175,7 @@ namespace FoRent.Controllers
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
                 TempData["Availability"] = apartment.Id;
+              
                 return RedirectToAction("Create","ApartmentAvailabilities");
             }
             ViewBag.Success = false;
@@ -150,11 +185,16 @@ namespace FoRent.Controllers
   
             
         
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> SpecialIndex()
         {
-            return View(await _context.Apartment.Where(p => p.Location.City.Contains((String)TempData["City"])&&((p.Amenities.NumOfPersons)>=((int)TempData["Adult"]+ (int)TempData["Child"]))).ToListAsync());
+            var result = from a in _context.Apartment
+                         where a.Renter.Username== HttpContext.Session.GetString("username")
+                         select a;
+            result.DefaultIfEmpty();
+            return View(await result.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
         }
-
+        // GET: Apartments/EditControl
+    
 
         // GET: Apartments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -177,7 +217,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild,Amenties")] Apartment apartment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PriceAdult,PriceChild,Amenties,Policy,Location,Image,ApartmentAvailabilities")] Apartment apartment)
         {
             if (id != apartment.Id)
             {
@@ -202,7 +242,9 @@ namespace FoRent.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+               
+
+                return RedirectToAction("EditControl", "Apartments", new { id = id });
             }
             return View(apartment);
         }
@@ -230,10 +272,28 @@ namespace FoRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var apartment = await _context.Apartment.SingleOrDefaultAsync(m => m.Id == id);
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(p => p.Policy).Include(i => i.Image).SingleOrDefaultAsync(m => m.Id == id);
+            var location = _context.Location.Where(n => n.Id == apartment.Location.Id).FirstOrDefault();
+            var amenities= _context.ApartmentAmenities.Where(n => n.Id == apartment.Amenities.Id).FirstOrDefault();
+            var image = _context.Image.Where(n => n.Id == apartment.Image.Id).FirstOrDefault();
+            var policy = _context.Policy.Where(n => n.Id == apartment.Policy.Id).FirstOrDefault();
+            var available = _context.ApartmentAvailability.Where(n => n.ApartmentId == id).ToList();
+
             _context.Apartment.Remove(apartment);
+            
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+           
+            _context.Location.Remove(location);
+            _context.ApartmentAmenities.Remove(amenities);
+            _context.Image.Remove(image);
+            _context.Policy.Remove(policy);
+            foreach(ApartmentAvailability n in available)
+            {
+                _context.ApartmentAvailability.Remove(n);
+            }
+           
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Home));
         }
 
         public IActionResult Success()

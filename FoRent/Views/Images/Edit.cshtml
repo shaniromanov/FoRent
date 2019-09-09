@@ -12,31 +12,30 @@
 <br />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <img src="@Html.DisplayFor(modelItem => modelItem.BedRoom) " style="width:100%" />
+            <input type="file" name="file1" />
+
+
+            <br />
+            <img src="@Html.DisplayFor(modelItem => modelItem.DiningRoom)"style="width:100%" />
+            <input type="file" name="file2" />
+
+
+            <br />
+            <img src="@Html.DisplayFor(modelItem => modelItem.Ketchen)"style="width:100%" />
+            <input type="file" name="file3" />
+
+
+            <br />
+            <img src="@Html.DisplayFor(modelItem => modelItem.LivingRoom)"style="width:100%" />
+            <input type="file" name="file4" />
+
+            <br />
             <div class="form-group">
-                <label asp-for="LivingRoom" class="control-label"></label>
-                <input asp-for="LivingRoom" class="form-control" />
-                <span asp-validation-for="LivingRoom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiningRoom" class="control-label"></label>
-                <input asp-for="DiningRoom" class="form-control" />
-                <span asp-validation-for="DiningRoom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BedRoom" class="control-label"></label>
-                <input asp-for="BedRoom" class="form-control" />
-                <span asp-validation-for="BedRoom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ketchen" class="control-label"></label>
-                <input asp-for="Ketchen" class="form-control" />
-                <span asp-validation-for="Ketchen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="שמור" class="btn btn-default" />
             </div>
         </form>
     </div>

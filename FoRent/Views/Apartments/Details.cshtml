@@ -7,20 +7,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
     <script type="text/javascript">
+
+
         $(document).ready(function () {
-          
+
             govmap.createMap('map',
                 {
-                  
-                    onLoad: function showExample() {
-                        govmap.zoomToXY({
-                            x: 176085, y: 657600, level: 8
-                            , marker: true
-                        });
-                    },
+
 
                     token: '5a4b8472-b95b-4687-8179-0ccb621c7990',
                     showXY: false,
@@ -36,14 +33,18 @@
 
         });
 
-
-
+        function showExample(_x, _y) {
+            govmap.zoomToXY({
+                x: _x, y: _y, level: 8
+                , marker: true
+            });
+        }
 
     </script>
-    
-</head>
-<body>
 
+</head>
+<body onload="showExample(@Html.DisplayFor(model => model.Location.x),@Html.DisplayFor(model => model.Location.y))">
+  
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -82,14 +83,15 @@
             <hr>
             <form action="/action_page.php" target="_blank">
                 <p><label><i class="fa fa-calendar-check-o"></i>צק אין</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="צק אין" required>
+                <input class="w3-input w3-border" type="date" name="checkIn" required>
                 <p><label><i class="fa fa-calendar-o"></i> צק אאוט</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="DD MM YYYY" name="צק אאוט" required>
+                <input class="w3-input w3-border" type="date" name="checkOut" required>
                 <p><label><i class="fa fa-male"></i> מבוגרים</label></p>
-                <input class="w3-input w3-border" type="number" value="1" name="מבוגרים" min="1" max="6">
+                <input class="w3-input w3-border" type="number" value="2" name="adult" min="1" max="6">
                 <p><label><i class="fa fa-child"></i> ילדים</label></p>
-                <input class="w3-input w3-border" type="number" value="0" name="ילדים" min="0" max="6">
-                <p><button class="w3-button w3-block w3-black w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i> בדוק זמינות</button></p>
+                <input class="w3-input w3-border" type="number" value="0" name="child" min="0" max="6">
+                <input type="hidden" value="@Html.DisplayFor(model => model.Id)" name="apartmentId">
+                <p><button class="w3-button w3-block w3-black w3-left-align" type="submit"><a class="button-home" asp-controller="Orders" asp-action="Create">להזמנות</a></button></p>
             </form>
         </div>
         <div class="w3-bar-block">
@@ -99,7 +101,7 @@
         </div>
     </nav>
 
-  
+
     <!-- Top menu on small screens -->
     <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
         <span class="w3-bar-item">השכרה</span>
@@ -119,43 +121,43 @@
         <div class="w3-container" id="apartment">
             <h1 class="w3-text-black" style="text-align:center">הדירה</h1>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House12.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.BedRoom) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
-                    
+
                 </div>
             </div>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House5.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.DiningRoom) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
-               
+
                 </div>
             </div>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House17.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.Ketchen) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
-                    
+
                 </div>
             </div>
             <div class="w3-display-container mySlides">
-                <img src="~/images/House16.jpg" style="width:100%;margin-bottom:-6px">
+                <img src=@Html.DisplayFor(model => model.Image.LivingRoom) style="width:100%;margin-bottom:-6px">
                 <div class="w3-display-bottomleft w3-container w3-black">
-                    
+
                 </div>
             </div>
-           
+
         </div>
         <div class="w3-row-padding w3-section">
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House12.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(1)" title="Living room">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.BedRoom) style="width:100%;cursor:pointer" onclick="currentDiv(1)" >
             </div>
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House5.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)" title="Dining room">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.DiningRoom) style="width:100%;cursor:pointer" onclick="currentDiv(2)" >
             </div>
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House17.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(3)" title="Bedroom">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model=>model.Image.Ketchen) style="width:100%;cursor:pointer" onclick="currentDiv(3)" >
             </div>
             <div class="w3-col s3">
-                <img class="demo w3-opacity w3-hover-opacity-off" src="~/images/House16.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
+                <img class="demo w3-opacity w3-hover-opacity-off" src=@Html.DisplayFor(model => model.Image.LivingRoom) style="width:100%;cursor:pointer" onclick="currentDiv(4)" >
             </div>
         </div>
 
@@ -248,7 +250,7 @@
                     <button type="submit" class="w3-button w3-black w3-third">שלח הודעה</button>
                 </form>
             </div>
-         </div>
+        </div>
     </div>
 </body>
 
@@ -267,49 +269,8 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Script to open and close sidebar when on tablets and phones
-        function w3_open() {
-            document.getElementById("mySidebar").style.display = "block";
-            document.getElementById("myOverlay").style.display = "block";
-        }
-
-        function w3_close() {
-            document.getElementById("mySidebar").style.display = "none";
-            document.getElementById("myOverlay").style.display = "none";
-        }
-
-        // Slideshow Apartment Images
-        var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
-
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " w3-opacity-off";
-        }
-    </script>
-
-    @*< script  src = "https://unpkg.com/ionicons@4.5.5/dist/ionicons.js" ></ script > //נסיון*@
+    <script src="~/js/details.js"></script>
+   
 </footer>
         <!-- Footer -->
         <footer class="w3-center w3-black w3-padding-64">

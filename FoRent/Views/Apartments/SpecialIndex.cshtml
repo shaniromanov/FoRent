@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FoRent.Models.Apartment>
+
+
+<h1>הדירות שלך</h1>
+
+
+<hr />
+<div class="w3-content" style="min-width:3000px;">
+
+    <div class="card-columns">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 22rem;">
+                <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" class="card-img-top">
+                <div class="card-body">
+                    @{ var calculate = item.PriceAdult * 2;}
+                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Amenities.Description)</h5>
+                    <p class="card-text">@calculate<span> ש"ח</span></p>
+                    <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+
+                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">צפה בדף הדירה</a></button>
+                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="EditControl" asp-route-id="@item.Id">ערוך דירה</a></button>
+                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Delete" asp-route-id="@item.Id">מחק דירה</a></button>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+@section Scripts {
+<link href="~/css/index.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+}
+
+
+

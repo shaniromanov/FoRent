@@ -32,11 +32,13 @@ namespace FoRent.Controllers
             var result = from u in _context.User
                          where u.Username == _username && u.password == _password
                          select u;
-
+           
             if (_username != null && _password != null && result.ToList().Count > 0)
             {
+                var role = result.First().GetType().ToString();
                 HttpContext.Session.SetString("username", _username);
-                return View("Success");
+                HttpContext.Session.SetString("Role", role);
+                return RedirectToAction("Home", "Apartments");
             }
             else
             {
@@ -51,7 +53,7 @@ namespace FoRent.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("username");
-            return RedirectToAction("Index");
+            return RedirectToAction("Home", "Apartments");
         }
     }
 }

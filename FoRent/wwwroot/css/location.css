@@ -3,6 +3,6 @@
 
 
 
-#x,#x1,#y,#y1 {
+#x, #x1, #y, #y1, #CoordinatesDiv, #additionalDiv {
     visibility: hidden;
 }
