@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace FoRent.Models
 {
-    public class Review
+    public class Reviews
     {
         public int Id { get; set; }
     }
