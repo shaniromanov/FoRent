@@ -14,29 +14,44 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
+                <input asp-for="Address" class="form-control" id="address" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
+                <input asp-for="City" class="form-control" id="city" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
+
+            <br />
+            <div class="modal-footer">
+                <button type="button" onclick="TestGovMapExpanded();" class="btn btn-default" value="GeocodeString">שמור מיקום</button>
+            </div>
+
+
+
+            <div id="CoordinatesDiv" class="alert alert-danger text-center lead" dir="ltr">
+                <strong id="Coordinates"> </strong>
+
+            </div>
+            <div id="additionalDiv" class="alert alert-info">
+                <p id="additional results" ,="" name="additional results" dir="rtl"></p>
+            </div>
+
             <div class="form-group">
-                <label asp-for="x" class="control-label"></label>
-                <input asp-for="x" class="form-control" />
+                <label asp-for="x" class="control-label" id="x1"></label>
+                <input type="hidden" asp-for="x" class="form-control" id="x" />
                 <span asp-validation-for="x" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="y" class="control-label"></label>
-                <input asp-for="y" class="form-control" />
+                <label asp-for="y" class="control-label" id="y1"></label>
+                <input type="hidden" asp-for="y" class="form-control" id="y" />
                 <span asp-validation-for="y" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="המשך" class="btn btn-default" />
             </div>
         </form>
     </div>
@@ -46,4 +61,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
+    <script src="~/js/location.js"></script>
+    <link href="~/css/location.css" rel="stylesheet" />
 }

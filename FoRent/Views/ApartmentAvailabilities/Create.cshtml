@@ -2,9 +2,9 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = null;
+    //Layout = null;
 }
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <html >
 
 
@@ -37,9 +37,9 @@
                 return false;
             });
         });
-    </script>
-</head>
-<body>
+    </script>*@
+@*</head>
+<body>*@
     <br />
     <br />
     <br />
@@ -73,14 +73,14 @@
             </form>
             <div class="form-group">
 
-                <form action="~/Apartments/Success">
+                <form asp-action="~/Apartments/Success" asp-route="@ViewBag.ApartmentId">
                     <input type="submit" value="סיים" style="min-width:200px" />
                 </form>
             </div>
         </div>
     </div>
-</body>
-</html>
+@*</body>
+</html>*@
 @*@section Scripts {
 
     <script src="~/js/available.js"></script>

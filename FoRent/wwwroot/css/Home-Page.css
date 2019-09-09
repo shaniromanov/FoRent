@@ -37,16 +37,18 @@ span {
 .card-columns {
         column-count: 4;
 }
-#userDrop {
-    padding-top: 6%;
-    padding-right: 15%;
+
+#dropdownMenuButton {
+    border-radius: 50%;
+}
+.dropdown{
+    padding-right:30%;
 }
 
-
-    #container {
-        width: 100%;
-        position: relative;
-    }
+#container {
+    width: 100%;
+    position: relative;
+}
 
 #navi,
 #infoi {
