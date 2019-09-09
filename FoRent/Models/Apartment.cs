@@ -33,7 +33,7 @@ namespace FoRent.Models
 
         
 
-        public ICollection<Reviews> Reviews { get; set; }
+      
 
         public ICollection<ApartmentAvailability> ApartmentAvailabilities { get; set; }
         public ICollection<Order> Orders { get; set; }

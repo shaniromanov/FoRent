@@ -77,7 +77,7 @@ namespace FoRent.Controllers
                 else
                 {
 
-
+                    ViewBag.errorTime = "*התאריך הוזן במערכת, ניתן לסמן תאריך נוסף";
                     apartmentAvailability.Availability = _context.Availability.Where(a => a.NotAvailable.Equals(date)).FirstOrDefault(); ;
                     apartmentAvailability.AvailabilityId = apartmentAvailability.Availability.Id;
                     apartmentAvailability.ApartmentId = (int)TempData["Availability"];
