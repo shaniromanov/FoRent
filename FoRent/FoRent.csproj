@@ -6,13 +6,9 @@
 
   <ItemGroup>
     <Compile Remove="Views\Availability\**" />
-    <Compile Remove="Views\Reviews\**" />
     <Content Remove="Views\Availability\**" />
-    <Content Remove="Views\Reviews\**" />
     <EmbeddedResource Remove="Views\Availability\**" />
-    <EmbeddedResource Remove="Views\Reviews\**" />
     <None Remove="Views\Availability\**" />
-    <None Remove="Views\Reviews\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,15 +55,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\icons\" />
     <Folder Include="wwwroot\User_Files\Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Views\Reviews\Create.cshtml" />
-    <None Include="Views\Reviews\Delete.cshtml" />
-    <None Include="Views\Reviews\Details.cshtml" />
-    <None Include="Views\Reviews\Edit.cshtml" />
-    <None Include="Views\Reviews\Index.cshtml" />
-    <None Include="Views\Reviews\Rating.cshtml" />
   </ItemGroup>
 
 </Project>
