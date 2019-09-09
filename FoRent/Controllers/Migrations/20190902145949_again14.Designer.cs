@@ -6,15 +6,16 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Microsoft.EntityFrameworkCore.ValueGeneration;e
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using System;
 
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190902145949_again14")]
+    partial class again14
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,15 +215,15 @@ namespace FoRent.Migrations
 
                     b.Property<int?>("ApartmentId");
 
-                    b.Property<int>("Checkin");
+                    b.Property<string>("Checkin");
 
-                    b.Property<int>("Cleanliness");
+                    b.Property<string>("Cleanliness");
 
-                    b.Property<int>("Location");
+                    b.Property<string>("Location");
 
-                    b.Property<int>("Price");
+                    b.Property<string>("Price");
 
-                    b.Property<int>("review");
+                    b.Property<string>("review");
 
                     b.Property<int>("stars");
 

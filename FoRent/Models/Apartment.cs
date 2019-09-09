@@ -31,6 +31,8 @@ namespace FoRent.Models
         
         public Image Image { get; set; }
 
+        
+
         public ICollection<Reviews> Reviews { get; set; }
 
         public ICollection<ApartmentAvailability> ApartmentAvailabilities { get; set; }

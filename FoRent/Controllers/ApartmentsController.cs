@@ -86,9 +86,26 @@ namespace FoRent.Controllers
             {
                 return NotFound();
             }
-
-            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location)
+            
+            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(p => p.Policy).Include(l => l.Location).Include(r => r.Reviews)
                 .SingleOrDefaultAsync(m => m.Id == id);
+            int sum1 = 0;
+            int sum2 = 0;
+            int sum3 = 0;
+            int sum4 = 0;
+           
+            foreach (var item in apartment.Reviews)
+            {
+               sum1 += item.Location;
+                sum2 += item.Checkin;
+                sum3 += item.Cleanliness;
+                sum4 += item.Price;
+
+                Mm = (sum1 + sum2 + sum3 + sum4) / 4;
+
+            }
+
+
             if (apartment == null)
             {
                 return NotFound();
