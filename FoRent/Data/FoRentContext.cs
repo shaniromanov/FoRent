@@ -19,6 +19,7 @@ namespace FoRent.Models
         public DbSet<FoRent.Models.Location> Location { get; set; }
 
         public DbSet<FoRent.Models.Order> Order { get; set; }
+        public DbSet<FoRent.Models.OrderPayment> OrderPayments { get; set; }
 
         public DbSet<FoRent.Models.Renter> Renter { get; set; }
 

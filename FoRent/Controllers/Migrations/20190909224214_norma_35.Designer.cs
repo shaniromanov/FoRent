@@ -12,9 +12,10 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    partial class FoRentContextModelSnapshot : ModelSnapshot
+    [Migration("20190909224214_norma_35")]
+    partial class norma_35
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,11 +171,7 @@ namespace FoRent.Migrations
 
                     b.Property<DateTime>("CheckOut");
 
-                    b.Property<int?>("OrderPaymentId");
-
                     b.Property<int?>("OrdersId");
-
-                    b.Property<int>("PaymentId");
 
                     b.Property<int>("QuantityAdult");
 
@@ -187,8 +184,6 @@ namespace FoRent.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ApartmentId");
-
-                    b.HasIndex("OrderPaymentId");
 
                     b.HasIndex("OrdersId");
 
@@ -316,10 +311,6 @@ namespace FoRent.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("ApartmentId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("FoRent.Models.OrderPayment", "OrderPayment")
-                        .WithMany()
-                        .HasForeignKey("OrderPaymentId");
 
                     b.HasOne("FoRent.Models.Order", "Orders")
                         .WithMany()
