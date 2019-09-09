@@ -47,9 +47,11 @@ namespace FoRent.Controllers
             var databaseContext = _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i=>i.Image);
             if (checkIn.Equals(check) && checkOut.Equals(check))
             {
-                return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
+              //Test: show all
+              //return View(await databaseContext.Where(p => true|| p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
+              return View(await databaseContext.Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
             }
-            else if (!(checkIn.Equals(check)) && checkOut.Equals(check))
+      else if (!(checkIn.Equals(check)) && checkOut.Equals(check))
             {
                 checkOut = checkIn.AddDays(1);
             }
