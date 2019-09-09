@@ -21,7 +21,7 @@ namespace FoRent.Controllers
         // GET: Reviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Review.ToListAsync());
+            return View(await _context.Reviews.ToListAsync());
         }
 
         // GET: Reviews/Details/5
@@ -32,7 +32,7 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var reviews = await _context.Review
+            var reviews = await _context.Reviews
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {
@@ -53,7 +53,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id")] Reviews reviews)
+        public async Task<IActionResult> Create([Bind("Id,stars,Location,Cleanliness,Checkin,Price,Mm,review")] Reviews reviews)
         {
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var reviews = await _context.Review.SingleOrDefaultAsync(m => m.Id == id);
+            var reviews = await _context.Reviews.SingleOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {
                 return NotFound();
@@ -85,7 +85,7 @@ namespace FoRent.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] Reviews reviews)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,stars,Location,Cleanliness,Checkin,Price,Mm,review")] Reviews reviews)
         {
             if (id != reviews.Id)
             {
@@ -123,7 +123,7 @@ namespace FoRent.Controllers
                 return NotFound();
             }
 
-            var reviews = await _context.Review
+            var reviews = await _context.Reviews
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (reviews == null)
             {
@@ -138,15 +138,15 @@ namespace FoRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var reviews = await _context.Review.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Review.Remove(reviews);
+            var reviews = await _context.Reviews.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Reviews.Remove(reviews);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ReviewsExists(int id)
         {
-            return _context.Review.Any(e => e.Id == id);
+            return _context.Reviews.Any(e => e.Id == id);
         }
     }
 }

@@ -12,8 +12,8 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    [Migration("20190908024816_again25")]
-    partial class again25
+    [Migration("20190908024816_again20")]
+    partial class again20
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
