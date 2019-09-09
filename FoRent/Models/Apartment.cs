@@ -31,16 +31,8 @@ namespace FoRent.Models
         
         public Image Image { get; set; }
 
-        
-
-      
-
         public ICollection<ApartmentAvailability> ApartmentAvailabilities { get; set; }
         public ICollection<Order> Orders { get; set; }
 
-        public static implicit operator DbSet<object>(Apartment v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
