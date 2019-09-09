@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoRent", "FoRent\FoRent.csproj", "{3F12FB90-A567-4D45-A37D-216A0F89E83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoRent", "FoRent\FoRent.csproj", "{3F12FB90-A567-4D45-A37D-216A0F89E83B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,5 +21,14 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B3CC3081-02D1-4704-A742-F1FA88B22A3E}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://oahdout85.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FoRent\\FoRent.csproj
+		SccProjectName1 = FoRent
+		SccLocalPath1 = FoRent
 	EndGlobalSection
 EndGlobal
