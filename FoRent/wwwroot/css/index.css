@@ -16,3 +16,7 @@ img {
 .w3-third w3-container {
     padding: 2px 16px;
 }
+
+#weatherTable{
+    float:right;
+}
