@@ -6,7 +6,13 @@
 
 
 <head>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="~/js/available.js"></script>
     <meta charset="utf-8" />
@@ -43,36 +49,35 @@
     <script src="~/js/indexLogin.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
     <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
- 
+
     <script src="~/js/site.js"></script>
     <script type="text/javascript" src="js/bootstrap-filestyle.min.js"></script>
-            <div id="menu-nav">
-                <div id="navigation-bar">
-                    <ul>
-      
-                        @if (Context.Session.GetString("username") != null)
-                        {
-                            <li><a asp-controller="account" asp-action="logout"><i class="fa fa-user"></i> <span>יציאה מהחשבון</span></a></li>
+    <div id="menu-nav">
+        <div id="navigation-bar">
+            <ul>
 
-                        }
-                        else
-                        {
-                            <li><a asp-controller="account" asp-action="index" ><i class="fa fa-user"></i> <span>כניסה</span></a></li>
-                           
-                        }
-                        <li><a href="#"><i class="fa fa-book"></i><span>אודותינו</span></a></li>
-                        <li><a href="#"><i class="fa fa-phone"></i><span>צור קשר</span></a></li>
-                        <li><a href="#"><i class="fa fa-bed"></i><span>שירותים מוצעים</span></a></li>
-                        <li><a href="http://localhost:61537/"><i class="fa fa-home"></i><span>בית</span></a></li>
+                @if (Context.Session.GetString("username") != null)
+                {
+                    <li><a asp-controller="account" asp-action="logout"><i class="fa fa-user"></i> <span>יציאה מהחשבון</span></a></li>
 
-                    </ul>
-                </div>
-            </div>
+                }
+                else
+                {
+                    <li><a asp-controller="account" asp-action="index"><i class="fa fa-user"></i> <span>כניסה</span></a></li>
+
+                }
+                <li><a href="#"><i class="fa fa-book"></i><span>אודותינו</span></a></li>
+                <li><a href="#"><i class="fa fa-phone"></i><span>צור קשר</span></a></li>
+                <li><a href="#"><i class="fa fa-bed"></i><span>שירותים מוצעים</span></a></li>
+                <li><a href="http://localhost:61537/"><i class="fa fa-home"></i><span>בית</span></a></li>
+
+            </ul>
+        </div>
+    </div>
 
 </head>
 <body>
-
-
+ 
     <div class="container body-content">
         @RenderBody()
 
