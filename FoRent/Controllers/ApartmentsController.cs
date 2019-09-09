@@ -11,7 +11,6 @@ using FoRent.Controllers;
 
 
 
-
 namespace FoRent.Controllers
 {
     public class ApartmentsController : Controller
@@ -22,22 +21,7 @@ namespace FoRent.Controllers
         {
             _context = context;
         }
-        // GET: Apartments/EditControl
-        public IActionResult EditControl(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            ViewBag.id = id;
-            ViewBag.amenities = _context.Apartment.Where(a => a.Id == id).Select(a => a.Amenities.Id).First().ToString();
-            ViewBag.policy = _context.Apartment.Where(a => a.Id == id).Select(a => a.Policy.Id).First().ToString();
-            ViewBag.location = _context.Apartment.Where(a => a.Id == id).Select(a => a.Location.Id).First().ToString();
-            ViewBag.image = _context.Apartment.Where(a => a.Id == id).Select(a => a.Image.Id).First().ToString();
-            TempData["ApartmentId"] = id;
-            return View();
-        }
         // GET: Apartments
         public async Task<IActionResult> Index(string city, DateTime checkIn, DateTime checkOut, int adult, int child)
         {
@@ -139,33 +123,7 @@ namespace FoRent.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = HttpContext.Session.GetString("Role");
-                if (HttpContext.Session.GetString("username") != null)
-                    if (HttpContext.Session.GetString("Role") == "FoRent.Models.Renter")
-                     {
-                    apartment.Renter = _context.Renter.Where(r => r.Username == HttpContext.Session.GetString("username")).FirstOrDefault();
-                     }
-                    else
-                    {
-                        var temp=_context.User.Where(r => r.Username == HttpContext.Session.GetString("username")).FirstOrDefault();
-                        var renter = new Renter();
-                        renter.FirstName = temp.FirstName;
-                        renter.LastName = temp.LastName;
-                        renter.Mail = temp.Mail;
-                        renter.password = temp.password;
-                        renter.Username = temp.Username;
-                        renter.Phone = temp.Phone;
-                        renter.Orders = temp.Orders;
-                        _context.Add(renter);
-                        _context.User.Remove(temp);
-                        await _context.SaveChangesAsync();
-                        apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
-                        HttpContext.Session.SetString("Role", apartment.Renter.GetType().ToString());
-                    }
-                else
-                {
-                    apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
-                }
+                apartment.Renter = _context.Renter.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Location = _context.Location.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Amenities = _context.ApartmentAmenities.OrderByDescending(u => u.Id).FirstOrDefault();
                 apartment.Policy = _context.Policy.OrderByDescending(u => u.Id).FirstOrDefault();
@@ -175,7 +133,6 @@ namespace FoRent.Controllers
                 _context.Add(apartment);
                 await _context.SaveChangesAsync();
                 TempData["Availability"] = apartment.Id;
-              
                 return RedirectToAction("Create","ApartmentAvailabilities");
             }
             ViewBag.Success = false;
@@ -194,7 +151,12 @@ namespace FoRent.Controllers
             return View(await result.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());
         }
         // GET: Apartments/EditControl
-    
+        public IActionResult EditControl(int id)
+        {
+            ViewBag.id=id;
+            return View();
+
+        }
 
         // GET: Apartments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -242,9 +204,7 @@ namespace FoRent.Controllers
                         throw;
                     }
                 }
-               
-
-                return RedirectToAction("EditControl", "Apartments", new { id = id });
+                return RedirectToAction(nameof(Index));
             }
             return View(apartment);
         }
@@ -272,28 +232,10 @@ namespace FoRent.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var apartment = await _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(p => p.Policy).Include(i => i.Image).SingleOrDefaultAsync(m => m.Id == id);
-            var location = _context.Location.Where(n => n.Id == apartment.Location.Id).FirstOrDefault();
-            var amenities= _context.ApartmentAmenities.Where(n => n.Id == apartment.Amenities.Id).FirstOrDefault();
-            var image = _context.Image.Where(n => n.Id == apartment.Image.Id).FirstOrDefault();
-            var policy = _context.Policy.Where(n => n.Id == apartment.Policy.Id).FirstOrDefault();
-            var available = _context.ApartmentAvailability.Where(n => n.ApartmentId == id).ToList();
-
+            var apartment = await _context.Apartment.SingleOrDefaultAsync(m => m.Id == id);
             _context.Apartment.Remove(apartment);
-            
             await _context.SaveChangesAsync();
-           
-            _context.Location.Remove(location);
-            _context.ApartmentAmenities.Remove(amenities);
-            _context.Image.Remove(image);
-            _context.Policy.Remove(policy);
-            foreach(ApartmentAvailability n in available)
-            {
-                _context.ApartmentAvailability.Remove(n);
-            }
-           
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Home));
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Success()

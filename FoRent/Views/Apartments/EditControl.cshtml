@@ -1,18 +1,13 @@
-﻿<h1>?מה אתה מעוניין לערוך</h1>
-<hr />
+﻿
+@model FoRent.Models.Apartment
 
+<br />
+<br />
+<br />
+<h1><b>עריכת הדירה שלך</b></h1>
+<br />
+<br />
 <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Apartments" asp-action="Edit" asp-route-id="@ViewBag.id">ערוך מחיר</a></button>
 <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="ApartmentAmenities" asp-action="Edit" asp-route-id="@ViewBag.amenities">ערוך מאפיינים</a></button>
-<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Policies" asp-action="Edit" asp-route-id="@ViewBag.policy">ערוך מדיניות</a></button>
-<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Locations" asp-action="Edit" asp-route-id="@ViewBag.location">ערוך מיקום</a></button>
-<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Images" asp-action="Edit" asp-route-id="@ViewBag.image">ערוך תמונות</a></button>
+<button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-controller="Policies" asp-action="Edit" asp-route-id="@ViewBag.id">ערוך מדיניות</a></button>
 
-@section Scripts {
-    <link href="~/css/index.css" rel="stylesheet" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-}
