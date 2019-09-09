@@ -36,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Apartments\EditControl.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Apartments\Home.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
