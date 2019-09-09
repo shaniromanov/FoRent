@@ -9,41 +9,10 @@
 
 
 
-<!DOCTYPE html>
-<html>
-@*<!-- Navbar (sit on top) -->
-    <section class="w3-top">
-        <section class="w3-bar w3-white w3-card" id="myNavbar">
-            <a href="#home" class="w3-bar-item w3-button w3-wide">LOGO</a>
-            <!-- Right-sided navbar links -->
-            <div class="w3-right w3-hide-small">
-
-                <a asp-controller="Home" asp-action="Index" class="w3-bar-item w3-button"><i class="fa fa-fw fa-home"></i> דף הבית</a>
-                <a href="#locate" class="w3-bar-item w3-button"><i class="fa fa-user"></i> מיקום</a>
-                <a href="#facilities" class="w3-bar-item w3-button"><i class="fa fa-user"></i> מתקנים</a>
-                <a href="#moreinfo" class="w3-bar-item w3-button"><i class="fa fa-th"></i> מידע נוסף</a>
-                <a href="#policy" class="w3-bar-item w3-button"><i class="fa fa-usd"></i> מדיניות</a>
-                <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i> צור קשר</a>
-            </div>
-            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </section>
-
-    </section>*@
 
 
 
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<body dir="rtl" class="w3-light-grey">
   
         
             <button id="submitButton">רוצה לדעת מה מזג האויר באיזורים המבוקשים?</button>
@@ -88,38 +57,7 @@
         });
     </script>
 
-    @*Page content
-        <div class="w3-content" style="max-width:1532px;">
-
-            <div class="w3-container w3-margin-top" id="rooms">
-            </div>
-
-            <div class="w3-row-padding">
-                <div class="w3-col m2">
-                    <label><i class="fa fa-search"></i> search</label>
-                    <button class="w3-button w3-block w3-black">חיפוש</button>
-                </div>
-
-                <div class="w3-col m3">
-                    <label><i class="fa fa-calendar-o"></i> צק אאוט</label>
-                    <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY">
-                </div>
-                <div class="w3-col m3">
-                    <label><i class="fa fa-calendar-o"></i> צק אין</label>
-                    <input class="w3-input w3-border" type="date" placeholder="DD MM YYYY">
-                </div>
-                <div class="w3-col m2">
-                    <label><i class="fa fa-child"></i> ילדים</label>
-                    <input class="w3-input w3-border" type="number" placeholder="0">
-                </div>
-                <div class="w3-col m2">
-                    <label><i class="fa fa-male"></i> מבוגרים</label>
-                    <input class="w3-input w3-border" type="number" placeholder="1">
-                </div>
-
-            </div>
-
-            </p>*@
+   
 
     <a asp-action="Create">הוסף את מקום הארוח שלך</a>
     <div class="w3-col m2">
@@ -178,6 +116,4 @@
             <br />
         </tbody>
     </table>
-</body>
 
-</html>
