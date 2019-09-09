@@ -12,8 +12,8 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    [Migration("20190904131646_again20")]
-    partial class again20
+    [Migration("20190909165253_32")]
+    partial class _32
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,7 +43,9 @@ namespace FoRent.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AmenitiesId");
+                    b.HasIndex("AmenitiesId")
+                        .IsUnique()
+                        .HasFilter("[AmenitiesId] IS NOT NULL");
 
                     b.HasIndex("ImageId")
                         .IsUnique()
@@ -53,7 +55,9 @@ namespace FoRent.Migrations
                         .IsUnique()
                         .HasFilter("[LocationId] IS NOT NULL");
 
-                    b.HasIndex("PolicyId");
+                    b.HasIndex("PolicyId")
+                        .IsUnique()
+                        .HasFilter("[PolicyId] IS NOT NULL");
 
                     b.HasIndex("RenterId");
 
@@ -213,25 +217,9 @@ namespace FoRent.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ApartmentId");
-
-                    b.Property<int>("Checkin");
-
-                    b.Property<int>("Cleanliness");
-
-                    b.Property<int>("Location");
-
-                    b.Property<int>("Price");
-
-                    b.Property<int>("review");
-
-                    b.Property<int>("stars");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentId");
-
-                    b.ToTable("Reviews");
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("FoRent.Models.User", b =>
@@ -278,8 +266,8 @@ namespace FoRent.Migrations
             modelBuilder.Entity("FoRent.Models.Apartment", b =>
                 {
                     b.HasOne("FoRent.Models.ApartmentAmenities", "Amenities")
-                        .WithMany("Apartments")
-                        .HasForeignKey("AmenitiesId");
+                        .WithOne("Apartment")
+                        .HasForeignKey("FoRent.Models.Apartment", "AmenitiesId");
 
                     b.HasOne("FoRent.Models.Image", "Image")
                         .WithOne("Apartment")
@@ -290,8 +278,8 @@ namespace FoRent.Migrations
                         .HasForeignKey("FoRent.Models.Apartment", "LocationId");
 
                     b.HasOne("FoRent.Models.Policy", "Policy")
-                        .WithMany("Apartments")
-                        .HasForeignKey("PolicyId");
+                        .WithOne("Apartment")
+                        .HasForeignKey("FoRent.Models.Apartment", "PolicyId");
 
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany("Apartments")
@@ -329,13 +317,6 @@ namespace FoRent.Migrations
                     b.HasOne("FoRent.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("FoRent.Models.Reviews", b =>
-                {
-                    b.HasOne("FoRent.Models.Apartment", "Apartment")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ApartmentId");
                 });
 #pragma warning restore 612, 618
         }
