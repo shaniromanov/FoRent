@@ -53,6 +53,7 @@ namespace FoRent.Models
         public DbSet<FoRent.Models.Apartment> Apartment { get; set; }
         public DbSet<FoRent.Models.Availability> Availability { get; set; }
         public DbSet<FoRent.Models.ApartmentAvailability> ApartmentAvailability { get; set; }
+      
         //public DbSet<FoRent.Models.ApartmentAvailability> ApartmentAvailabilities { get; set; }
     }
 }

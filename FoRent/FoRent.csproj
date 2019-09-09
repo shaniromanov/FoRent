@@ -13,13 +13,9 @@
 
   <ItemGroup>
     <Compile Remove="Views\Availability\**" />
-    <Compile Remove="Views\Reviews\**" />
     <Content Remove="Views\Availability\**" />
-    <Content Remove="Views\Reviews\**" />
     <EmbeddedResource Remove="Views\Availability\**" />
-    <EmbeddedResource Remove="Views\Reviews\**" />
     <None Remove="Views\Availability\**" />
-    <None Remove="Views\Reviews\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Apartments\EditControl.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Apartments\Home.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

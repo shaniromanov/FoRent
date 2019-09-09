@@ -2,87 +2,45 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = null;
 }
-<!DOCTYPE html>
-<html >
-
-
-<head>
-   
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#btnSave").click(function () {
-                //alert("");  
-                var form = $(this).parent("form");
-                $.ajax({
-                    cache: false,
-                    type: "POST",
-                    url: form.attr("asp-action"),
-                    data: form.serialize,
-                    dataType: "application/json; charset=utf-8",
-                    contentType: date,
-                    success: function (response) {
-                        if (response.success)
-                            alert(response.responseText);
-                        error: function (response) {
-
-                            alert("התאריך נקלט במערכת");
-                            //swal("התאריך נקלט במערכת", "באפשרותך להזין תאריכים נוספים", "success");
-                        }
-
-                    }
-                });
-                return false;
-            });
-        });
-    </script>
-</head>
-<body>
-    <br />
-    <br />
-    <br />
-    <h1><b>יצירת דירה</b></h1>
-    <br />
-    <h4>עדכון תאריכים תפוסים</h4>
-    <br />
-    <hr />
-    <br />
-    <br />
+<br />
+<br />
+<br />
+<h1><b>יצירת דירה</b></h1>
+<br />
+<h4>עדכון תאריכים תפוסים</h4>
+<br />
+<hr />
+<br />
+<br />
 
 
 
 
-    <div class="row">
-        <h4>ניתן להזין תאריכם תפוסים ל-3 חודשים הקרובים</h4>
-        <div class="col-md-4">
+<div class="row">
+    <h6>ניתן להזין תאריכם תפוסים ל-3 חודשים הקרובים</h6>
+    <div class="col-md-4">
 
-            <form asp-action="Create" id="myform">
+        <form asp-action="Create">
 
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-
-                    <input id="input_date" name="date" type="date" data-date-format="DD MM YYYY" />
-                </div>
-                @ViewBag.exist
-
-                <div class="form-group">
-                    <button type="submit" id="btnSave" value="סמן תאריך כתפוס" class="btn btn-default">סמן תאריך כתפוס</button>
-                </div>
-            </form>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
 
-                <form action="~/Apartments/Success">
-                    <input type="submit" value="סיים" style="min-width:200px" />
-                </form>
+                <input name="date" type="date" data-date-format="DD MM YYYY" />
             </div>
+            @ViewBag.exist
+
+            <div class="form-group">
+                <input type="submit" value="@ViewBag.anotherDate" class="btn btn-default" />
+            </div>
+        </form>
+        <div class="form-group">
+            @*<button type="button" class="btn btn-light">
+                    <a asp-controller="Apartments" asp-action="Success">סיים</a>
+                </button>*@
+            <form action="~/Apartments/Success">
+                <input type="submit" value="הכנס את מקום האירוח שלך" style="min-width:200px" />
+            </form>
         </div>
     </div>
-</body>
-</html>
-@*@section Scripts {
-
-    <script src="~/js/available.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-}*@
+</div>

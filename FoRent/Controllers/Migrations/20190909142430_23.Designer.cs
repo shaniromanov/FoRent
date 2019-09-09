@@ -12,8 +12,8 @@ using System;
 namespace FoRent.Migrations
 {
     [DbContext(typeof(FoRentContext))]
-    [Migration("20190908024816_again20")]
-    partial class again20
+    [Migration("20190909142430_23")]
+    partial class _23
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,9 +43,7 @@ namespace FoRent.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AmenitiesId")
-                        .IsUnique()
-                        .HasFilter("[AmenitiesId] IS NOT NULL");
+                    b.HasIndex("AmenitiesId");
 
                     b.HasIndex("ImageId")
                         .IsUnique()
@@ -55,9 +53,7 @@ namespace FoRent.Migrations
                         .IsUnique()
                         .HasFilter("[LocationId] IS NOT NULL");
 
-                    b.HasIndex("PolicyId")
-                        .IsUnique()
-                        .HasFilter("[PolicyId] IS NOT NULL");
+                    b.HasIndex("PolicyId");
 
                     b.HasIndex("RenterId");
 
@@ -219,7 +215,17 @@ namespace FoRent.Migrations
 
                     b.Property<int?>("ApartmentId");
 
-                    b.Property<string>("review");
+                    b.Property<int>("Checkin");
+
+                    b.Property<int>("Cleanliness");
+
+                    b.Property<int>("Location");
+
+                    b.Property<int>("Mm");
+
+                    b.Property<int>("Price");
+
+                    b.Property<int>("review");
 
                     b.Property<int>("stars");
 
@@ -274,24 +280,20 @@ namespace FoRent.Migrations
             modelBuilder.Entity("FoRent.Models.Apartment", b =>
                 {
                     b.HasOne("FoRent.Models.ApartmentAmenities", "Amenities")
-                        .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "AmenitiesId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Apartments")
+                        .HasForeignKey("AmenitiesId");
 
                     b.HasOne("FoRent.Models.Image", "Image")
                         .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "ImageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FoRent.Models.Apartment", "ImageId");
 
                     b.HasOne("FoRent.Models.Location", "Location")
                         .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "LocationId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FoRent.Models.Apartment", "LocationId");
 
                     b.HasOne("FoRent.Models.Policy", "Policy")
-                        .WithOne("Apartment")
-                        .HasForeignKey("FoRent.Models.Apartment", "PolicyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany("Apartments")
+                        .HasForeignKey("PolicyId");
 
                     b.HasOne("FoRent.Models.Renter", "Renter")
                         .WithMany("Apartments")

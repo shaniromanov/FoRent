@@ -25,7 +25,11 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="~/css/index.css" rel="stylesheet" />
+    <style>
+        body, h1, h1, h3, h4, h5, h6 {
+            font-family: "Raleway", Arial, Helvetica, sans-serif
+        }
+    </style>
 </head>
 
 <body id="spacial-body">
@@ -112,13 +116,22 @@
 
                     </div>
                 </div>
+                <br />
             }
-            <br />
-            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
 
-            <button type="button" class="btn btn-light">
-                <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
-            </button>
+            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
+            @if (Context.Session.GetString("username") != null)
+            {
+                <button type="button" class="btn btn-light">
+                    <a class="button-home" asp-controller="Locations" asp-action="Create">הוסף את פרטי הדירה שלך</a>
+                </button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-light">
+                    <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
+                </button>
+            }
 
             <button type="button" class="btn btn-light">
                 <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
