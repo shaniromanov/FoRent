@@ -94,45 +94,60 @@
         </form>
 
         <div class="button-location">
-            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
-            <button type="button" class="btn btn-light">
-                <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
-            </button>
+            @if (Context.Session.GetString("username") != null)
+            {
 
-            <button type="button" class="btn btn-light">
-                <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
-            </button>
-
-            <br />
-            <br />
-            <p id="error"> @TempData["Error"]</p>
-
-            @*<div id="panel">
-                <button type="button" class="close" aria-label="Close" id="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <meta name="viewport" content="width=device-width" />
-                <link rel="stylesheet" href="~/css/login.css" />
-                @Html.Partial("~/Views/Account/Index.cshtml")
-            </div>*@
-        </div>
-        @if (Context.Session.GetString("username") != null)
-        {
-            <div id="userDrop">
                 <div class="dropdown">
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @Context.Session.GetString("username")
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" asp-controller="Orders" asp-action="Index">ההזמנות שלי</a>
-                        @if (Context.Session.GetString("Role") == "FoRent.Models.Renter") 
+
+                        @if (Context.Session.GetString("Role") == "FoRent.Models.Renter")
                         {
                             <a class="dropdown-item" asp-action="SpecialIndex">הדירות שלי</a>
                         }
+                        <a class="dropdown-item" asp-controller="account" asp-action="logout">יציאה מהחשבון</a>
+
                     </div>
                 </div>
-            </div>
-        }
+                <br />
+            }
+
+            @Html.Partial("~/Views/Shared/_LoginPartial.cshtml")
+            @if (Context.Session.GetString("username") != null)
+            {
+                <button type="button" class="btn btn-light">
+                    <a class="button-home" asp-controller="Locations" asp-action="Create">הוסף את פרטי הדירה שלך</a>
+                </button>
+            }
+            else
+            {
+                <button type="button" class="btn btn-light">
+                    <a class="button-home" asp-controller="Renters" asp-action="Create">הוסף את פרטי הדירה שלך</a>
+                </button>
+            }
+
+            <button type="button" class="btn btn-light">
+                <a class="button-home" asp-controller="Users" asp-action="Create">הרשמו</a>
+            </button>
+
+
+            <br />
+            <br />
+            <p id="error"> @TempData["Error"]</p>
+
+            @*<div id="panel">
+            <button type="button" class="close" aria-label="Close" id="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <meta name="viewport" content="width=device-width" />
+            <link rel="stylesheet" href="~/css/login.css" />
+            @Html.Partial("~/Views/Account/Index.cshtml")
+        </div>*@
+        </div>
+       
     </section>
     <hr />
 

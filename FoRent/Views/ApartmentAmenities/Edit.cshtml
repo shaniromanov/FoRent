@@ -66,6 +66,20 @@
                 </div>
             </div>
             <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Plata" /> @Html.DisplayNameFor(model => model.Plata)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="HotWater" /> @Html.DisplayNameFor(model => model.HotWater)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
                 <label asp-for="Comment" class="control-label"></label>
                 <input asp-for="Comment" class="form-control" />
                 <span asp-validation-for="Comment" class="text-danger"></span>
