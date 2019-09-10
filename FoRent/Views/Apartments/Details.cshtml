@@ -166,8 +166,9 @@
             <div class="w3-row w3-large">
                 <div>
                     <div class="w3-col s6">
-                        <p>  @Html.DisplayFor(model => model.Amenities.NumOfPersons) :מקסימום אנשים</p>
-                        <p>  @Html.DisplayFor(model => model.Amenities.NumOfRooms)  :חדרי שינה</p>
+                        <p>  @Html.DisplayFor(model => model.Amenities.NumOfPersons) :מקסימום אנשים</p>
+                        <p>  @Html.DisplayFor(model => model.Amenities.NumOfRooms)  :מס חדרים בדירה</p>
+                        <p>  @Html.DisplayFor(model => model.Policy.Extrabeds)  :מיטות נוספות</p>
 
                     </div>
                     <div class="w3-col s6">
@@ -183,6 +184,8 @@
                 <div id="locate">
 
                     <h4><strong>מיקום</strong></h4>
+                    @Html.DisplayFor(model => model.Location.Address)
+                    @Html.DisplayFor(model => model.Location.City)
                     <div style="float:left">
                         <div id="map" style="width:400px;height:400px"></div>
 
@@ -197,26 +200,55 @@
                     <h4><strong>מתקנים</strong></h4>
                     <div class="w3-col s6">
                         @{
-                                if (Model.Amenities.Accessibility == true)
-                                {
-                                    <p><i class="fa fa-fw fa-wheelchair"></i>נגישות</p>
-                                }
+                            if (Model.Amenities.Accessibility == true)
+                            {
+                                <p><i class="fa fa-fw fa-wheelchair"></i>נגישות</p>
                             }
-                        <p><i class="fa fa-fw fa-university"></i> מרפסת</p>
-                        <p><i class="fa fa-fw fa-wifi"></i> wifi</p>
-                        <p><i class="fa fa-fw fa-car"></i>חניה</p>
+                        }
+                        @{
+                            if (Model.Amenities.Parking == true)
+                            {
+                                <p><i class="fa fa-fw fa-car"></i>חניה</p>
+                            }
+                        }
                     </div>
                     <div class="w3-col s6">
-                        <p><i class="fa fa-fw fa-cutlery"></i> מטבח</p>
-                        <p><i class="fa fa-fw fa-thermometer"></i>מיזוג</p>
-                        
+                        @{
+                            if (Model.Amenities.AirConditioning == true)
+                            {
+                                <p><i class="fa fa-fw fa-thermometer"></i>מיזוג</p>
+                            }
+                        }
+                        @{
+                            if (Model.Amenities.HotWater == true)
+                            {
+                                <p><i class="fa fa-fw fa-bolt"></i>מיחם</p>
+                            }
+                        }
+                        @{
+                            if (Model.Amenities.Plata == true)
+                            {
+                                <p><i class="fa fa-fw fa-window-maximize"></i> פלטה</p>
+                            }
+                        }
                     </div>
                     <div class="w3-col s6">
-                        <p><i class="fa fa-fw fa-bolt"></i>מיחם</p>
+                        @{
+                            if (Model.Amenities.Wifi == true)
+                            {
+                                <p><i class="fa fa-fw fa-wifi"></i>Wifi</p>
+                            }
+                        }
+                        @{
+                            if (Model.Amenities.Balcony == true)
+                            {
+                                <p><i class="fa fa-fw fa-university"></i>מרפסת</p>
+                            }
+                        }
                     </div>
-                    <div class="w3-col s6">
-                        <p><i class="fa fa-fw fa-window-maximize"></i> פלטה</p>
-                    </div>
+
+
+
                 </div>
                 <hr />
             </div>
@@ -225,8 +257,9 @@
 
             <div class="w3-row w3-large" style="padding:12px 16px" id="moreinfo">
                 <h4><strong>מידע נוסף</strong></h4>
-                <p>אנו משאירים לכם דירה נקיה אנא השתדלו להחזירה במצב תקין ככל הניתן..</p>
-                <p>כרטיסי אשראי מתקבלים: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+                <p><strong>תאור הדירה:</strong> @Html.DisplayFor(model => model.Amenities.Description)  </p>
+                <p><strong>הערות נוספות:</strong> @Html.DisplayFor(model => model.Amenities.Comment)  </p> 
+                <p> <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i> <strong>:כרטיסי אשראי מתקבלים</strong></p>
                 <hr />
             </div>
             <br />
@@ -234,8 +267,10 @@
 
             <div class="w3-row w3-large" style="padding:12px 16px" id="policy">
                 <h4><strong>מדיניות</strong></h4>
-                <p>מדיניות הביטול והתשלום המוקדם משתנה לפי סוג מקום האירוח. כאשר אתם בוחרים, אנא בדקו את התנאים החלים על כל אחת מהאפשרויות. </p>
-                <p>הירשם לקבלת עדכונים על תאריכים זמינים והצעות מיוחדות.</p>
+                 <h5><p> :ביטולים @Html.DisplayFor(model => model.Policy.Cancellations)    </p> </h5>
+                <p><strong>לתשומת ליבכם:</strong> מדיניות הביטול והתשלום המוקדם משתנה לפי סוג מקום האירוח</p>
+                                        <p> כאשר אתם בוחרים, אנא בדקו את התנאים החלים על כל אחת מהאפשרויות</p>
+                                                   <p>.הירשם לקבלת עדכונים על תאריכים זמינים והצעות מיוחדות</p>
                 <p><button class="w3-button w3-black w3-third" onclick="document.getElementById('subscribe').style.display='block'">הירשם</button></p>
             </div>
             <hr />
