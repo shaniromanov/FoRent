@@ -1,4 +1,4 @@
-﻿@model IList<FoRent.Models.Apartment>
+﻿@model IEnumerable<FoRent.Models.Apartment>
 
 
 @{
@@ -29,91 +29,96 @@
 </script>
 
 
-<form asp-controller="Apartments" asp-action="Sort">
-    @if (Model != null)
-    {
-        for (var i = 0; i < Model.Count(); i++)
-        {
-            <input type="hidden" value="@Model[i].Id" name="apartmentsId" />
-        }
-    }
 
-    <input type="hidden" value="@ViewBag.NumOfAdult" name="adult" />
-    <input type="hidden" value="@ViewBag.NumOfChild" name="child" />
-    <button type="submit" class="btn btn-light ">מיין מהמחיר הנמוך לגבוה</button>
-</form>
-<br />
-<br />
-<form asp-controller="Apartments" asp-action="Sort1">
-    @if (Model != null)
-    {
-        for (var i = 0; i < Model.Count(); i++)
-        {
-            <input type="hidden" value="@Model[i].Id" name="apartmentsId" />
-        }
-    }
 
-    <input type="hidden" value="@ViewBag.NumOfAdult" name="adult" />
-    <input type="hidden" value="@ViewBag.NumOfChild" name="child" />
-    <button type="submit" class="btn btn-light ">מיין מהמחיר הגבוה לנמוך</button>
-</form>
+<div class="w3-col m2">
+    <label><i class="fa fa-search"></i>מיין </label>
+    <select>
+        <option value="order">מהנמוך לגבוה</option>
+        <option value="order">מהגבוה לנמוך</option>
+
+
+    </select>
+</div>
+
 
 <table>
     <tbody>
-       
-          
+        @foreach (var item in Model)
+        {
 
-                @foreach (var item in Model)
-                {
+            <div class="w3-third w3-container">
 
+                <div class="container">
 
-                    <div class="container" >
+                    <div class="info">
 
-                        <div class="info">
+                    </div>
 
-                        </div>
-                        <!-- Normal Demo-->
-                        <div class="column" >
-                            <!-- Post-->
-                            <div class="post-module" >
-                                <!-- Thumbnail-->
-                                <div class="thumbnail">
-                                    <div class="date">
+                    <!-- Normal Demo-->
+                    <div class="column">
+                        <!-- Post-->
 
-                                    </div><img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
+                        <div class="post-module">
+                            <!-- Thumbnail-->
+                            <div class="thumbnail">
+                                <div class="date">
+
+                                </div><img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
+
+                            </div>
+                            <!-- Post Content-->
+                            <div class="post-content">
+                                <div class="category">
+                                    <span style='font-size:10px;'>&#9733;</span>
+                                    <span style='font-size:10px;'>&#9733;</span>
+                                    <span style='font-size:10px;'>&#9733;</span>
+
+                                    <span style='font-size:10px;'>&#9733;</span>
 
                                 </div>
-                                <!-- Post Content-->
-                                <div class="post-content">
-                                    <div class="category">
-                                        <span style='font-size:10px;'>&#9733;</span>
-                                        <span style='font-size:10px;'>&#9733;</span>
-                                        <span style='font-size:10px;'>&#9733;</span>
 
-                                        <span style='font-size:10px;'>&#9733;</span>
+                                <h1 class="title">
+                                    @Html.DisplayFor(modelItem => item.Amenities.Description)
+                                </h1>
+                                @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
 
-                                    </div>
-
-                                    <h1 class="title">
-                                        @Html.DisplayFor(modelItem => item.Amenities.Description)
-                                    </h1>
-                                    @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
-
-                                    <h2 class="sub_title"> @calculate<span> ש"ח</span></h2>
-                                    <p class="description">
-                                        מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)
-                                    </p>
-                                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
-                                </div>
+                                <h2 class="sub_title"> @calculate<span> ש"ח</span></h2>
+                                <p class="description">
+                                    מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)
+                                </p>
+                                <p class="description">
+                                    @Html.DisplayFor(modelItem => item.Location.Address)
+                                </p>
+                                <p class="description">
+                                    @Html.DisplayFor(modelItem => item.Location.City)
+                                </p>
+                                <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
                             </div>
                         </div>
                     </div>
-
-
-                }
+                </div>
             </div>
-        
-            <br />
+
+            @*<div class="card-columns">
+
+                <div class="w3-third w3-container">
+                    <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
+
+                    <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
+                    @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
+                    <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
+                    <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+                    <p>15m<sup>2</sup></p>
+                    <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
+
+                </div>
+            </div>*@
+
+
+        }
+        <br />
     </tbody>
 </table>
 @section Scripts {
