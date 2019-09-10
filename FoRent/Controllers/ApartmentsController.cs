@@ -247,6 +247,16 @@ namespace FoRent.Controllers
 
         }
 
+        public IActionResult About()
+        {
+            ViewBag.users = _context.User.Count();
+            ViewBag.apartment = _context.Apartment.Count();
+            ViewBag.cities = _context.Apartment.GroupBy(n => n.Location.City).Count();
+            ViewBag.orders = _context.Order.Count();
+            return View();
+
+        }
+
         private bool ApartmentExists(int id)
         {
             return _context.Apartment.Any(e => e.Id == id);
