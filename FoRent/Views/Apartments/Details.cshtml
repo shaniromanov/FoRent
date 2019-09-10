@@ -100,7 +100,7 @@
             <a href="#contact" class="w3-bar-item w3-button w3-padding-16"><i class="fa fa-envelope"></i>צור קשר</a>
         </div>
     </nav>
-
+  
 
     <!-- Top menu on small screens -->
     <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
@@ -196,7 +196,12 @@
                     <hr />
                     <h4><strong>מתקנים</strong></h4>
                     <div class="w3-col s6">
-
+                        @{
+                                if (Model.Amenities.Accessibility == true)
+                                {
+                                    <p><i class="fa fa-fw fa-wheelchair"></i>נגישות</p>
+                                }
+                            }
                         <p><i class="fa fa-fw fa-university"></i> מרפסת</p>
                         <p><i class="fa fa-fw fa-wifi"></i> wifi</p>
                         <p><i class="fa fa-fw fa-car"></i>חניה</p>
@@ -204,7 +209,7 @@
                     <div class="w3-col s6">
                         <p><i class="fa fa-fw fa-cutlery"></i> מטבח</p>
                         <p><i class="fa fa-fw fa-thermometer"></i>מיזוג</p>
-                        <p><i class="fa fa-fw fa-wheelchair"></i>נגישות</p>
+                        
                     </div>
                     <div class="w3-col s6">
                         <p><i class="fa fa-fw fa-bolt"></i>מיחם</p>
