@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+<h1>אודותינו</h1>
+
+<video controls="controls" autoplay="autoplay" loop="loop"
+       width="233" height="147" poster="//www.cdn.com//video.png"
+       preload="auto" title="Video">
+    <source src="//www.cdn.com/video.mp4" type="video/mp4" />
+    <source src="//www.cdn.com/video.ogv" type="video/ogv" />
+    <source src="//www.cdn.com/video.webm" type="video/webm" />
+</video>
+
+<h1>קצת לגבי מספרים</h1>
+<h3>אז כמה האתר שלנו פופולרי</h3>
+
+<div class="wrapper">
+    <div class="counter col_fourth">
+        <i class="fa fa-code fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="300" data-speed="1500"></h2>
+        <p class="count-text ">דירות באתר </p>
+    </div>
+
+    <div class="counter col_fourth">
+        <i class="fa fa-coffee fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="1700" data-speed="1500"></h2>
+        <p class="count-text ">מתוכם דירות בירושלים</p>
+    </div>
+
+    <div class="counter col_fourth">
+        <i class="fa fa-lightbulb-o fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="11900" data-speed="1500"></h2>
+        <p class="count-text ">מתוכם דירות בירושלים</p>
+    </div>
+
+    <div class="counter col_fourth end">
+        <i class="fa fa-bug fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="157" data-speed="1500"></h2>
+        <p class="count-text ">משתמשים רשומים</p>
+    </div>
+</div>
+
+@section Scripts {
+<script src="~/js/about.js"></script>
+<link href="~/css/about.css" rel="stylesheet" />
+}
+

@@ -81,7 +81,7 @@
             <h3>החל מ-$99</h3>
             <h6>עבור לילה</h6>
             <hr>
-            <form action="" target="_blank">
+            <form asp-controller="Orders" asp-action="Create" method="post">
                 <p><label><i class="fa fa-calendar-check-o"></i>צק אין</label></p>
                 <input class="w3-input w3-border" type="date" name="checkIn" required>
                 <p><label><i class="fa fa-calendar-o"></i> צק אאוט</label></p>
@@ -91,7 +91,7 @@
                 <p><label><i class="fa fa-child"></i> ילדים</label></p>
                 <input class="w3-input w3-border" type="number" value="0" name="child" min="0" max="6">
                 <input type="hidden" value="@Html.DisplayFor(model => model.Id)" name="apartmentId">
-                <p><button class="w3-button w3-block w3-black w3-left-align" type="submit"><a class="button-home" asp-controller="Orders" asp-action="Create">להזמנות</a></button></p>
+                <p><button class="w3-button w3-block w3-black w3-left-align" type="submit" >להזמנה</button></p>
             </form>
         </div>
         <div class="w3-bar-block">
