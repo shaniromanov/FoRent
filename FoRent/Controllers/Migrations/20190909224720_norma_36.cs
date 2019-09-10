@@ -8,10 +8,10 @@ namespace FoRent.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "OrderPaymentId",
-                table: "Order",
-                nullable: true);
+            //migrationBuilder.AddColumn<int>(
+            //    name: "OrderPaymentId",
+            //    table: "Order",
+            //    nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "PaymentId",
@@ -19,33 +19,33 @@ namespace FoRent.Migrations
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Order_OrderPaymentId",
-                table: "Order",
-                column: "OrderPaymentId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Order_OrderPaymentId",
+            //    table: "Order",
+            //    column: "OrderPaymentId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Order_OrderPayments_OrderPaymentId",
-                table: "Order",
-                column: "OrderPaymentId",
-                principalTable: "OrderPayments",
-                principalColumn: "OrderPaymentId",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Order_OrderPayments_OrderPaymentId",
+            //    table: "Order",
+            //    column: "OrderPaymentId",
+            //    principalTable: "OrderPayments",
+            //    principalColumn: "OrderPaymentId",
+            //    onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Order_OrderPayments_OrderPaymentId",
-                table: "Order");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Order_OrderPayments_OrderPaymentId",
+            //    table: "Order");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Order_OrderPaymentId",
-                table: "Order");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Order_OrderPaymentId",
+            //    table: "Order");
 
-            migrationBuilder.DropColumn(
-                name: "OrderPaymentId",
-                table: "Order");
+            //migrationBuilder.DropColumn(
+            //    name: "OrderPaymentId",
+            //    table: "Order");
 
             migrationBuilder.DropColumn(
                 name: "PaymentId",
