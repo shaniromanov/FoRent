@@ -5,11 +5,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-.column{
-    float: left;
-    width: 50%;
-    padding: 0 10px;
-}
+/*.w3-third w3-container {
+    padding: 16px;
+    column-gap: 40px;
+}*/
 
 .post-module {
     position: relative;
@@ -155,12 +154,10 @@
     opacity: 1 !important;
 }
 
-.container {
-    max-width:100px;
-    min-width: 400px;
-    margin: 0 auto;
-}
 
+.w3-third w3-container {
+}
+   
     .container:before,
     .container:after {
         content: '';
