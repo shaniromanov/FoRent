@@ -64,7 +64,8 @@ namespace FoRent.Controllers
         var naDays = days.Select(item => new ApartmentAvailability() { ApartmentId = order.ApartmentId, Availability = new Availability() { NotAvailable = item } });
         _context.ApartmentAvailability.AddRange(naDays);
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        //return RedirectToAction(nameof(Index));
+        return RedirectToAction("Create", "OrderPayments", routeValues: new { orderId= order.Id });
       }
       return View(order);
     }
@@ -161,6 +162,12 @@ namespace FoRent.Controllers
     private bool OrderExists(int id)
     {
       return _context.Order.Any(e => e.Id == id);
+    }
+
+
+    public IActionResult Success()
+    {
+      return View();
     }
   }
 }
