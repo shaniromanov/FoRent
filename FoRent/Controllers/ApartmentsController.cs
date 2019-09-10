@@ -70,18 +70,28 @@ namespace FoRent.Controllers
             return View(await query.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).Where(p => p.Location.City.Contains(city) && ((p.Amenities.NumOfPersons) >= (adult + child))).ToListAsync());
         }
 
-        //public async Task<IActionResult> Index1(double price)
-        //{
+        public IActionResult Sort(int[] apartmentsId, int adult, int child)
+        {
+            var apartments = _context.Apartment.Where(t => apartmentsId.Contains(t.Id)).ToList();
+           
+            var order = apartments.OrderBy(x => (x.PriceAdult * adult + x.PriceChild * child)).ToList();
+            ViewBag.NumOfAdult = adult;
+            ViewBag.NumOfChild = child;
 
-        //    ViewBag.PriceAdult = price;
-        //    var order = from a in _context.Apartment
-        //                orderby a.PriceAdult
-        //                select a;
+
+            return View(order);
+        }
+        public IActionResult Sort1(int[] apartmentsId, int adult, int child)
+        {
+            var apartments = _context.Apartment.Where(t => apartmentsId.Contains(t.Id)).ToList();
+
+            var order = apartments.OrderByDescending(x => (x.PriceAdult * adult + x.PriceChild * child)).ToList();
+            ViewBag.NumOfAdult = adult;
+            ViewBag.NumOfChild = child;
 
 
-
-        //    return View( _context.Apartment.Include(a => a.PriceAdult));
-        //}
+            return View(order);
+        }
         public async Task<IActionResult> Home()
         {
             return View(await _context.Apartment.Include(a => a.Amenities).Include(l => l.Location).Include(r => r.Renter).Include(p => p.Policy).Include(i => i.Image).ToListAsync());

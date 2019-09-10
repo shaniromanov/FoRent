@@ -1,5 +1,5 @@
-﻿@model IEnumerable<FoRent.Models.Apartment>
-
+﻿
+@model IList<FoRent.Models.Apartment>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,47 +16,69 @@
 
 
 
-<div class="w3-col m2">
-    <label><i class="fa fa-search"></i>מיין </label>
-    <select>
-        <option value="order">מהנמוך לגבוה</option>
-        <option value="order">מהגבוה לנמוך</option>
+        <form asp-controller="Apartments" asp-action="Sort" >
+            @if (Model != null)
+            {
+                for (var i = 0; i < Model.Count(); i++)
+                {
+                    <input type="hidden" value="@Model[i].Id" name="apartmentsId" />
+                }
+            }
 
-
-    </select>
-</div>
+            <input type="hidden" value="@ViewBag.NumOfAdult" name="adult" />
+            <input type="hidden" value="@ViewBag.NumOfChild" name="child" />
+            <button type="submit" class="btn btn-light ">מיין מהמחיר הנמוך לגבוה</button>
+        </form>
 <br />
 <br />
+        <form asp-controller="Apartments" asp-action="Sort1" >
+            @if (Model != null)
+            {
+                for (var i = 0; i < Model.Count(); i++)
+                {
+                    <input type="hidden" value="@Model[i].Id" name="apartmentsId"  />
+                }
+            }
+
+            <input type="hidden" value="@ViewBag.NumOfAdult" name="adult" />
+            <input type="hidden" value="@ViewBag.NumOfChild" name="child" />
+            <button type="submit" class="btn btn-light ">מיין מהמחיר הגבוה לנמוך</button>
+        </form>
 
 
-<table>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <br />
+    <br />
 
-            <div class="card-columns">
 
-                <div class="w3-third w3-container">
-                    <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
 
-                    <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
-                    @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
-                    <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
-                    <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
-                    <p>15m<sup>2</sup></p>
-                    <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
-                    <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
+    <table>
+        <tbody>
+            @foreach (var item in Model)
+            {
 
+                <div class="card-columns">
+
+                    <div class="w3-third w3-container">
+                        <img src="@Html.DisplayFor(modelItem => item.Image.BedRoom)" alt="Norway" style="width:100%">
+
+                        <h3>@Html.DisplayFor(modelItem => item.Amenities.Description)</h3>
+                        @{ var calculate = item.PriceAdult * ViewBag.NumOfAdult + item.PriceChild * ViewBag.NumOfChild;}
+                        <h6 class="w3-opacity"> @calculate<span> ש"ח</span></h6>
+                        <p>מספר חדרים: @Html.DisplayFor(modelItem => item.Amenities.NumOfRooms)</p>
+                        <p>15m<sup>2</sup></p>
+                        <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+                        <button class="w3-button w3-block w3-black w3-margin-bottom "><a asp-action="Details" asp-route-id="@item.Id">בחר דירה</a></button>
+
+                    </div>
                 </div>
-            </div>
 
 
-        }
-        <br />
-    </tbody>
-</table>
-@section Scripts {
+            }
+            <br />
+        </tbody>
+    </table>
+    @section Scripts {
 
-    <script src="~/js/index.js"></script>
-}
+        <script src="~/js/index.js"></script>
+    }
 
