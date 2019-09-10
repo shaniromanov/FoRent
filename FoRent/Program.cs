@@ -110,7 +110,8 @@ namespace FoRent
                     context.ApartmentAmenities.Add(amenities3);
                     var location3 = new Location() { Address = "נועם אלימלך 4", City = "בני ברק", x = 186070, y = 665593 };
                     context.Location.Add(location3);
-                    var img3 = new Image() { LivingRoom = "/User_Files/Images/סלון.jpg" };
+                    var img3 = new Image() { DiningRoom = "/User_Files/Images/6.jpg", Ketchen = "/User_Files/Images/10.jpg", BedRoom = "/User_Files/Images/16.jpg", LivingRoom = "/User_Files/Images/22.jpg" };
+              
                     context.Image.Add(img3);
                     var rent3 = new Renter() { password = "8948521", LastName = "בן שמעון", FirstName = "שמחה", Phone = "0504177788", Mail = "simcha@gmail.com", Username = "simcha" };
                     context.Renter.Add(rent3);
