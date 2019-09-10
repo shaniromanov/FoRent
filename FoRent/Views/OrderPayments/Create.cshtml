@@ -5,35 +5,107 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script src="https://cloud.modyocdn.com/uploads/06989c7f-67b3-404f-b8d6-202d849878e4/original/vue-credit-card.js"></script>
+<script src="https://cinemarkco.modyocdn.com/uploads/2f86649f-dd84-407a-9c13-97c506481f07/original/v-mask.js"></script>
+<script>
 
-<h4>OrderPayment</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CC_Number" class="control-label"></label>
-                <input asp-for="CC_Number" class="form-control" />
-                <span asp-validation-for="CC_Number" class="text-danger"></span>
+    window.onload = function () {
+        window.app = new Vue({
+            el: '#app',
+            components: {
+                'card': VueCard.Card
+            },
+            watch: {
+                'cardDetail.number': {
+                    handler: function (val, oldVal) {
+                        val = (val + '').replace(/\s+|-/g, '');
+                        this.isAmex = (this.amexCheck(val) && val.length == 15);
+                        console.log(this.isAmex);
+                    }
+                }
+            },
+            data: {
+                message: 'Hello Vue!',
+                cardDetail: {
+                    number: '3400 000000 00009',
+                    name: 'Abel Carvajal',
+                    expiry: '12/2018',
+                    cvc: '123'
+                }
+            },
+            methods: {
+                cardType: function () {
+                    if (this.$refs.childRef) {
+                        return this.$refs.childRef.cardType;
+                    } else return '';
+                },
+                validations: function () {
+                    if (this.$refs.childRef) {
+                        return this.$refs.childRef.classDisplay;
+                    } else return {};
+                },
+                validate: function (name) {
+                    if (this.$refs.childRef) {
+                        return this.$refs.childRef.classDisplay[name];
+                    } else return '';
+                },
+                resolveLength: function () {
+                    if (this.cardType() == 'visa')
+                        return 20;
+                    else return 20;
+                }
+            }
+        });
+    }
+</script>
+<style>
+
+    .demo-container {
+        width: 100%;
+        max-width: 350px;
+        margin: 50px auto;
+    }
+
+    form {
+        margin: 30px;
+    }
+
+    input {
+        width: 200px;
+        margin: 10px auto;
+        display: block;
+    }
+</style>
+
+<h2>הזן פרטי אשראי</h2>
+
+<form asp-action="Create">
+
+    <div class="row">
+        <div class="col-md-4" id="app">
+
+            <div class="card-wrapper">
+                <card v-model="cardDetail" ref="childRef"></card>
             </div>
+
+            <input name="CC_Number" placeholder="מספר כרטיס" type="tel" v-model="cardDetail.number" v-bind:maxlength="resolveLength()" :class="validate('number')">
+            @*<input name="name" placeholder="Nombre" type="text" v-model="cardDetail.name" :class="validate('name')">*@
+            <input name="CC_Exp" placeholder="MM/YY" type="tel" v-model="cardDetail.expiry" :class="validate('expiry')">
+            <input name="CC_CVV" placeholder="CVV" type="number" v-model="cardDetail.cvc" :class="validate('cvc')">
+            <h3 style="font-weight: bold">
+                {{cardType()}}
+            </h3>
+
+            @*{{validations()}}*@
+            
+            <br/>>
             <div class="form-group">
-                <label asp-for="CC_Exp" class="control-label"></label>
-                <input asp-for="CC_Exp" class="form-control" />
-                <span asp-validation-for="CC_Exp" class="text-danger"></span>
+                <input type="submit" value="אשר הזמנה" class="btn btn-default" />
             </div>
-            <div class="form-group">
-                <label asp-for="CC_CVV" class="control-label"></label>
-                <input asp-for="CC_CVV" class="form-control" />
-                <span asp-validation-for="CC_CVV" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 
 <div>
     <a asp-action="Index">Back to List</a>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoRent.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FoRent.Controllers
 {
@@ -43,8 +44,9 @@ namespace FoRent.Controllers
         }
 
         // GET: OrderPayments/Create
-        public IActionResult Create()
+        public IActionResult Create(int orderId)
         {
+            HttpContext.Session.SetInt32("OrderId",orderId);
             return View();
         }
 
@@ -59,7 +61,12 @@ namespace FoRent.Controllers
             {
                 _context.Add(orderPayment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                int orderId = HttpContext.Session.GetInt32("OrderId").Value;
+                HttpContext.Session.Remove("OrderId");
+                var dbOrder = _context.Order.Find(orderId);
+                dbOrder.PaymentId = orderPayment.OrderPaymentId;
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Success","Orders");
             }
             return View(orderPayment);
         }

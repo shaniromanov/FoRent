@@ -139,7 +139,7 @@ namespace FoRent
                     context.ApartmentAmenities.Add(amenities5);
                     var location5 = new Location() { Address = "סיני 1", City = "בית שמש", x = 200057, y = 628365 };
                     context.Location.Add(location5);
-                    var img5 = new Image() { DiningRoom = "/User_Files/Images/4.jpg", Ketchen = "/User_Files/Images/10.jpg", BedRoom = "/User_Files/Images/16.jpg", LivingRoom = "/User_Files/Images/22.jpg" };
+                    var img5 = new Image() { DiningRoom = "/User_Files/Images/4.jpg", Ketchen = "/User_Files/Images/12.jpg", BedRoom = "/User_Files/Images/18.jpg", LivingRoom = "/User_Files/Images/24.jpg" };
                     context.Image.Add(img5);
                     var rent5 = new Renter() { password = "986321", LastName = "בן דוב", FirstName = "יהודה", Phone = "0504189898", Mail = "yeuda@gmail.com", Username = "yeuda" };
                     context.Renter.Add(rent5);
